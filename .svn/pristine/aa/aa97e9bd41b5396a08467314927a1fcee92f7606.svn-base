@@ -1,0 +1,60 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<%@ include file="/resources/platform/inc.jsp" %>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <script src="${ctx.path}/resources/js/common/DataForm.js?v=${ctx.version}"></script>
+    <script type="text/javascript">
+        $(function () {
+            loadCriteria();
+        });
+
+        //加载查询条件
+        function loadCriteria() {
+
+        }
+    </script>
+</head>
+<body>
+
+<!-- 系统设置 -->
+<div id="setSys" name="setSys" class="add_box mCustomScrollbar_y" data-mcs-theme="dark" style="display:none;">
+    <form method="post" id="setSysForm" action="${ctx.path}/manage/system/info/addSys${ctx.bizSuffix}">
+        <div class="add_list">
+            <h5>
+                <em style="color: red;">*</em>系统名称：
+            </h5>
+            <div class="add_value">
+                <input type="text" id="sysName" name="sysName" maxlength="22" class="inputtext"/>
+            </div>
+        </div>
+        <div class="add_list">
+            <h5>
+                <em style="color: red;">*</em>单位名称：
+            </h5>
+            <div class="add_value">
+                <input type="text" id="unitName" name="unitName" maxlength="22" class="inputtext"/>
+            </div>
+        </div>
+        <div class="add_list">
+            <h5>
+                <em style="color: red;">*</em>系统LOGO：
+            </h5>
+            <div class="add_value">
+                <input type="text" id="sysLogo" name="sysLogo" maxlength="20" class="inputtext"/>
+            </div>
+        </div>
+        <div class="add_list">
+            <h5>
+                <em style="color: red;">*</em>每日新增累加值：
+            </h5>
+            <div class="add_value">
+                <input type="text" id="dayNumAdd" name="dayNumAdd" maxlength="22" class="inputtext"/>
+            </div>
+        </div>
+        <input type="submit" value="确定">
+    </form>
+</div>
+</body>
+</html>

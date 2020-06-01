@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.project.dao.TProjectRangeMapper" >
+  <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.project.bean.entity.TProjectRange" >
+    <id column="project_range_id" property="projectRangeId" jdbcType="INTEGER" />
+    <result column="datasource_type_id" property="datasourceTypeId" jdbcType="INTEGER" />
+    <result column="datasource_type_name" property="datasourceTypeName" jdbcType="VARCHAR" />
+    <result column="datasource_id" property="datasourceId" jdbcType="INTEGER" />
+    <result column="datasource_webname" property="datasourceWebname" jdbcType="VARCHAR" />
+    <result column="datasource_industry_id" property="datasourceIndustryId" jdbcType="INTEGER" />
+    <result column="datasource_industry_name" property="datasourceIndustryName" jdbcType="VARCHAR" />
+    <result column="datasource_infotype_id" property="datasourceInfotypeId" jdbcType="INTEGER" />
+    <result column="datasource_infotype_name" property="datasourceInfotypeName" jdbcType="VARCHAR" />
+    <result column="infotype_id" property="infotypeId" jdbcType="INTEGER" />
+    <result column="infotype_name" property="infotypeName" jdbcType="VARCHAR" />
+    <result column="industry_id" property="industryId" jdbcType="INTEGER" />
+    <result column="industry_name" property="industryName" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    project_range_id, datasource_type_id, datasource_type_name, datasource_id, datasource_webname, 
+    datasource_industry_id, datasource_industry_name, datasource_infotype_id, datasource_infotype_name, 
+    infotype_id, infotype_name, industry_id, industry_name, update_date, project_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.t_project_range
+    where project_range_id = #{projectRangeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from public.t_project_range
+    where project_range_id = #{projectRangeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuepeng.web.manage.project.bean.entity.TProjectRange" >
+    insert into public.t_project_range (project_range_id, datasource_type_id, 
+      datasource_type_name, datasource_id, datasource_webname, 
+      datasource_industry_id, datasource_industry_name, 
+      datasource_infotype_id, datasource_infotype_name, 
+      infotype_id, infotype_name, industry_id, 
+      industry_name, update_date, project_id
+      )
+    values (#{projectRangeId,jdbcType=INTEGER}, #{datasourceTypeId,jdbcType=INTEGER}, 
+      #{datasourceTypeName,jdbcType=VARCHAR}, #{datasourceId,jdbcType=INTEGER}, #{datasourceWebname,jdbcType=VARCHAR}, 
+      #{datasourceIndustryId,jdbcType=INTEGER}, #{datasourceIndustryName,jdbcType=VARCHAR}, 
+      #{datasourceInfotypeId,jdbcType=INTEGER}, #{datasourceInfotypeName,jdbcType=VARCHAR}, 
+      #{infotypeId,jdbcType=INTEGER}, #{infotypeName,jdbcType=VARCHAR}, #{industryId,jdbcType=INTEGER}, 
+      #{industryName,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{projectId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuepeng.web.manage.project.bean.entity.TProjectRange" >
+    insert into public.t_project_range
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectRangeId != null" >
+        project_range_id,
+      </if>
+      <if test="datasourceTypeId != null" >
+        datasource_type_id,
+      </if>
+      <if test="datasourceTypeName != null" >
+        datasource_type_name,
+      </if>
+      <if test="datasourceId != null" >
+        datasource_id,
+      </if>
+      <if test="datasourceWebname != null" >
+        datasource_webname,
+      </if>
+      <if test="datasourceIndustryId != null" >
+        datasource_industry_id,
+      </if>
+      <if test="datasourceIndustryName != null" >
+        datasource_industry_name,
+      </if>
+      <if test="datasourceInfotypeId != null" >
+        datasource_infotype_id,
+      </if>
+      <if test="datasourceInfotypeName != null" >
+        datasource_infotype_name,
+      </if>
+      <if test="infotypeId != null" >
+        infotype_id,
+      </if>
+      <if test="infotypeName != null" >
+        infotype_name,
+      </if>
+      <if test="industryId != null" >
+        industry_id,
+      </if>
+      <if test="industryName != null" >
+        industry_name,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectRangeId != null" >
+        #{projectRangeId,jdbcType=INTEGER},
+      </if>
+      <if test="datasourceTypeId != null" >
+        #{datasourceTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="datasourceTypeName != null" >
+        #{datasourceTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="datasourceId != null" >
+        #{datasourceId,jdbcType=INTEGER},
+      </if>
+      <if test="datasourceWebname != null" >
+        #{datasourceWebname,jdbcType=VARCHAR},
+      </if>
+      <if test="datasourceIndustryId != null" >
+        #{datasourceIndustryId,jdbcType=INTEGER},
+      </if>
+      <if test="datasourceIndustryName != null" >
+        #{datasourceIndustryName,jdbcType=VARCHAR},
+      </if>
+      <if test="datasourceInfotypeId != null" >
+        #{datasourceInfotypeId,jdbcType=INTEGER},
+      </if>
+      <if test="datasourceInfotypeName != null" >
+        #{datasourceInfotypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="infotypeId != null" >
+        #{infotypeId,jdbcType=INTEGER},
+      </if>
+      <if test="infotypeName != null" >
+        #{infotypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="industryId != null" >
+        #{industryId,jdbcType=INTEGER},
+      </if>
+      <if test="industryName != null" >
+        #{industryName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.project.bean.entity.TProjectRange" >
+    update public.t_project_range
+    <set >
+      <if test="datasourceTypeId != null" >
+        datasource_type_id = #{datasourceTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="datasourceTypeName != null" >
+        datasource_type_name = #{datasourceTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="datasourceId != null" >
+        datasource_id = #{datasourceId,jdbcType=INTEGER},
+      </if>
+      <if test="datasourceWebname != null" >
+        datasource_webname = #{datasourceWebname,jdbcType=VARCHAR},
+      </if>
+      <if test="datasourceIndustryId != null" >
+        datasource_industry_id = #{datasourceIndustryId,jdbcType=INTEGER},
+      </if>
+      <if test="datasourceIndustryName != null" >
+        datasource_industry_name = #{datasourceIndustryName,jdbcType=VARCHAR},
+      </if>
+      <if test="datasourceInfotypeId != null" >
+        datasource_infotype_id = #{datasourceInfotypeId,jdbcType=INTEGER},
+      </if>
+      <if test="datasourceInfotypeName != null" >
+        datasource_infotype_name = #{datasourceInfotypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="infotypeId != null" >
+        infotype_id = #{infotypeId,jdbcType=INTEGER},
+      </if>
+      <if test="infotypeName != null" >
+        infotype_name = #{infotypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="industryId != null" >
+        industry_id = #{industryId,jdbcType=INTEGER},
+      </if>
+      <if test="industryName != null" >
+        industry_name = #{industryName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where project_range_id = #{projectRangeId,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByProjectIdSelective" parameterType="com.yuepeng.web.manage.project.bean.entity.TProjectRange" >
+    update public.t_project_range
+    <set >
+      <if test="datasourceTypeId != null" >
+        datasource_type_id = #{datasourceTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="datasourceTypeName != null" >
+        datasource_type_name = #{datasourceTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="datasourceId != null" >
+        datasource_id = #{datasourceId,jdbcType=INTEGER},
+      </if>
+      <if test="datasourceWebname != null" >
+        datasource_webname = #{datasourceWebname,jdbcType=VARCHAR},
+      </if>
+      <if test="datasourceIndustryId != null" >
+        datasource_industry_id = #{datasourceIndustryId,jdbcType=INTEGER},
+      </if>
+      <if test="datasourceIndustryName != null" >
+        datasource_industry_name = #{datasourceIndustryName,jdbcType=VARCHAR},
+      </if>
+      <if test="datasourceInfotypeId != null" >
+        datasource_infotype_id = #{datasourceInfotypeId,jdbcType=INTEGER},
+      </if>
+      <if test="datasourceInfotypeName != null" >
+        datasource_infotype_name = #{datasourceInfotypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="infotypeId != null" >
+        infotype_id = #{infotypeId,jdbcType=INTEGER},
+      </if>
+      <if test="infotypeName != null" >
+        infotype_name = #{infotypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="industryId != null" >
+        industry_id = #{industryId,jdbcType=INTEGER},
+      </if>
+      <if test="industryName != null" >
+        industry_name = #{industryName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where project_id = #{projectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.project.bean.entity.TProjectRange" >
+    update public.t_project_range
+    set datasource_type_id = #{datasourceTypeId,jdbcType=INTEGER},
+      datasource_type_name = #{datasourceTypeName,jdbcType=VARCHAR},
+      datasource_id = #{datasourceId,jdbcType=INTEGER},
+      datasource_webname = #{datasourceWebname,jdbcType=VARCHAR},
+      datasource_industry_id = #{datasourceIndustryId,jdbcType=INTEGER},
+      datasource_industry_name = #{datasourceIndustryName,jdbcType=VARCHAR},
+      datasource_infotype_id = #{datasourceInfotypeId,jdbcType=INTEGER},
+      datasource_infotype_name = #{datasourceInfotypeName,jdbcType=VARCHAR},
+      infotype_id = #{infotypeId,jdbcType=INTEGER},
+      infotype_name = #{infotypeName,jdbcType=VARCHAR},
+      industry_id = #{industryId,jdbcType=INTEGER},
+      industry_name = #{industryName,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      project_id = #{projectId,jdbcType=INTEGER}
+    where project_range_id = #{projectRangeId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,56 @@
+package com.yuepeng.web.manage.datasource.service.impl;
+
+import com.yuepeng.web.manage.datasource.bean.entity.TDatasource;
+import com.yuepeng.web.manage.datasource.bean.vo.DatasourceVo;
+import com.yuepeng.web.manage.datasource.bean.excel.DatasourceExcel;
+import com.yuepeng.web.manage.datasource.dao.TDatasourceMapper;
+import com.yuepeng.web.manage.datasource.service.IDatasourceService;
+import com.yuepeng.platform.common.service.impl.SuperServiceIntegerImpl;
+import com.yuepeng.platform.framework.mybatis.pagination.Pagination;
+import com.yuepeng.platform.framework.mybatis.pagination.PageContext;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 招标数据来源站点表
+
+1：省平台     青海省                          青海省公共资源交易网
+2：市平台     青海省    格尔木市      格尔木市公共资源交易网
+3：央企业招投标    中国化工装备招投标交易平台
+4：...(Datasource)表服务实现类
+ *
+ * @author wzq
+ * @since 2020-05-21 09:07:49
+ */
+@Service("datasourceService")
+public class DatasourceServiceImpl extends SuperServiceIntegerImpl<TDatasourceMapper, TDatasource> implements IDatasourceService {
+    
+    @Override
+    public Pagination<DatasourceVo> queryDatasourcePageList(Pagination<DatasourceVo> paramBean) throws Exception {
+        Pagination<DatasourceVo> pagination = PageContext.initialize(paramBean.getPage(), paramBean.getRows());
+        List<DatasourceVo> list = mapper.queryDatasourcePageList(paramBean, pagination.getRowBounds());
+        pagination.setData(list);
+        return pagination;
+    }
+
+    @Override
+    public Pagination<DatasourceExcel> exportDatasourcePageList(Pagination<TDatasource> paramBean) throws Exception {
+        Pagination<DatasourceExcel> pagination = PageContext.initialize(paramBean.getPage(), paramBean.getRows());
+        List<DatasourceExcel> list = mapper.exportDatasourcePageList(paramBean, pagination.getRowBounds());
+        pagination.setData(list);
+        return pagination;
+    }
+
+    @Override
+    public DatasourceVo viewDatasource(Integer datasourceId) throws Exception {
+        return mapper.viewDatasource(datasourceId);
+    }
+
+    @Override
+    public List<Map<String, Object>> getDatasourceByTypeId(Integer datasourceTypeId) throws Exception {
+        return mapper.selectDatasourceByTypeId(datasourceTypeId);
+    }
+
+}

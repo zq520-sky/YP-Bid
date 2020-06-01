@@ -1,0 +1,64 @@
+package com.yuepeng.web.manage.finance.controller;
+
+import com.yuepeng.web.manage.finance.bean.entity.TOrderInvoice;
+import com.yuepeng.web.manage.finance.bean.vo.OrderInvoiceVo;
+import com.yuepeng.web.manage.finance.bean.excel.OrderInvoiceExcel;
+import com.yuepeng.web.manage.finance.service.IOrderInvoiceService;
+import com.yuepeng.platform.framework.constant.WebConstant;
+import com.yuepeng.platform.framework.mybatis.pagination.Pagination;
+import com.yuepeng.platform.pm.bean.entity.TSysLog;
+import com.yuepeng.platform.pm.constant.PmStateConstant;
+import com.yuepeng.platform.framework.base.BaseController;
+import com.yuepeng.platform.pm.service.ILogService;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.Date;
+import java.util.Map;
+
+/**
+ * 客户发票申请表(OrderInvoice)表控制层
+ *
+ * @author wzq
+ * @since 2020-05-15 16:40:54
+ */
+@Controller
+@RequestMapping("orderInvoice")
+public class OrderInvoiceController extends BaseController{
+    /**
+     * 服务对象
+     */
+    @Resource
+    private IOrderInvoiceService orderInvoiceService;
+    
+    @Resource
+    private ILogService logService;
+
+    @RequestMapping("queryOrderInvoiceList" + WebConstant.PAGE_SUFFIX)
+    public String queryOrderInvoicePageList(Pagination<OrderInvoiceVo> paramBean, OrderInvoiceVo orderInvoiceVo) throws Exception{
+        paramBean.setSearch(orderInvoiceVo);
+        Pagination<OrderInvoiceVo> pageData = orderInvoiceService.queryOrderInvoicePageList(paramBean);
+        this.addAttr("pageData", pageData);
+        return "";
+    }
+
+    @RequestMapping("/exportOrderInvoicePageList" + WebConstant.BUSINESS_SUFFIX)
+    public String exportOrderInvoiceList(Pagination<TOrderInvoice> paramBean, OrderInvoiceVo orderInvoiceVo) throws Exception {
+        paramBean.setSearch(orderInvoiceVo);
+        Pagination<OrderInvoiceExcel> list = orderInvoiceService.exportOrderInvoicePageList(paramBean);
+        logService.addLog(new TSysLog("-导出", "导出！", PmStateConstant.LOG_PLATFORM));
+        this.export(response, "" + String.format("%1$tY%1$tm%1$td", new Date()), OrderInvoiceExcel.class, list.getData());
+        return null;
+    }
+
+    
+    @RequestMapping("viewOrderInvoice" + WebConstant.BUSINESS_SUFFIX)
+    @ResponseBody
+    public Map<String, Object> viewOrderInvoice(Integer invoiceId) throws Exception {
+        OrderInvoiceVo orderInvoiceVo = orderInvoiceService.viewOrderInvoice(invoiceId);
+        return this.getResultMap(true, orderInvoiceVo);
+    }
+    
+    
+}

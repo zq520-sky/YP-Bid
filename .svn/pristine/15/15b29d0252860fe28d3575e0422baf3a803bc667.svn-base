@@ -1,0 +1,14 @@
+package com.yuepeng.web.manage.finance.controller;
+
+import com.yuepeng.platform.framework.base.BaseController;
+
+/**
+ * 〈功能概述〉<br>
+ *
+ * @className: OrderController
+ * @package: com.yuepeng.web.manage.finance.controller
+ * @author: wzq
+ * @date: 2020/5/12 11:34
+ */
+public class OrderController extends BaseController {
+}

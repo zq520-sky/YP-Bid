@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.dict.dao.TIndustrySubMapper">
+    <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.dict.bean.entity.TIndustrySub">
+        <id column="industry_sub_id" property="industrySubId" jdbcType="INTEGER"/>
+        <result column="industry_sub_name" property="industrySubName" jdbcType="VARCHAR"/>
+        <result column="industry_id" property="industryId" jdbcType="INTEGER"/>
+        <result column="key_words" property="keyWords" jdbcType="VARCHAR"/>
+        <result column="order_num" property="orderNum" jdbcType="INTEGER"/>
+        <result column="create_user_id" property="createUserId" jdbcType="INTEGER"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="update_user_id" property="updateUserId" jdbcType="INTEGER"/>
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        industry_sub_id,
+        industry_sub_name,
+        industry_id,
+        key_words,
+        order_num,
+        create_user_id,
+        create_date,
+        update_user_id,
+        update_date
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from public.t_industry_sub
+        where industry_sub_id = #{industrySubId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from public.t_industry_sub
+        where industry_sub_id = #{industrySubId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.yuepeng.web.manage.dict.bean.entity.TIndustrySub">
+        insert into public.t_industry_sub (industry_sub_id, industry_sub_name, industry_id,
+                                           key_words, order_num, create_user_id,
+                                           create_date, update_user_id, update_date)
+        values (#{industrySubId,jdbcType=INTEGER}, #{industrySubName,jdbcType=VARCHAR}, #{industryId,jdbcType=INTEGER},
+                #{keyWords,jdbcType=VARCHAR}, #{orderNum,jdbcType=INTEGER}, #{createUserId,jdbcType=INTEGER},
+                #{createDate,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=INTEGER}, #{updateDate,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yuepeng.web.manage.dict.bean.entity.TIndustrySub">
+        insert into public.t_industry_sub
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="industrySubId != null">
+                industry_sub_id,
+            </if>
+            <if test="industrySubName != null">
+                industry_sub_name,
+            </if>
+            <if test="industryId != null">
+                industry_id,
+            </if>
+            <if test="keyWords != null">
+                key_words,
+            </if>
+            <if test="orderNum != null">
+                order_num,
+            </if>
+            <if test="createUserId != null">
+                create_user_id,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateUserId != null">
+                update_user_id,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="industrySubId != null">
+                #{industrySubId,jdbcType=INTEGER},
+            </if>
+            <if test="industrySubName != null">
+                #{industrySubName,jdbcType=VARCHAR},
+            </if>
+            <if test="industryId != null">
+                #{industryId,jdbcType=INTEGER},
+            </if>
+            <if test="keyWords != null">
+                #{keyWords,jdbcType=VARCHAR},
+            </if>
+            <if test="orderNum != null">
+                #{orderNum,jdbcType=INTEGER},
+            </if>
+            <if test="createUserId != null">
+                #{createUserId,jdbcType=INTEGER},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateUserId != null">
+                #{updateUserId,jdbcType=INTEGER},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.dict.bean.entity.TIndustrySub">
+        update public.t_industry_sub
+        <set>
+            <if test="industrySubName != null">
+                industry_sub_name = #{industrySubName,jdbcType=VARCHAR},
+            </if>
+            <if test="industryId != null">
+                industry_id = #{industryId,jdbcType=INTEGER},
+            </if>
+            <if test="keyWords != null">
+                key_words = #{keyWords,jdbcType=VARCHAR},
+            </if>
+            <if test="orderNum != null">
+                order_num = #{orderNum,jdbcType=INTEGER},
+            </if>
+            <if test="createUserId != null">
+                create_user_id = #{createUserId,jdbcType=INTEGER},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateUserId != null">
+                update_user_id = #{updateUserId,jdbcType=INTEGER},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where industry_sub_id = #{industrySubId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.dict.bean.entity.TIndustrySub">
+        update public.t_industry_sub
+        set industry_sub_name = #{industrySubName,jdbcType=VARCHAR},
+            industry_id       = #{industryId,jdbcType=INTEGER},
+            key_words         = #{keyWords,jdbcType=VARCHAR},
+            order_num         = #{orderNum,jdbcType=INTEGER},
+            create_user_id    = #{createUserId,jdbcType=INTEGER},
+            create_date       = #{createDate,jdbcType=TIMESTAMP},
+            update_user_id    = #{updateUserId,jdbcType=INTEGER},
+            update_date       = #{updateDate,jdbcType=TIMESTAMP}
+        where industry_sub_id = #{industrySubId,jdbcType=INTEGER}
+    </update>
+
+
+    <sql id="queryPageList_where">
+        <if test="search != null">
+            <if test="search.industrySubName != null and search.industrySubName != ''">
+                and i.industry_sub_name like '%'||#{search.industrySubName,jdbcType=VARCHAR}||'%'
+            </if>
+            <if test="search.keyWords != null and search.keyWords != ''">
+                and i.key_words like '%'||#{search.keyWords,jdbcType=VARCHAR}||'%'
+            </if>
+            <if test="search.industryId != null">
+                and d.industry_id = #{search.industryId}
+            </if>
+        </if>
+    </sql>
+
+    <select id="queryIndustryPageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.dict.bean.vo.IndustrySubVo">
+        SELECT
+        i.industry_sub_id, i.industry_sub_name, i.industry_id, i.key_words, i.order_num, i.create_user_id,
+        i.create_date, i.update_user_id, i.update_date,d.industry_id,d.industry_name,d.order_num
+        FROM
+        t_industry_sub i
+        inner join t_industry d on i.industry_id = d.industry_id
+        <where>
+            <include refid="queryPageList_where"/>
+        </where>
+    </select>
+
+    <select id="exportIndustryPageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.dict.bean.excel.IndustrySubEntity">
+        SELECT
+        i.industry_sub_id, i.industry_sub_name, i.industry_id, i.key_words, i.order_num, i.create_user_id,
+        i.create_date, i.update_user_id, i.update_date,d.industry_id,d.industry_name,d.order_num
+        FROM
+        t_industry_sub i
+        inner join t_industry d on i.industry_id = d.industry_id
+        <where>
+            <include refid="queryPageList_where"/>
+        </where>
+    </select>
+
+    <select id="viewIndustry" resultType="com.yuepeng.web.manage.dict.bean.vo.IndustrySubVo">
+        SELECT i.industry_sub_id,
+               i.industry_sub_name,
+               i.industry_id,
+               i.key_words,
+               i.order_num,
+               i.create_user_id,
+               i.create_date,
+               i.update_user_id,
+               i.update_date,
+               d.industry_id,
+               d.industry_name,
+               d.order_num
+        FROM t_industry_sub i
+                 inner join t_industry d on i.industry_id = d.industry_id
+        WHERE i.industry_sub_id = #{industrySubId}
+    </select>
+
+    <select id="getIndustryTypes" resultType="com.yuepeng.web.manage.dict.bean.vo.IndustrySubVo">
+        select t.industry_name,t.industry_id
+        from t_industry t
+        order by t.industry_id asc
+    </select>
+</mapper>

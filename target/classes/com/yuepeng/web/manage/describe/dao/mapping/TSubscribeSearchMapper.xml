@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.describe.dao.TSubscribeSearchMapper" >
+  <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.describe.bean.entity.TSubscribeSearch" >
+    <id column="subscribe_search_id" property="subscribeSearchId" jdbcType="INTEGER" />
+    <result column="cust_id" property="custId" jdbcType="INTEGER" />
+    <result column="subscribe_set_id" property="subscribeSetId" jdbcType="INTEGER" />
+    <result column="search_times" property="searchTimes" jdbcType="INTEGER" />
+    <result column="search_time" property="searchTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    subscribe_search_id, cust_id, subscribe_set_id, search_times, search_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.t_subscribe_search
+    where subscribe_search_id = #{subscribeSearchId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from public.t_subscribe_search
+    where subscribe_search_id = #{subscribeSearchId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuepeng.web.manage.describe.bean.entity.TSubscribeSearch" >
+    insert into public.t_subscribe_search (subscribe_search_id, cust_id, subscribe_set_id, 
+      search_times, search_time)
+    values (#{subscribeSearchId,jdbcType=INTEGER}, #{custId,jdbcType=INTEGER}, #{subscribeSetId,jdbcType=INTEGER}, 
+      #{searchTimes,jdbcType=INTEGER}, #{searchTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuepeng.web.manage.describe.bean.entity.TSubscribeSearch" >
+    insert into public.t_subscribe_search
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="subscribeSearchId != null" >
+        subscribe_search_id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="subscribeSetId != null" >
+        subscribe_set_id,
+      </if>
+      <if test="searchTimes != null" >
+        search_times,
+      </if>
+      <if test="searchTime != null" >
+        search_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="subscribeSearchId != null" >
+        #{subscribeSearchId,jdbcType=INTEGER},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="subscribeSetId != null" >
+        #{subscribeSetId,jdbcType=INTEGER},
+      </if>
+      <if test="searchTimes != null" >
+        #{searchTimes,jdbcType=INTEGER},
+      </if>
+      <if test="searchTime != null" >
+        #{searchTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.describe.bean.entity.TSubscribeSearch" >
+    update public.t_subscribe_search
+    <set >
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="subscribeSetId != null" >
+        subscribe_set_id = #{subscribeSetId,jdbcType=INTEGER},
+      </if>
+      <if test="searchTimes != null" >
+        search_times = #{searchTimes,jdbcType=INTEGER},
+      </if>
+      <if test="searchTime != null" >
+        search_time = #{searchTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where subscribe_search_id = #{subscribeSearchId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.describe.bean.entity.TSubscribeSearch" >
+    update public.t_subscribe_search
+    set cust_id = #{custId,jdbcType=INTEGER},
+      subscribe_set_id = #{subscribeSetId,jdbcType=INTEGER},
+      search_times = #{searchTimes,jdbcType=INTEGER},
+      search_time = #{searchTime,jdbcType=TIMESTAMP}
+    where subscribe_search_id = #{subscribeSearchId,jdbcType=INTEGER}
+  </update>
+
+  <sql id="ColumnByVo">
+    s
+    .
+    serarch_type,
+    s
+    .
+    key_words,
+    s
+    .
+    area_names,
+    s
+    .
+    subscribe_set_time,
+    s
+    .
+    infotype_ids,s.subscribe_set_id,s.update_date,s.area_names
+  </sql>
+
+  <sql id="queryPageCustSubScribeVoList_where">
+    <if test="search != null">
+      <if test="search.mobile != null and search.mobile != ''">
+        and c.mobile like '%'||#{search.mobile,jdbcType=VARCHAR}||'%'
+        or c.cust_code like '%'||#{search.custCode,jdbcType=VARCHAR}||'%'
+      </if>
+      <if test="search.keyWords != null and search.keyWords != ''">
+        and s.key_words like '%'||#{search.keyWords,jdbcType=VARCHAR}||'%'
+      </if>
+    </if>
+  </sql>
+
+  <!-- 客户订阅查询页面查找 -->
+  <select id="querySubscribeSearchList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+          resultType="com.yuepeng.web.manage.describe.bean.vo.SubscribeSearchVo">
+    SELECT<include refid="ColumnByVo"/>,c.cust_code,c.mobile,c.member_type,
+    case c.member_type when 0 then '普通会员' when 1 then '省级VIP' when 2 then '高级VIP' when 3 then '项目VIP' end as
+    member_type_sn,case serarch_type when 0 then '标题搜索' when 1 then '全文搜索' end as serarch_type_cn,b.search_times,b.search_time,b.subscribe_search_id
+    from t_subscribe_search b
+    inner join t_customer c on b.cust_id = c.cust_id
+    inner join t_subscribe_set s on s.subscribe_set_id = b.subscribe_set_id
+    <where>
+      <include refid="queryPageCustSubScribeVoList_where"/>
+    </where>
+  </select>
+
+
+  <!-- 客户订阅查询页面导出 -->
+  <select id="exportSubscribeSearchList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+          resultType="com.yuepeng.web.manage.describe.bean.excel.custSubscribeSearchEntity">
+    SELECT<include refid="ColumnByVo"/>,c.cust_code,c.mobile,c.member_type,
+    case c.member_type when 0 then '普通会员' when 1 then '省级VIP' when 2 then '高级VIP' when 3 then '项目VIP' end as
+    member_type_sn,case serarch_type when 0 then '标题搜索' when 1 then '全文搜索' end as serarch_type_cn,b.search_times,b.search_time,b.subscribe_search_id
+    from t_subscribe_search b
+    inner join t_customer c on b.cust_id = c.cust_id
+    inner join t_subscribe_set s on s.subscribe_set_id = b.subscribe_set_id
+    <where>
+      <include refid="queryPageCustSubScribeVoList_where"/>
+    </where>
+  </select>
+
+  <!-- 客户订阅查询页面查看 -->
+  <select id="selectSubscribeSearchListById" parameterType="java.lang.Integer"
+          resultType="com.yuepeng.web.manage.describe.bean.vo.SubscribeSearchVo">
+    SELECT<include refid="ColumnByVo"/>,c.cust_code,c.mobile,c.member_type,
+    case c.member_type when 0 then '普通会员' when 1 then '省级VIP' when 2 then '高级VIP' when 3 then '项目VIP' end as
+    member_type_sn,case serarch_type when 0 then '标题搜索' when 1 then '全文搜索' end as serarch_type_cn,b.search_times,b.search_time,b.subscribe_search_id
+    from t_subscribe_search b
+    inner join t_customer c on b.cust_id = c.cust_id
+    inner join t_subscribe_set s on s.subscribe_set_id = b.subscribe_set_id
+    where b.subscribe_search_id = #{subscribeSearchId,javaType = INTEGER}
+  </select>
+</mapper>

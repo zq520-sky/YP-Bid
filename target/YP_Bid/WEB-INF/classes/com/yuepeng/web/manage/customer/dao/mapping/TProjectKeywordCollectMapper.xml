@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.customer.dao.TProjectKeywordCollectMapper" >
+  <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.customer.bean.entity.TProjectKeywordCollect" >
+    <id column="keyword_collect_id" property="keywordCollectId" jdbcType="INTEGER" />
+    <result column="cust_id" property="custId" jdbcType="INTEGER" />
+    <result column="project_keywords" property="projectKeywords" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyword_collect_id, cust_id, project_keywords
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.t_project_keyword_collect
+    where keyword_collect_id = #{keywordCollectId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from public.t_project_keyword_collect
+    where keyword_collect_id = #{keywordCollectId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuepeng.web.manage.customer.bean.entity.TProjectKeywordCollect" >
+    insert into public.t_project_keyword_collect (keyword_collect_id, cust_id, project_keywords
+      )
+    values (#{keywordCollectId,jdbcType=INTEGER}, #{custId,jdbcType=INTEGER}, #{projectKeywords,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuepeng.web.manage.customer.bean.entity.TProjectKeywordCollect" >
+    insert into public.t_project_keyword_collect
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keywordCollectId != null" >
+        keyword_collect_id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="projectKeywords != null" >
+        project_keywords,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keywordCollectId != null" >
+        #{keywordCollectId,jdbcType=INTEGER},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="projectKeywords != null" >
+        #{projectKeywords,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.customer.bean.entity.TProjectKeywordCollect" >
+    update public.t_project_keyword_collect
+    <set >
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="projectKeywords != null" >
+        project_keywords = #{projectKeywords,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyword_collect_id = #{keywordCollectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.customer.bean.entity.TProjectKeywordCollect" >
+    update public.t_project_keyword_collect
+    set cust_id = #{custId,jdbcType=INTEGER},
+      project_keywords = #{projectKeywords,jdbcType=VARCHAR}
+    where keyword_collect_id = #{keywordCollectId,jdbcType=INTEGER}
+  </update>
+
+  <sql id="queryPageList_where">
+    <if test="search != null">
+      <if test="search.custCode != null ">
+        and tc.cust_code like '%'||#{search.custCode,jdbcType=VARCHAR}||'%'
+      </if>
+      <if test="search.mobile != null and search.mobile != ''">
+        and tc.mobile like '%'||#{search.mobile,jdbcType=VARCHAR}||'%'
+      </if>
+      <if test="search.memberType != null">
+        and tc.member_type = #{search.memberType,jdbcType=INTEGER}
+      </if>
+    </if>
+  </sql>
+
+  <select id="queryKeywordList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.customer.bean.vo.ProjectKeywordCollectVo">
+    SELECT
+      tpkc.keyword_collect_id,
+      tpkc.project_keywords,
+      tpkc.cust_id,
+      tc.cust_code,
+      tc.mobile,
+      tc.head_img,
+      tc.member_type,
+      tc.nick_name,
+      tc.sex
+    FROM
+      t_project_keyword_collect tpkc
+      INNER JOIN t_customer tc ON tc.cust_id = tpkc.cust_id
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    ORDER BY tpkc.keyword_collect_id DESC
+  </select>
+
+  <select id="exportKeywordList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.customer.bean.excel.ProjectKeywordCollectExcel">
+    SELECT
+      tpkc.keyword_collect_id,
+      tpkc.project_keywords,
+      tpkc.cust_id,
+      tc.cust_code,
+      tc.mobile,
+      tc.head_img,
+      tc.member_type,
+      tc.nick_name,
+      tc.sex
+    FROM
+      t_project_keyword_collect tpkc
+      INNER JOIN t_customer tc ON tc.cust_id = tpkc.cust_id
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    ORDER BY tpkc.keyword_collect_id DESC
+  </select>
+
+  <select id="viewKeyword" resultType="com.yuepeng.web.manage.customer.bean.vo.ProjectKeywordCollectVo">
+    SELECT
+      tpkc.keyword_collect_id,
+      tpkc.project_keywords,
+      tpkc.cust_id,
+      tc.cust_code,
+      tc.mobile,
+      tc.head_img,
+      tc.member_type,
+      tc.nick_name,
+      tc.sex
+    FROM
+      t_project_keyword_collect tpkc
+      INNER JOIN t_customer tc ON tc.cust_id = tpkc.cust_id
+    WHERE tpkc.keyword_collect_id = #{keywordCollectId}
+  </select>
+</mapper>

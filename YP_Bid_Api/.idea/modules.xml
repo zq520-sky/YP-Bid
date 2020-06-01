@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/YP_Bid_Api.iml" filepath="$PROJECT_DIR$/YP_Bid_Api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/st-api/st-api.iml" filepath="$PROJECT_DIR$/st-api/st-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/st-core/st-core.iml" filepath="$PROJECT_DIR$/st-core/st-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/st-pay/st-pay.iml" filepath="$PROJECT_DIR$/st-pay/st-pay.iml" />
+    </modules>
+  </component>
+</project>

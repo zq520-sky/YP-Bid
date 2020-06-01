@@ -1,0 +1,12 @@
+package com.yuepeng.web.manage.datasource.bean.vo;
+
+import com.yuepeng.web.manage.datasource.bean.entity.TDatasourceType;
+
+/**
+ * DatasourceTypeVo
+ *
+ * @author wzq
+ * @since 2020-05-19 08:59:01
+ */
+public class DatasourceTypeVo extends TDatasourceType{
+}

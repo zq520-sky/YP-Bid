@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.dict.dao.TInfotypeMapper">
+    <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.dict.bean.entity.TInfotype">
+        <id column="infotype_id" property="infotypeId" jdbcType="INTEGER"/>
+        <result column="infotype_name" property="infotypeName" jdbcType="VARCHAR"/>
+        <result column="class_id" property="classId" jdbcType="INTEGER"/>
+        <result column="order_num" property="orderNum" jdbcType="INTEGER"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        infotype_id,
+        infotype_name,
+        class_id,
+        order_num,
+        remark
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from public.t_infotype
+        where infotype_id = #{infotypeId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from public.t_infotype
+        where infotype_id = #{infotypeId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.yuepeng.web.manage.dict.bean.entity.TInfotype">
+        insert into public.t_infotype (infotype_id, infotype_name, class_id,
+                                       order_num, remark)
+        values (#{infotypeId,jdbcType=INTEGER}, #{infotypeName,jdbcType=VARCHAR}, #{classId,jdbcType=INTEGER},
+                #{orderNum,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yuepeng.web.manage.dict.bean.entity.TInfotype">
+        insert into public.t_infotype
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="infotypeId != null">
+                infotype_id,
+            </if>
+            <if test="infotypeName != null">
+                infotype_name,
+            </if>
+            <if test="classId != null">
+                class_id,
+            </if>
+            <if test="orderNum != null">
+                order_num,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="infotypeId != null">
+                #{infotypeId,jdbcType=INTEGER},
+            </if>
+            <if test="infotypeName != null">
+                #{infotypeName,jdbcType=VARCHAR},
+            </if>
+            <if test="classId != null">
+                #{classId,jdbcType=INTEGER},
+            </if>
+            <if test="orderNum != null">
+                #{orderNum,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.dict.bean.entity.TInfotype">
+        update public.t_infotype
+        <set>
+            <if test="infotypeName != null">
+                infotype_name = #{infotypeName,jdbcType=VARCHAR},
+            </if>
+            <if test="classId != null">
+                class_id = #{classId,jdbcType=INTEGER},
+            </if>
+            <if test="orderNum != null">
+                order_num = #{orderNum,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where infotype_id = #{infotypeId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.dict.bean.entity.TInfotype">
+        update public.t_infotype
+        set infotype_name = #{infotypeName,jdbcType=VARCHAR},
+            class_id      = #{classId,jdbcType=INTEGER},
+            order_num     = #{orderNum,jdbcType=INTEGER},
+            remark        = #{remark,jdbcType=VARCHAR}
+        where infotype_id = #{infotypeId,jdbcType=INTEGER}
+    </update>
+
+
+    <sql id="queryPageCustSubScribePushVoList_where">
+        <if test="search != null">
+            <if test="search.infotypeName != null and search.infotypeName != ''">
+                and d.infotype_name like '%'|| #{search.infotypeName,jdbcType=VARCHAR}||'%'
+            </if>
+            <if test="search.classId != null">
+                and d.class_id = #{search.classId,jdbcType=INTEGER}
+            </if>
+        </if>
+    </sql>
+    <!-- 招标信息类型分页 -->
+    <select id="queryInfoTypeList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.dict.bean.vo.InfotypeVo">
+        SELECT d.infotype_id,d.infotype_name,d.class_id,d.order_num,d.remark,
+        case d.class_id when 1 then '招标' when 2 then '中标' when 3 then '变更' when 4 then '流标' end as class_id_cn
+        from t_infotype d
+        <where>
+            <include refid="queryPageCustSubScribePushVoList_where"/>
+        </where>
+    </select>
+
+
+    <!-- 招标信息类型导出 -->
+    <select id="exportInfoTypeList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.dict.bean.excel.InfotypeEntity">
+        SELECT d.infotype_id,d.infotype_name,d.class_id,d.order_num,d.remark,
+        case d.class_id when 1 then '招标' when 2 then '中标' when 3 then '变更' when 4 then '流标' end as class_id_cn
+        from t_infotype d
+        <where>
+            <include refid="queryPageCustSubScribePushVoList_where"/>
+        </where>
+    </select>
+
+    <!-- 招标信息类型查看 -->
+    <select id="selectInfoTypeListById" parameterType="java.lang.Integer"
+            resultType="com.yuepeng.web.manage.dict.bean.vo.InfotypeVo">
+        SELECT d.infotype_id,d.infotype_name,d.class_id,d.order_num,d.remark,
+        case d.class_id when 1 then '招标' when 2 then '中标' when 3 then '变更' when 4 then '流标' end as class_id_cn
+        from t_infotype d
+        where d.infotype_id = #{infotypeId,javaType = INTEGER}
+    </select>
+</mapper>

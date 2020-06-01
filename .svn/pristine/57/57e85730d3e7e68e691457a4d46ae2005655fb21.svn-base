@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.finance.dao.TMemberPriceMapper" >
+  <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.finance.bean.entity.TMemberPrice" >
+    <id column="price_id" property="priceId" jdbcType="INTEGER" />
+    <result column="member_type" property="memberType" jdbcType="INTEGER" />
+    <result column="old_price" property="oldPrice" jdbcType="NUMERIC" />
+    <result column="new_price" property="newPrice" jdbcType="NUMERIC" />
+    <result column="months" property="months" jdbcType="INTEGER" />
+    <result column="give_months" property="giveMonths" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="create_user_id" property="createUserId" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_user_id" property="updateUserId" jdbcType="INTEGER" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    price_id, member_type, old_price, new_price, months, give_months, remark, create_user_id, 
+    create_date, update_user_id, update_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.t_member_price
+    where price_id = #{priceId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from public.t_member_price
+    where price_id = #{priceId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuepeng.web.manage.finance.bean.entity.TMemberPrice" >
+    insert into public.t_member_price (price_id, member_type, old_price, 
+      new_price, months, give_months, 
+      remark, create_user_id, create_date, 
+      update_user_id, update_date)
+    values (#{priceId,jdbcType=INTEGER}, #{memberType,jdbcType=INTEGER}, #{oldPrice,jdbcType=NUMERIC}, 
+      #{newPrice,jdbcType=NUMERIC}, #{months,jdbcType=INTEGER}, #{giveMonths,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{createUserId,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateUserId,jdbcType=INTEGER}, #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuepeng.web.manage.finance.bean.entity.TMemberPrice" >
+    insert into public.t_member_price
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="priceId != null" >
+        price_id,
+      </if>
+      <if test="memberType != null" >
+        member_type,
+      </if>
+      <if test="oldPrice != null" >
+        old_price,
+      </if>
+      <if test="newPrice != null" >
+        new_price,
+      </if>
+      <if test="months != null" >
+        months,
+      </if>
+      <if test="giveMonths != null" >
+        give_months,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="priceId != null" >
+        #{priceId,jdbcType=INTEGER},
+      </if>
+      <if test="memberType != null" >
+        #{memberType,jdbcType=INTEGER},
+      </if>
+      <if test="oldPrice != null" >
+        #{oldPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="newPrice != null" >
+        #{newPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="months != null" >
+        #{months,jdbcType=INTEGER},
+      </if>
+      <if test="giveMonths != null" >
+        #{giveMonths,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.finance.bean.entity.TMemberPrice" >
+    update public.t_member_price
+    <set >
+      <if test="memberType != null" >
+        member_type = #{memberType,jdbcType=INTEGER},
+      </if>
+      <if test="oldPrice != null" >
+        old_price = #{oldPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="newPrice != null" >
+        new_price = #{newPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="months != null" >
+        months = #{months,jdbcType=INTEGER},
+      </if>
+      <if test="giveMonths != null" >
+        give_months = #{giveMonths,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where price_id = #{priceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.finance.bean.entity.TMemberPrice" >
+    update public.t_member_price
+    set member_type = #{memberType,jdbcType=INTEGER},
+      old_price = #{oldPrice,jdbcType=NUMERIC},
+      new_price = #{newPrice,jdbcType=NUMERIC},
+      months = #{months,jdbcType=INTEGER},
+      give_months = #{giveMonths,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_user_id = #{createUserId,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=INTEGER},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where price_id = #{priceId,jdbcType=INTEGER}
+  </update>
+</mapper>

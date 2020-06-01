@@ -1,0 +1,14 @@
+package com.yuepeng.web.manage.finance.bean.vo;
+
+import com.yuepeng.web.manage.finance.bean.entity.TOrder;
+
+/**
+ * 〈功能概述〉<br>
+ *
+ * @className: OrderVo
+ * @package: com.yuepeng.web.manage.finance.bean.vo
+ * @author: wzq
+ * @date: 2020/5/12 11:33
+ */
+public class OrderVo extends TOrder {
+}

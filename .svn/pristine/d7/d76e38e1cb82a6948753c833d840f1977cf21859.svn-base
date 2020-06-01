@@ -1,0 +1,16 @@
+package com.yuepeng.web.manage.finance.bean.excel;
+
+import com.yuepeng.web.manage.finance.bean.entity.TOrder;
+
+import java.io.Serializable;
+
+/**
+ * 〈功能概述〉<br>
+ *
+ * @className: OrderExcel
+ * @package: com.yuepeng.web.manage.finance.bean.excel
+ * @author: wzq
+ * @date: 2020/5/12 11:33
+ */
+public class OrderExcel extends TOrder implements Serializable {
+}

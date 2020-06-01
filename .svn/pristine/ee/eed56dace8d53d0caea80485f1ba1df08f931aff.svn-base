@@ -1,0 +1,29 @@
+package com.yuepeng.web.manage.system.service.Impl;
+
+import com.yuepeng.platform.common.service.impl.SuperServiceIntegerImpl;
+import com.yuepeng.platform.framework.mybatis.pagination.PageContext;
+import com.yuepeng.platform.framework.mybatis.pagination.Pagination;
+import com.yuepeng.web.manage.system.bean.entity.TSysSet;
+import com.yuepeng.web.manage.system.bean.vo.SysSetVo;
+import com.yuepeng.web.manage.system.dao.TSysSetMapper;
+import com.yuepeng.web.manage.system.service.ISysSetService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * @Description:
+ * @Author: ZhongShengbin
+ * @Date: 2020/05/27 17:10
+ * Copyright (c) 2019, Samton. All rights reserved
+ */
+@Service
+public class SysSetServiceImpl extends SuperServiceIntegerImpl<TSysSetMapper, TSysSet> implements ISysSetService {
+    @Override
+    public Pagination<SysSetVo> querySysSetPageList(Pagination<SysSetVo> paramBean) throws Exception {
+        Pagination<SysSetVo> pagination = PageContext.initialize(paramBean.getPage(), paramBean.getRows());
+        List<SysSetVo> list = mapper.querySysPageList(paramBean, pagination.getRowBounds());
+        pagination.setData(list);
+        return pagination;
+    }
+}

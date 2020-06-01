@@ -1,0 +1,83 @@
+package com.yuepeng.web.manage.log.bean.vo;
+
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * @Description:
+ * @Author: xtq
+ * @Date: 2020/5/28 14:15
+ * Copyright (c) 2019, Samton. All rights reserved
+ */
+public class CustomerVisitLogVo implements Serializable {
+
+    private Integer custId;
+
+    private String custCode;//客户编号
+
+    private String mobile;//手机号
+
+    private String industryName;//招标行业类型
+
+    private String projectTitle;//项目标题
+
+    private Date visitDate;//查看时间
+
+    private Integer visitId;//客户访问id
+
+    public Integer getCustId() {
+        return custId;
+    }
+
+    public void setCustId(Integer custId) {
+        this.custId = custId;
+    }
+
+    public String getCustCode() {
+        return custCode;
+    }
+
+    public void setCustCode(String custCode) {
+        this.custCode = custCode;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getIndustryName() {
+        return industryName;
+    }
+
+    public void setIndustryName(String industryName) {
+        this.industryName = industryName;
+    }
+
+    public String getProjectTitle() {
+        return projectTitle;
+    }
+
+    public void setProjectTitle(String projectTitle) {
+        this.projectTitle = projectTitle;
+    }
+
+    public Date getVisitDate() {
+        return visitDate;
+    }
+
+    public void setVisitDate(Date visitDate) {
+        this.visitDate = visitDate;
+    }
+
+    public Integer getVisitId() {
+        return visitId;
+    }
+
+    public void setVisitId(Integer visitId) {
+        this.visitId = visitId;
+    }
+}

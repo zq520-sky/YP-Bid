@@ -1,0 +1,129 @@
+package com.yuepeng.web.manage.finance.bean.excel;
+
+import cn.afterturn.easypoi.excel.annotation.Excel;
+import com.yuepeng.web.manage.finance.bean.entity.TOrderInvoice;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
+
+/**
+ * 〈功能概述〉<br>
+ *
+ * @className: OrderInvoice
+ * @package: com.yuepeng.web.manage.finance.bean.excel
+ * @author: wzq
+ * @date: 2020/5/14 20:11
+ */
+public class OrderInvoiceExcel extends TOrderInvoice implements Serializable {
+
+    @Excel(name = "订单编号", width = 15)
+    private String orderCode;
+
+    @Excel(name = "客户编号", width = 15)
+    private String custCode;
+
+    @Excel(name = "手机号码", width = 15)
+    private String mobile;
+
+    @Excel(name = "昵称", width = 15)
+    private String nickName;
+
+    @Excel(name = "发票类型", width = 25, replace = {"增值税普通发票_1","增值税专用发票_2"})
+    private Integer invoiceType;
+
+    @Excel(name = "发票金额", width = 15)
+    private BigDecimal invoiceMoney;
+
+    @Excel(name = "开票状态", width = 15, replace = {"未开票_0","已开票_1"})
+    private Integer status;
+
+    @Excel(name = "开票时间", format = "yyyy-MM-dd HH:mm:ss",  width = 25)
+    private Date makeTime;
+
+    @Excel(name = "申请时间", format = "yyyy-MM-dd HH:mm:ss",  width = 25)
+    private Date applyTime;
+
+
+    public String getOrderCode() {
+        return orderCode;
+    }
+
+    public void setOrderCode(String orderCode) {
+        this.orderCode = orderCode;
+    }
+
+    public String getCustCode() {
+        return custCode;
+    }
+
+    public void setCustCode(String custCode) {
+        this.custCode = custCode;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    @Override
+    public Integer getInvoiceType() {
+        return invoiceType;
+    }
+
+    @Override
+    public void setInvoiceType(Integer invoiceType) {
+        this.invoiceType = invoiceType;
+    }
+
+    @Override
+    public BigDecimal getInvoiceMoney() {
+        return invoiceMoney;
+    }
+
+    @Override
+    public void setInvoiceMoney(BigDecimal invoiceMoney) {
+        this.invoiceMoney = invoiceMoney;
+    }
+
+    @Override
+    public Integer getStatus() {
+        return status;
+    }
+
+    @Override
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    @Override
+    public Date getMakeTime() {
+        return makeTime;
+    }
+
+    @Override
+    public void setMakeTime(Date makeTime) {
+        this.makeTime = makeTime;
+    }
+
+    @Override
+    public Date getApplyTime() {
+        return applyTime;
+    }
+
+    @Override
+    public void setApplyTime(Date applyTime) {
+        this.applyTime = applyTime;
+    }
+}

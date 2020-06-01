@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.datasource.dao.TDatasourceTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.datasource.bean.entity.TDatasourceType" >
+    <id column="datasource_type_id" property="datasourceTypeId" jdbcType="INTEGER" />
+    <result column="datasource_type_name" property="datasourceTypeName" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="create_user_id" property="createUserId" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_user_id" property="updateUserId" jdbcType="INTEGER" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    datasource_type_id, datasource_type_name, remark, create_user_id, create_date, update_user_id, 
+    update_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.t_datasource_type
+    where datasource_type_id = #{datasourceTypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from public.t_datasource_type
+    where datasource_type_id = #{datasourceTypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuepeng.web.manage.datasource.bean.entity.TDatasourceType" >
+    insert into public.t_datasource_type (datasource_type_id, datasource_type_name, 
+      remark, create_user_id, create_date, 
+      update_user_id, update_date)
+    values (#{datasourceTypeId,jdbcType=INTEGER}, #{datasourceTypeName,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{createUserId,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateUserId,jdbcType=INTEGER}, #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuepeng.web.manage.datasource.bean.entity.TDatasourceType" >
+    insert into public.t_datasource_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="datasourceTypeId != null" >
+        datasource_type_id,
+      </if>
+      <if test="datasourceTypeName != null" >
+        datasource_type_name,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="datasourceTypeId != null" >
+        #{datasourceTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="datasourceTypeName != null" >
+        #{datasourceTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.datasource.bean.entity.TDatasourceType" >
+    update public.t_datasource_type
+    <set >
+      <if test="datasourceTypeName != null" >
+        datasource_type_name = #{datasourceTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where datasource_type_id = #{datasourceTypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.datasource.bean.entity.TDatasourceType" >
+    update public.t_datasource_type
+    set datasource_type_name = #{datasourceTypeName,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_user_id = #{createUserId,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=INTEGER},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where datasource_type_id = #{datasourceTypeId,jdbcType=INTEGER}
+  </update>
+
+
+  <sql id="queryPageList_where">
+    <if test="search != null">
+      <if test="search.datasourceTypeName != null">
+        and datasource_type_name like '%'||#{search.datasourceTypeName,jdbcType=VARCHAR}||'%'
+      </if>
+    </if>
+  </sql>
+
+  <select id="queryDatasourceTypePageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.datasource.bean.vo.DatasourceTypeVo">
+    select <include refid="Base_Column_List"/> from t_datasource_type
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    order by create_date desc
+  </select>
+
+  <select id="exportDatasourceTypePageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.datasource.bean.excel.DatasourceTypeExcel">
+    select <include refid="Base_Column_List"/> from t_datasource_type
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    order by create_date desc
+  </select>
+
+  <select id="viewDatasourceType" resultType="com.yuepeng.web.manage.datasource.bean.vo.DatasourceTypeVo">
+    select <include refid="Base_Column_List"/> from t_datasource_type where datasource_type_id = #{datasourceTypeId}
+  </select>
+</mapper>

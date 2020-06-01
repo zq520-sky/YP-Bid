@@ -1,0 +1,1 @@
+create table if not exists t_captcha(id int not null auto_increment, mobile varchar(12),captcha varchar(6),expire_time datetime,update_time datetime, primary key(id))

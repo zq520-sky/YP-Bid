@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuepeng.web.manage.datasource.dao.TDatasourceIndustryMapper">
+  <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.datasource.bean.entity.TDatasourceIndustry">
+    <id column="datasource_industry_id" jdbcType="INTEGER" property="datasourceIndustryId" />
+    <result column="datasource_industry_name" jdbcType="VARCHAR" property="datasourceIndustryName" />
+    <result column="datasource_id" jdbcType="INTEGER" property="datasourceId" />
+    <result column="industry_id" jdbcType="INTEGER" property="industryId" />
+    <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_user_id" jdbcType="INTEGER" property="updateUserId" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    datasource_industry_id, datasource_industry_name, datasource_id, industry_id, create_user_id, 
+    create_date, update_user_id, update_date, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from public.t_datasource_industry
+    where datasource_industry_id = #{datasourceIndustryId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from public.t_datasource_industry
+    where datasource_industry_id = #{datasourceIndustryId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuepeng.web.manage.datasource.bean.entity.TDatasourceIndustry">
+    insert into public.t_datasource_industry (datasource_industry_id, datasource_industry_name, 
+      datasource_id, industry_id, create_user_id, 
+      create_date, update_user_id, update_date, 
+      remark)
+    values (#{datasourceIndustryId,jdbcType=INTEGER}, #{datasourceIndustryName,jdbcType=VARCHAR}, 
+      #{datasourceId,jdbcType=INTEGER}, #{industryId,jdbcType=INTEGER}, #{createUserId,jdbcType=INTEGER}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=INTEGER}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuepeng.web.manage.datasource.bean.entity.TDatasourceIndustry">
+    insert into public.t_datasource_industry
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="datasourceIndustryId != null">
+        datasource_industry_id,
+      </if>
+      <if test="datasourceIndustryName != null">
+        datasource_industry_name,
+      </if>
+      <if test="datasourceId != null">
+        datasource_id,
+      </if>
+      <if test="industryId != null">
+        industry_id,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateUserId != null">
+        update_user_id,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="datasourceIndustryId != null">
+        #{datasourceIndustryId,jdbcType=INTEGER},
+      </if>
+      <if test="datasourceIndustryName != null">
+        #{datasourceIndustryName,jdbcType=VARCHAR},
+      </if>
+      <if test="datasourceId != null">
+        #{datasourceId,jdbcType=INTEGER},
+      </if>
+      <if test="industryId != null">
+        #{industryId,jdbcType=INTEGER},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.datasource.bean.entity.TDatasourceIndustry">
+    update public.t_datasource_industry
+    <set>
+      <if test="datasourceIndustryName != null">
+        datasource_industry_name = #{datasourceIndustryName,jdbcType=VARCHAR},
+      </if>
+      <if test="datasourceId != null">
+        datasource_id = #{datasourceId,jdbcType=INTEGER},
+      </if>
+      <if test="industryId != null">
+        industry_id = #{industryId,jdbcType=INTEGER},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        update_user_id = #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where datasource_industry_id = #{datasourceIndustryId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.datasource.bean.entity.TDatasourceIndustry">
+    update public.t_datasource_industry
+    set datasource_industry_name = #{datasourceIndustryName,jdbcType=VARCHAR},
+      datasource_id = #{datasourceId,jdbcType=INTEGER},
+      industry_id = #{industryId,jdbcType=INTEGER},
+      create_user_id = #{createUserId,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=INTEGER},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where datasource_industry_id = #{datasourceIndustryId,jdbcType=INTEGER}
+  </update>
+
+  <sql id="queryPageList_where">
+    <if test="search != null">
+      <if test="search.datasourceWebname != null and search.datasourceWebname != ''">
+        and td.datasource_webname like '%'||#{search.datasourceWebname,jdbcType=VARCHAR}||'%'
+      </if>
+      <if test="search.datasourceTypeId != null">
+        and td.datasource_type_id = #{search.datasourceTypeId}
+      </if>
+      <if test="search.datasourceId != null">
+        and td.datasource_id = #{search.datasourceId}
+      </if>
+    </if>
+  </sql>
+
+  <select id="queryDatasourceIndustryPageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+          resultType="com.yuepeng.web.manage.datasource.bean.vo.DatasourceIndustryVo">
+    SELECT
+      tdi.datasource_industry_id,
+      tdi.datasource_industry_name,
+      tdi.datasource_id,
+      tdi.industry_id,
+      tdi.create_user_id,
+      tdi.create_date,
+      tdi.update_user_id,
+      tdi.update_date,
+      tdt.datasource_type_name,
+      td.datasource_webname,
+      td.datasource_weburl,
+      td.remark,
+      tsc.province_name,
+      tsc.city_name,
+      ti.industry_name
+    FROM
+      t_datasource_industry tdi
+      INNER JOIN t_datasource td ON td.datasource_id = tdi.datasource_id
+      INNER JOIN t_datasource_type tdt ON tdt.datasource_type_id = td.datasource_type_id
+      INNER JOIN t_industry ti ON tdi.industry_id = ti.industry_id
+      INNER JOIN t_sys_city tsc on tsc.city_id = td.city_id
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    ORDER BY tdi.create_date desc
+  </select>
+
+  <select id="exportDatasourceIndustryPageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+          resultType="com.yuepeng.web.manage.datasource.bean.excel.DatasourceIndustryExcel">
+    SELECT
+      tdi.datasource_industry_id,
+      tdi.datasource_industry_name,
+      tdi.datasource_id,
+      tdi.industry_id,
+      tdi.create_user_id,
+      tdi.create_date,
+      tdi.update_user_id,
+      tdi.update_date,
+      tdt.datasource_type_name,
+      td.datasource_webname,
+      td.datasource_weburl,
+      td.remark,
+      tsc.province_name,
+      tsc.city_name,
+      ti.industry_name
+    FROM
+      t_datasource_industry tdi
+      INNER JOIN t_datasource td ON td.datasource_id = tdi.datasource_id
+      INNER JOIN t_datasource_type tdt ON tdt.datasource_type_id = td.datasource_type_id
+      INNER JOIN t_industry ti ON tdi.industry_id = ti.industry_id
+      INNER JOIN t_sys_city tsc on tsc.city_id = td.city_id
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    ORDER BY tdi.create_date desc
+  </select>
+
+  <select id="viewDatasourceIndustry" resultType="com.yuepeng.web.manage.datasource.bean.vo.DatasourceIndustryVo">
+    SELECT
+      tdi.datasource_industry_id,
+      tdi.datasource_industry_name,
+      tdi.datasource_id,
+      tdi.industry_id,
+      tdi.create_user_id,
+      tdi.create_date,
+      tdi.update_user_id,
+      tdi.update_date,
+      tdi.remark,
+      tdt.datasource_type_name,
+      tdt.datasource_type_id,
+      td.datasource_webname,
+      td.datasource_weburl,
+      tsc.province_name,
+      tsc.city_name,
+      ti.industry_name
+    FROM
+      t_datasource_industry tdi
+      INNER JOIN t_datasource td ON td.datasource_id = tdi.datasource_id
+      INNER JOIN t_datasource_type tdt ON tdt.datasource_type_id = td.datasource_type_id
+      INNER JOIN t_industry ti ON tdi.industry_id = ti.industry_id
+      INNER JOIN t_sys_city tsc on tsc.city_id = td.city_id
+    WHERE tdi.datasource_industry_id = #{datasourceIndustryId}
+  </select>
+
+  <select id="selectByDatasourceId" resultType="java.util.Map">
+    select datasource_industry_id, datasource_industry_name from t_datasource_industry where datasource_id = #{datasourceId} order by datasource_industry_id asc
+  </select>
+
+</mapper>

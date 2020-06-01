@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.customer.dao.TCustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.customer.bean.entity.TCustomer" >
+    <id column="cust_id" property="custId" jdbcType="INTEGER" />
+    <result column="cust_code" property="custCode" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="CHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="head_img" property="headImg" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="province_id" property="provinceId" jdbcType="INTEGER" />
+    <result column="city_id" property="cityId" jdbcType="INTEGER" />
+    <result column="is_member" property="isMember" jdbcType="INTEGER" />
+    <result column="is_forbid" property="isForbid" jdbcType="INTEGER" />
+    <result column="member_type" property="memberType" jdbcType="INTEGER" />
+    <result column="wechat" property="wechat" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="device_id" property="deviceId" jdbcType="VARCHAR" />
+    <result column="register_date" property="registerDate" jdbcType="TIMESTAMP" />
+    <result column="jpush_id" property="jpushId" jdbcType="VARCHAR" />
+    <result column="create_user_id" property="createUserId" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="modify_user_id" property="modifyUserId" jdbcType="INTEGER" />
+    <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cust_id, cust_code, mobile, password, head_img, nick_name, sex, province_id, city_id, 
+    is_member, is_forbid, member_type, wechat, qq, device_id, register_date, jpush_id, 
+    create_user_id, create_date, modify_user_id, modify_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.t_customer
+    where cust_id = #{custId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from public.t_customer
+    where cust_id = #{custId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuepeng.web.manage.customer.bean.entity.TCustomer" >
+    insert into public.t_customer (cust_id, cust_code, mobile, 
+      password, head_img, nick_name, 
+      sex, province_id, city_id, 
+      is_member, is_forbid, member_type, 
+      wechat, qq, device_id, 
+      register_date, jpush_id, create_user_id, 
+      create_date, modify_user_id, modify_date
+      )
+    values (#{custId,jdbcType=INTEGER}, #{custCode,jdbcType=VARCHAR}, #{mobile,jdbcType=CHAR}, 
+      #{password,jdbcType=VARCHAR}, #{headImg,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=INTEGER}, #{provinceId,jdbcType=INTEGER}, #{cityId,jdbcType=INTEGER}, 
+      #{isMember,jdbcType=INTEGER}, #{isForbid,jdbcType=INTEGER}, #{memberType,jdbcType=INTEGER}, 
+      #{wechat,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{deviceId,jdbcType=VARCHAR}, 
+      #{registerDate,jdbcType=TIMESTAMP}, #{jpushId,jdbcType=VARCHAR}, #{createUserId,jdbcType=INTEGER}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{modifyUserId,jdbcType=INTEGER}, #{modifyDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuepeng.web.manage.customer.bean.entity.TCustomer" >
+    insert into public.t_customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="custCode != null" >
+        cust_code,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="headImg != null" >
+        head_img,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="provinceId != null" >
+        province_id,
+      </if>
+      <if test="cityId != null" >
+        city_id,
+      </if>
+      <if test="isMember != null" >
+        is_member,
+      </if>
+      <if test="isForbid != null" >
+        is_forbid,
+      </if>
+      <if test="memberType != null" >
+        member_type,
+      </if>
+      <if test="wechat != null" >
+        wechat,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="deviceId != null" >
+        device_id,
+      </if>
+      <if test="registerDate != null" >
+        register_date,
+      </if>
+      <if test="jpushId != null" >
+        jpush_id,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="modifyUserId != null" >
+        modify_user_id,
+      </if>
+      <if test="modifyDate != null" >
+        modify_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="custId != null" >
+        #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="custCode != null" >
+        #{custCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=CHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null" >
+        #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="provinceId != null" >
+        #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="isMember != null" >
+        #{isMember,jdbcType=INTEGER},
+      </if>
+      <if test="isForbid != null" >
+        #{isForbid,jdbcType=INTEGER},
+      </if>
+      <if test="memberType != null" >
+        #{memberType,jdbcType=INTEGER},
+      </if>
+      <if test="wechat != null" >
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null" >
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="registerDate != null" >
+        #{registerDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jpushId != null" >
+        #{jpushId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+        #{modifyUserId,jdbcType=INTEGER},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.customer.bean.entity.TCustomer" >
+    update public.t_customer
+    <set >
+      <if test="custCode != null" >
+        cust_code = #{custCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=CHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null" >
+        head_img = #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="provinceId != null" >
+        province_id = #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null" >
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="isMember != null" >
+        is_member = #{isMember,jdbcType=INTEGER},
+      </if>
+      <if test="isForbid != null" >
+        is_forbid = #{isForbid,jdbcType=INTEGER},
+      </if>
+      <if test="memberType != null" >
+        member_type = #{memberType,jdbcType=INTEGER},
+      </if>
+      <if test="wechat != null" >
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null" >
+        device_id = #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="registerDate != null" >
+        register_date = #{registerDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jpushId != null" >
+        jpush_id = #{jpushId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+        modify_user_id = #{modifyUserId,jdbcType=INTEGER},
+      </if>
+      <if test="modifyDate != null" >
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where cust_id = #{custId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.customer.bean.entity.TCustomer" >
+    update public.t_customer
+    set cust_code = #{custCode,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=CHAR},
+      password = #{password,jdbcType=VARCHAR},
+      head_img = #{headImg,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      province_id = #{provinceId,jdbcType=INTEGER},
+      city_id = #{cityId,jdbcType=INTEGER},
+      is_member = #{isMember,jdbcType=INTEGER},
+      is_forbid = #{isForbid,jdbcType=INTEGER},
+      member_type = #{memberType,jdbcType=INTEGER},
+      wechat = #{wechat,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      device_id = #{deviceId,jdbcType=VARCHAR},
+      register_date = #{registerDate,jdbcType=TIMESTAMP},
+      jpush_id = #{jpushId,jdbcType=VARCHAR},
+      create_user_id = #{createUserId,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      modify_user_id = #{modifyUserId,jdbcType=INTEGER},
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP}
+    where cust_id = #{custId,jdbcType=INTEGER}
+  </update>
+
+
+  <sql id="queryPageList_where">
+    <if test="search != null">
+      <if test="search.custCode != null ">
+        and tc.cust_code like '%'||#{search.custCode,jdbcType=VARCHAR}||'%'
+      </if>
+      <if test="search.mobile != null and search.mobile != ''">
+        and tc.mobile like '%'||#{search.mobile,jdbcType=VARCHAR}||'%'
+      </if>
+      <if test="search.nickName != null and search.nickName != ''">
+        and tc.nick_name like '%'||#{search.nickName,jdbcType=VARCHAR}||'%'
+      </if>
+      <if test="search.registerDateBegin != null">
+        <![CDATA[ and tc.register_date >= #{search.registerDateBegin,jdbcType=TIMESTAMP} ]]>
+      </if>
+      <if test="search.registerDateEnd != null">
+        <![CDATA[ and tc.register_date <= #{search.registerDateEnd,jdbcType=TIMESTAMP} ]]>
+      </if>
+      <if test="search.isMember != null">
+        and tc.is_member = #{search.isMember,jdbcType=INTEGER}
+      </if>
+      <if test="search.isForbid != null">
+        and tc.is_forbid = #{search.isForbid,jdbcType=INTEGER}
+      </if>
+    </if>
+  </sql>
+
+  <select id="queryCustomerPageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.customer.bean.vo.CustomerVo">
+    SELECT
+      tc.cust_id,
+      tc.cust_code,
+      tc.mobile,
+      tc.PASSWORD,
+      tc.head_img,
+      tc.nick_name,
+      tc.sex,
+      tc.province_id,
+      tc.city_id,
+      tc.is_member,
+      tc.is_forbid,
+      tc.member_type,
+      tc.wechat,
+      tc.qq,
+      tc.device_id,
+      tc.register_date,
+      tc.jpush_id,
+      tc.create_user_id,
+      tc.create_date,
+      tc.modify_user_id,
+      tc.modify_date,
+      tcc.company_name,
+      tcc.job,
+      tsc.province_name,
+      tsc.city_name
+    FROM
+      t_customer tc
+      LEFT JOIN t_customer_company tcc ON tcc.cust_id = tc.cust_id
+      LEFT JOIN t_sys_city tsc ON tsc.city_id = tc.city_id
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    order by tc.register_date desc
+  </select>
+
+  <select id="exportCustomerPageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.customer.bean.excel.CustomerExcel">
+    SELECT
+      tc.cust_id,
+      tc.cust_code,
+      tc.mobile,
+      tc.PASSWORD,
+      tc.head_img,
+      tc.nick_name,
+      tc.sex,
+      tc.province_id,
+      tc.city_id,
+      tc.is_member,
+      tc.is_forbid,
+      tc.member_type,
+      tc.wechat,
+      tc.qq,
+      tc.device_id,
+      tc.register_date,
+      tc.jpush_id,
+      tc.create_user_id,
+      tc.create_date,
+      tc.modify_user_id,
+      tc.modify_date,
+      tcc.company_name,
+      tcc.job,
+      tsc.province_name,
+      tsc.city_name
+    FROM
+      t_customer tc
+      LEFT JOIN t_customer_company tcc ON tcc.cust_id = tc.cust_id
+      LEFT JOIN t_sys_city tsc ON tsc.city_id = tc.city_id
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    order by tc.register_date desc
+  </select>
+
+  <select id="viewCustomer" resultType="com.yuepeng.web.manage.customer.bean.vo.CustomerVo">
+    SELECT
+      tc.cust_id,
+      tc.cust_code,
+      tc.mobile,
+      tc.PASSWORD,
+      tc.head_img,
+      tc.nick_name,
+      tc.sex,
+      tc.province_id,
+      tc.city_id,
+      tc.is_member,
+      tc.is_forbid,
+      tc.member_type,
+      tc.wechat,
+      tc.qq,
+      tc.device_id,
+      tc.register_date,
+      tc.jpush_id,
+      tc.create_user_id,
+      tc.create_date,
+      tc.modify_user_id,
+      tc.modify_date,
+      tcc.company_name,
+      tcc.job,
+      tsc.province_name,
+      tsc.city_name,
+      tm.use_start_time,
+      tm.use_end_time,
+      tm.role_province_ids,
+      tm.role_province_names
+    FROM
+      t_customer tc
+      LEFT JOIN t_member tm ON tc.cust_id = tm.cust_id
+      LEFT JOIN t_customer_company tcc ON tcc.cust_id = tc.cust_id
+      LEFT JOIN t_sys_city tsc ON tsc.city_id = tc.city_id
+    WHERE tc.cust_id = #{custId}
+  </select>
+
+</mapper>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.log.dao.CustomerVisitLogMapper" >
+
+  <!--客户查看记录 list-->
+  <select id="queryCstVisitLogList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.log.bean.vo.CustomerVisitLogVo">
+    /*SELECT
+    cst.cust_code,cst.mobile,tpr.industry_name,tp.project_title,tpv.visit_date
+
+    FROM t_customer cst,t_project_visit tpv,t_project tp,t_project_range tpr
+    where cst.cust_id = tpv.cust_id and tpv.project_id = tp.project_id and tpr.project_id = tp.project_id and cst.mobile = '18720918640' and cust_code = '1000001'*/
+    SELECT
+	    cst.cust_code,
+	    cst.mobile,
+	    tpr.industry_name,
+	    tp.project_title,
+	    tpv.visit_date
+    FROM t_customer cst,t_project_visit tpv,t_project tp,t_project_range tpr
+    <where>
+      cst.cust_id = tpv.cust_id and tpv.project_id = tp.project_id and tpr.project_id = tp.project_id
+      <trim prefixOverrides="and">
+        <if test="search != null">
+          <if test="search.mobile != null and search.mobile !=''">
+            and cst.mobile = #{search.mobile}
+          </if>
+          <if test="search.custCode != null and search.custCode !=''">
+            and cust_code = #{search.custCode}
+          </if>
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!--客户查看记录导出-->
+  <select id="exportCstVisitLogList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.log.bean.excel.CustomerVisitLogExcel">
+    SELECT
+    cst.cust_code,
+    cst.mobile,
+    tpr.industry_name,
+    tp.project_title,
+    tpv.visit_date
+    FROM t_customer cst,t_project_visit tpv,t_project tp,t_project_range tpr
+    <where>
+      cst.cust_id = tpv.cust_id and tpv.project_id = tp.project_id and tpr.project_id = tp.project_id
+      <trim prefixOverrides="and">
+        <if test="search != null">
+          <if test="search.mobile != null and search.mobile !=''">
+            and cst.mobile = #{search.mobile}
+          </if>
+          <if test="search.custCode != null and search.custCode !=''">
+            and cust_code = #{search.custCode}
+          </if>
+        </if>
+      </trim>
+    </where>
+  </select>
+
+</mapper>

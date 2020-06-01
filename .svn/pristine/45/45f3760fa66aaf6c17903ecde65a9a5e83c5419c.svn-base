@@ -1,0 +1,43 @@
+package com.yuepeng.web.manage.datasource.constants;
+
+import com.yuepeng.platform.framework.exception.constant.ExpCodeConstant;
+import org.springframework.stereotype.Component;
+
+/**
+ * 〈功能概述〉<br>
+ *
+ * @className: DatasourceTypeExpCodeConstant
+ * @package: com.yuepeng.web.manage.finance.constants
+ * @author: wzq
+ * @date: 2020/5/18 14:43
+ */
+@Component
+public class DatasourceTypeExpCodeConstant extends ExpCodeConstant {
+
+    public static final String DATASOURCE_TYPE_EDIT_COLUMN_ERROR = "15001";
+    public static final String DATASOURCE_TYPE_EDIT_ID_ERROR = "15002";
+    public static final String DATASOURCE_TYPE_EDIT_SET_ERROR = "15003";
+    public static final String DATASOURCE_TYPE_DEL_ERROR = "15004";
+    public static final String DATASOURCE_TYPE_ADD_ERROR = "15006";
+
+
+    public static final String DATASOURCE_ADD_ERROR = "15010";
+    public static final String DATASOURCE_EDIT_ID_ERROR = "15011";
+    public static final String DATASOURCE_EDIT_ERROR = "15012";
+    public static final String DATASOURCE_DEL_ERROR = "15013";
+    public static final String DATASOURCE_SET_ERROR = "15014";
+
+    static {
+        msgMap.put(DATASOURCE_TYPE_EDIT_COLUMN_ERROR, "编辑失败，请重新输入！");
+        msgMap.put(DATASOURCE_TYPE_EDIT_ID_ERROR, "参数错误，请重新输入！");
+        msgMap.put(DATASOURCE_TYPE_EDIT_SET_ERROR, "禁用或启用操作失败，请联系管理员！");
+        msgMap.put(DATASOURCE_TYPE_DEL_ERROR, "删除失败，请联系管理员！");
+        msgMap.put(DATASOURCE_TYPE_ADD_ERROR, "添加失败，请联系管理员！");
+        msgMap.put(DATASOURCE_ADD_ERROR, "新增站点失败，请联系管理员！");
+        msgMap.put(DATASOURCE_EDIT_ID_ERROR, "参数错误，请重新输入！");
+        msgMap.put(DATASOURCE_EDIT_ERROR, "编辑站点信息失败，请重新输入！");
+        msgMap.put(DATASOURCE_DEL_ERROR, "删除站点信息失败，请联系管理员！");
+        msgMap.put(DATASOURCE_SET_ERROR, "禁用或启用操作失败，请联系管理员！");
+    }
+
+}

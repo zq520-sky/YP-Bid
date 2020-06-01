@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.datasource.dao.TDatasourceMapper" >
+  <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.datasource.bean.entity.TDatasource" >
+    <id column="datasource_id" property="datasourceId" jdbcType="INTEGER" />
+    <result column="datasource_webname" property="datasourceWebname" jdbcType="VARCHAR" />
+    <result column="datasource_weburl" property="datasourceWeburl" jdbcType="VARCHAR" />
+    <result column="datasource_type_id" property="datasourceTypeId" jdbcType="INTEGER" />
+    <result column="province_id" property="provinceId" jdbcType="INTEGER" />
+    <result column="city_id" property="cityId" jdbcType="INTEGER" />
+    <result column="is_forbid" property="isForbid" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="create_user_id" property="createUserId" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_user_id" property="updateUserId" jdbcType="INTEGER" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    datasource_id, datasource_webname, datasource_weburl, datasource_type_id, province_id, 
+    city_id, is_forbid, remark, create_user_id, create_date, update_user_id, update_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.t_datasource
+    where datasource_id = #{datasourceId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from public.t_datasource
+    where datasource_id = #{datasourceId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuepeng.web.manage.datasource.bean.entity.TDatasource" >
+    insert into public.t_datasource (datasource_id, datasource_webname, 
+      datasource_weburl, datasource_type_id, province_id, 
+      city_id, is_forbid, remark, 
+      create_user_id, create_date, update_user_id, 
+      update_date)
+    values (#{datasourceId,jdbcType=INTEGER}, #{datasourceWebname,jdbcType=VARCHAR}, 
+      #{datasourceWeburl,jdbcType=VARCHAR}, #{datasourceTypeId,jdbcType=INTEGER}, #{provinceId,jdbcType=INTEGER}, 
+      #{cityId,jdbcType=INTEGER}, #{isForbid,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{createUserId,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=INTEGER}, 
+      #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuepeng.web.manage.datasource.bean.entity.TDatasource" >
+    insert into public.t_datasource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="datasourceId != null" >
+        datasource_id,
+      </if>
+      <if test="datasourceWebname != null" >
+        datasource_webname,
+      </if>
+      <if test="datasourceWeburl != null" >
+        datasource_weburl,
+      </if>
+      <if test="datasourceTypeId != null" >
+        datasource_type_id,
+      </if>
+      <if test="provinceId != null" >
+        province_id,
+      </if>
+      <if test="cityId != null" >
+        city_id,
+      </if>
+      <if test="isForbid != null" >
+        is_forbid,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="datasourceId != null" >
+        #{datasourceId,jdbcType=INTEGER},
+      </if>
+      <if test="datasourceWebname != null" >
+        #{datasourceWebname,jdbcType=VARCHAR},
+      </if>
+      <if test="datasourceWeburl != null" >
+        #{datasourceWeburl,jdbcType=VARCHAR},
+      </if>
+      <if test="datasourceTypeId != null" >
+        #{datasourceTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="provinceId != null" >
+        #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="isForbid != null" >
+        #{isForbid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.datasource.bean.entity.TDatasource" >
+    update public.t_datasource
+    <set >
+      <if test="datasourceWebname != null" >
+        datasource_webname = #{datasourceWebname,jdbcType=VARCHAR},
+      </if>
+      <if test="datasourceWeburl != null" >
+        datasource_weburl = #{datasourceWeburl,jdbcType=VARCHAR},
+      </if>
+      <if test="datasourceTypeId != null" >
+        datasource_type_id = #{datasourceTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="provinceId != null" >
+        province_id = #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null" >
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="isForbid != null" >
+        is_forbid = #{isForbid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where datasource_id = #{datasourceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.datasource.bean.entity.TDatasource" >
+    update public.t_datasource
+    set datasource_webname = #{datasourceWebname,jdbcType=VARCHAR},
+      datasource_weburl = #{datasourceWeburl,jdbcType=VARCHAR},
+      datasource_type_id = #{datasourceTypeId,jdbcType=INTEGER},
+      province_id = #{provinceId,jdbcType=INTEGER},
+      city_id = #{cityId,jdbcType=INTEGER},
+      is_forbid = #{isForbid,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_user_id = #{createUserId,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=INTEGER},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where datasource_id = #{datasourceId,jdbcType=INTEGER}
+  </update>
+
+  <sql id="queryPageList_where">
+    <if test="search != null">
+      <if test="search.datasourceWebname != null and search.datasourceWebname != ''">
+        and td.datasource_webname like '%'||#{search.datasourceWebname,jdbcType=VARCHAR}||'%'
+      </if>
+      <if test="search.datasourceWeburl != null and search.datasourceWeburl != ''">
+        and td.datasource_weburl like '%'||#{search.datasourceWeburl,jdbcType=VARCHAR}||'%'
+      </if>
+      <if test="search.provinceId != null">
+        and td.province_id = #{search.provinceId}
+      </if>
+      <if test="search.cityId != null">
+        and td.city_id = #{search.cityId}
+      </if>
+      <if test="search.isForbid != null">
+        and td.is_forbid = #{search.isForbid}
+      </if>
+      <if test="search.datasourceTypeId != null">
+        and td.datasource_type_id = #{search.datasourceTypeId}
+      </if>
+    </if>
+  </sql>
+
+  <select id="queryDatasourcePageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.datasource.bean.vo.DatasourceVo">
+    SELECT
+        td.datasource_id,
+        td.datasource_webname,
+        td.datasource_weburl,
+        td.datasource_type_id,
+        td.province_id,
+        td.city_id,
+        td.is_forbid,
+        td.remark,
+        td.create_user_id,
+        td.create_date,
+        td.update_user_id,
+        td.update_date,
+        tdt.datasource_type_name,
+        tsc.city_name,
+        tsc.province_name
+    FROM
+        t_datasource td
+        LEFT JOIN t_datasource_type tdt ON tdt.datasource_type_id = td.datasource_type_id
+        LEFT JOIN t_sys_city tsc ON tsc.city_id = td.city_id
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    order by td.create_date desc
+  </select>
+
+  <select id="exportDatasourcePageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.datasource.bean.excel.DatasourceExcel">
+    SELECT
+      td.datasource_id,
+      td.datasource_webname,
+      td.datasource_weburl,
+      td.datasource_type_id,
+      td.province_id,
+      td.city_id,
+      td.is_forbid,
+      td.remark,
+      td.create_user_id,
+      td.create_date,
+      td.update_user_id,
+      td.update_date,
+      tdt.datasource_type_name,
+      tsc.city_name,
+      tsc.province_name
+    FROM
+      t_datasource td
+      LEFT JOIN t_datasource_type tdt ON tdt.datasource_type_id = td.datasource_type_id
+      LEFT JOIN t_sys_city tsc ON tsc.city_id = td.city_id
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    order by td.create_date desc
+  </select>
+
+  <select id="viewDatasource" resultType="com.yuepeng.web.manage.datasource.bean.vo.DatasourceVo">
+    SELECT
+      td.datasource_id,
+      td.datasource_webname,
+      td.datasource_weburl,
+      td.datasource_type_id,
+      td.province_id,
+      td.city_id,
+      td.is_forbid,
+      td.remark,
+      td.create_user_id,
+      td.create_date,
+      td.update_user_id,
+      td.update_date,
+      tdt.datasource_type_name,
+      tsc.city_name,
+      tsc.province_name
+    FROM
+      t_datasource td
+      LEFT JOIN t_datasource_type tdt ON tdt.datasource_type_id = td.datasource_type_id
+      LEFT JOIN t_sys_city tsc ON tsc.city_id = td.city_id
+    WHERE td.datasource_id = #{datasourceId}
+  </select>
+</mapper>

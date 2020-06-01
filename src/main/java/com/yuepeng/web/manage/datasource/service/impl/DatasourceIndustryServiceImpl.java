@@ -1,0 +1,78 @@
+package com.yuepeng.web.manage.datasource.service.impl;
+
+import com.yuepeng.platform.common.service.impl.SuperServiceIntegerImpl;
+import com.yuepeng.platform.framework.exception.ServiceException;
+import com.yuepeng.platform.framework.mybatis.pagination.PageContext;
+import com.yuepeng.platform.framework.mybatis.pagination.Pagination;
+import com.yuepeng.web.manage.datasource.bean.entity.TDatasourceIndustry;
+import com.yuepeng.web.manage.datasource.bean.entity.TDatasourceInfotype;
+import com.yuepeng.web.manage.datasource.bean.excel.DatasourceIndustryExcel;
+import com.yuepeng.web.manage.datasource.bean.vo.DatasourceIndustryVo;
+import com.yuepeng.web.manage.datasource.constants.DatasourceTypeExpCodeConstant;
+import com.yuepeng.web.manage.datasource.dao.TDatasourceIndustryMapper;
+import com.yuepeng.web.manage.datasource.dao.TDatasourceInfotypeMapper;
+import com.yuepeng.web.manage.datasource.service.IDatasourceIndustryService;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 招标数据源行业类型
+ * 重庆市公共资源交易网：
+ * 工程招投标
+ * 产权交易
+ * 机电设备
+ * 土地及矿业权
+ * 政府采购
+ * 碳排放权交易
+ * 其他采购
+ * 排污权交易
+ * 中介超市(DatasourceIndustry)表服务实现类
+ *
+ * @author wzq
+ * @since 2020-05-22 16:20:57
+ */
+@Service("datasourceIndustryService")
+public class DatasourceIndustryServiceImpl extends SuperServiceIntegerImpl<TDatasourceIndustryMapper, TDatasourceIndustry> implements IDatasourceIndustryService {
+
+    @Resource
+    private TDatasourceInfotypeMapper datasourceInfotypeMapper;
+
+    @Override
+    public Pagination<DatasourceIndustryVo> queryDatasourceIndustryPageList(Pagination<DatasourceIndustryVo> paramBean) throws Exception {
+        Pagination<DatasourceIndustryVo> pagination = PageContext.initialize(paramBean.getPage(), paramBean.getRows());
+        List<DatasourceIndustryVo> list = mapper.queryDatasourceIndustryPageList(paramBean, pagination.getRowBounds());
+        pagination.setData(list);
+        return pagination;
+    }
+
+    @Override
+    public Pagination<DatasourceIndustryExcel> exportDatasourceIndustryPageList(Pagination<TDatasourceIndustry> paramBean) throws Exception {
+        Pagination<DatasourceIndustryExcel> pagination = PageContext.initialize(paramBean.getPage(), paramBean.getRows());
+        List<DatasourceIndustryExcel> list = mapper.exportDatasourceIndustryPageList(paramBean, pagination.getRowBounds());
+        pagination.setData(list);
+        return pagination;
+    }
+
+    @Override
+    public DatasourceIndustryVo viewDatasourceIndustry(Integer datasourceIndustryId) throws Exception {
+        return mapper.viewDatasourceIndustry(datasourceIndustryId);
+    }
+
+    @Override
+    public boolean deleteDatasourceIndustryById(Integer datasourceIndustryId) throws Exception {
+        List<TDatasourceInfotype> tDatasourceInfotypes = datasourceInfotypeMapper.selectListByDatasourceIndustryId(datasourceIndustryId);
+        if (tDatasourceInfotypes != null && !tDatasourceInfotypes.isEmpty()) {
+            throw new ServiceException(DatasourceTypeExpCodeConstant.DATASOURCE_TYPE_EDIT_COLUMN_ERROR);
+        }
+        int delete = mapper.deleteByPrimaryKey(datasourceIndustryId);
+        return delete > 0;
+    }
+
+    @Override
+    public List<Map<String, Object>> getDatasourceIndustryByDatasourceId(Integer datasourceId) throws Exception {
+        return mapper.selectByDatasourceId(datasourceId);
+    }
+}

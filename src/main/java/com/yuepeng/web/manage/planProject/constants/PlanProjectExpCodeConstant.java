@@ -1,0 +1,49 @@
+package com.yuepeng.web.manage.planProject.constants;
+
+import com.yuepeng.platform.framework.exception.constant.ExpCodeConstant;
+import org.springframework.stereotype.Component;
+
+/**
+ * 〈功能概述〉<br>
+ *
+ * @className: DatasourceTypeExpCodeConstant
+ * @package: com.yuepeng.web.manage.finance.constants
+ * @author: wzq
+ * @date: 2020/5/18 14:43
+ */
+@Component
+public class PlanProjectExpCodeConstant extends ExpCodeConstant {
+
+    public static final String PLAN_TYPE_EDIT_COLUMN_ERROR = "15001";
+    public static final String PLAN_TYPE_EDIT_ID_ERROR = "15002";
+    public static final String PLAN_TYPE_DEL_ERROR = "15004";
+    public static final String PLAN_TYPE_ADD_ERROR = "15006";
+    public static final String PLAN_TYPE_VIEW_ERROR = "15007";
+    public static final String PLAN_SOURCE_VIEW_ERROR = "15008";
+    public static final String PLAN_SOURCE_ADD_ERROR = "15009";
+    public static final String PLAN_SOURCE_EDIT_ERROR = "15100";
+    public static final String PLAN_SOURCE_DEL_ERROR = "15101";
+
+
+    public static final String PLAN_ADD_ERROR = "15010";
+    public static final String PLAN_EDIT_ID_ERROR = "15011";
+    public static final String PLAN_EDIT_ERROR = "15012";
+    public static final String PLAN_DEL_ERROR = "15013";
+
+    static {
+        msgMap.put(PLAN_TYPE_EDIT_COLUMN_ERROR, "编辑失败，请重新输入！");
+        msgMap.put(PLAN_TYPE_EDIT_ID_ERROR, "参数错误，请重新输入！");
+        msgMap.put(PLAN_TYPE_DEL_ERROR, "删除失败，请联系管理员！");
+        msgMap.put(PLAN_TYPE_ADD_ERROR, "添加失败，请联系管理员！");
+        msgMap.put(PLAN_ADD_ERROR, "新增拟建项目信息失败，请联系管理员！");
+        msgMap.put(PLAN_EDIT_ID_ERROR, "参数错误，请重新输入！");
+        msgMap.put(PLAN_EDIT_ERROR, "编辑拟建项目信息失败，请重新输入！");
+        msgMap.put(PLAN_DEL_ERROR, "删除拟建项目信息失败，请联系管理员！");
+        msgMap.put(PLAN_TYPE_VIEW_ERROR, "查看拟建项目信息失败，请联系管理员！");
+        msgMap.put(PLAN_SOURCE_EDIT_ERROR, "编辑拟建项目信息失败，请重新输入！");
+        msgMap.put(PLAN_SOURCE_ADD_ERROR, "新增拟建项目信息失败，请重新输入！");
+        msgMap.put(PLAN_SOURCE_DEL_ERROR, "删除拟建项目信息失败，请联系管理员！");
+        msgMap.put(PLAN_SOURCE_VIEW_ERROR, "查看拟建项目信息失败，请联系管理员！");
+    }
+
+}

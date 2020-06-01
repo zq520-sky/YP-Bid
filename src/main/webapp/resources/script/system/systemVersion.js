@@ -1,0 +1,220 @@
+var index = null;
+var frameId = window.frameElement && window.frameElement.id || '';
+var addValidate, editValidate;
+
+//校验
+$(function () {
+    //编辑校验
+    editValidate = $("#editForm").validate({
+        rules: {
+            versionId: {
+                required: true
+            },
+            isForceUpdate: {
+                required: true
+            },
+            updateMemo: {
+                required: true
+            }
+        },
+        messages: {
+            versionId: {
+                required: "请输入版本号！"
+            },
+            isForceUpdate: {
+                required: "请选择是否强制更新！"
+            },
+            updateMemo: {
+                required: "请输入更新内容！"
+            }
+        },
+        submitHandler: function (form) {
+            $(form).ajaxSubmit({
+                //表单提交成功后的回调
+                success: function (responseText, statusText, xhr, $form) {
+                    if (responseText.rs > 0) {
+                        top.toastr.success("编辑系统版本信息成功！");
+                        FormUtil.resetForm("editForm");
+                        doSearch();
+                        layer.close(index); //再执行关闭
+                    }
+                }
+            });
+        }
+    });
+
+    addValidate = $("#addForm").validate({
+        rules: {
+            versionId: {
+                required: true
+            },
+            isForceUpdate: {
+                required: true
+            },
+            updateMemo: {
+                required: true
+            },
+            downUrl: {
+                required: true
+            }
+        },
+        messages: {
+            versionId: {
+                required: "请输入版本号！"
+            },
+            isForceUpdate: {
+                required: "请选择是否强制更新！"
+            },
+            updateMemo: {
+                required: "请输入更新内容！"
+            },
+            downUrl: {
+                required: "请输入下载地址！"
+            }
+        },
+        submitHandler: function (form) {
+            $(form).ajaxSubmit({
+                //表单提交成功后的回调
+                success: function (responseText, statusText, xhr, $form) {
+                    if (responseText.rs > 0) {
+                        top.toastr.success("新增系统版本信息成功！");
+                        FormUtil.resetForm("addForm");
+                        doSearch();
+                        layer.close(index); //再执行关闭
+                    }
+                }
+            });
+        }
+    });
+});
+
+
+//打开查看页面
+function viewPage(id) {
+    if (Number(id)) {
+        $.ajax({
+            url: ctx.path + '/manage/platform/version/viewVersionList' + ctx.bizSuffix,
+            async: true,
+            dataType: 'json',
+            type: 'POST',
+            data: {versionId: id},
+            success: function (data) {
+                if (data.rs == -1) {
+                    top.toastr.error("获取数据信息失败");
+                    return false;
+                }
+                //返回的map对象参数
+                var dataRet = data.data;
+                for (var key in dataRet) {
+                    //对页面属性赋值（要求页面id与map的key值保持一致）
+                    $("#viewForm #" + key).html(dataRet[key]);
+                }
+                parentIndex = layer.open({
+                    title: '查看版本信息',
+                    type: 1,
+                    area: ['350px', '400px'], //宽高
+                    content: $('#viewId'),
+                    btn: ['关闭'],
+                    cancel: function (index) {
+                    }
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                top.toastr.error("操作失败");
+            }
+        });
+    } else {
+        top.toastr.error("数据异常！");
+    }
+}
+
+//删除
+function delHotWord(id) {
+    if (Number(id)) {
+        var msg = "确定删除该版本信息吗？";
+        layer.confirm(msg, {
+            icon: 3,
+            title: "提示信息"
+        }, function (index) {
+            $.get(ctx.path + "/manage/platform/version/delVersion" + ctx.bizSuffix + "?versionId=" + id, function (result) {
+                if (result.rs == 1) {
+                    top.toastr.success("删除成功！");
+                    doSearch();
+                    //刷新表单
+                }
+            }, "json");
+            layer.close(index);
+        });
+    } else {
+        top.toastr.error("数据异常！");
+    }
+}
+
+//打开编辑页面
+function editPage(id) {
+    if (Number(id)) {
+        $.ajax({
+            url: ctx.path + '/manage/platform/version/viewVersionList' + ctx.bizSuffix,
+            async: true,
+            dataType: 'json',
+            type: 'POST',
+            data: {
+                versionId: id
+            },
+            success: function (data) {
+                if (data.rs == -1) {
+                    top.toastr.error("操作失败");
+                    return false;
+                }
+                var dataRet = data.data;
+                for (var key in dataRet) {
+                    //对页面属性赋值（要求页面id与map的key值保持一致）
+                    $("#editForm #" + key + "Edit").val(dataRet[key]);
+                }
+                parentIndex = layer.open({
+                    title: '编辑版本信息',
+                    type: 1,
+                    area: ['450px', '350px'], //宽高
+                    btn: ['保存', '关闭'],
+                    yes: function (index, layero) {
+                        $("#editForm").submit();
+                    },
+                    content: $('#editId'),
+                    cancel: function (index) {
+                        FormUtil.resetForm("editForm");
+                        editValidate.resetForm();
+                    }
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                top.toastr.error("操作失败");
+            }
+        });
+
+    } else {
+        top.toastr.error("数据异常！");
+
+    }
+
+}
+
+
+//新增
+function openAddPage() {
+    //获取所有部门
+    index = layer.open({
+        type: 1,
+        title: '新增项目关键词',
+        move: false,
+        area: ['420px', '300px'], //宽高
+        content: $('#addId'),
+        btn: ['保存', '关闭'],
+        yes: function (index, layero) {
+            $("#addForm").submit();
+        },
+        cancel: function (index) {
+            FormUtil.resetForm("addForm");
+            departAddValidate.resetForm();
+        }
+    })
+}

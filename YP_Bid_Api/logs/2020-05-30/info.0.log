@@ -1,0 +1,373 @@
+[INFO ] 2020-05-30 10:23:44 [restartedMain] com.yuepeng.Application - Starting Application on RAO0B7KCL0016I7 with PID 9600 (E:\IdeaWorkspace\YP_Bid\YP_Bid_Api\st-api\target\classes started by Administrator in E:\IdeaWorkspace\YP_Bid\YP_Bid_Api)
+[INFO ] 2020-05-30 10:23:44 [restartedMain] com.yuepeng.Application - The following profiles are active: dev
+[INFO ] 2020-05-30 10:23:45 [restartedMain] o.s.b.d.restart.ChangeableUrls - The Class-Path manifest attribute in D:\repo\com\sun\xml\bind\jaxb-impl\2.1\jaxb-impl-2.1.jar referenced one or more files that do not exist: file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb-api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/activation.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jsr173_1.0_api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb1-impl.jar
+[INFO ] 2020-05-30 10:23:45 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO ] 2020-05-30 10:23:45 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO ] 2020-05-30 10:23:48 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 10:23:48 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$b5b3164a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 10:23:48 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 10:23:48 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dynamicDatasourceAnnotationAdvisor' of type [com.baomidou.dynamic.datasource.aop.DynamicDataSourceAnnotationAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 10:23:50 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2020-05-30 10:23:50 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-05-30 10:23:50 [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 2020-05-30 10:23:50 [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.33]
+[INFO ] 2020-05-30 10:23:50 [restartedMain] o.a.c.core.AprLifecycleListener - An older version [1.2.17] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+[INFO ] 2020-05-30 10:23:50 [restartedMain] o.a.c.core.AprLifecycleListener - Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+[INFO ] 2020-05-30 10:23:50 [restartedMain] o.a.c.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+[INFO ] 2020-05-30 10:23:50 [restartedMain] o.a.c.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+[INFO ] 2020-05-30 10:23:51 [restartedMain] o.a.c.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+[INFO ] 2020-05-30 10:23:52 [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2020-05-30 10:23:52 [restartedMain] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 6805 ms
+[INFO ] 2020-05-30 10:23:52 [restartedMain] com.zaxxer.hikari.HikariDataSource - postgres - Starting...
+[INFO ] 2020-05-30 10:23:54 [restartedMain] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+[INFO ] 2020-05-30 10:23:54 [restartedMain] o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[INFO ] 2020-05-30 10:25:30 [restartedMain] com.yuepeng.Application - Starting Application on RAO0B7KCL0016I7 with PID 6436 (E:\IdeaWorkspace\YP_Bid\YP_Bid_Api\st-api\target\classes started by Administrator in E:\IdeaWorkspace\YP_Bid\YP_Bid_Api)
+[INFO ] 2020-05-30 10:25:30 [restartedMain] com.yuepeng.Application - The following profiles are active: dev
+[INFO ] 2020-05-30 10:25:30 [restartedMain] o.s.b.d.restart.ChangeableUrls - The Class-Path manifest attribute in D:\repo\com\sun\xml\bind\jaxb-impl\2.1\jaxb-impl-2.1.jar referenced one or more files that do not exist: file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb-api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/activation.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jsr173_1.0_api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb1-impl.jar
+[INFO ] 2020-05-30 10:25:30 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO ] 2020-05-30 10:25:30 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO ] 2020-05-30 10:25:32 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 10:25:32 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$e5ff134] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 10:25:32 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 10:25:32 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dynamicDatasourceAnnotationAdvisor' of type [com.baomidou.dynamic.datasource.aop.DynamicDataSourceAnnotationAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 10:25:32 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2020-05-30 10:25:32 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-05-30 10:25:32 [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 2020-05-30 10:25:32 [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.33]
+[INFO ] 2020-05-30 10:25:32 [restartedMain] o.a.c.core.AprLifecycleListener - An older version [1.2.17] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+[INFO ] 2020-05-30 10:25:32 [restartedMain] o.a.c.core.AprLifecycleListener - Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+[INFO ] 2020-05-30 10:25:32 [restartedMain] o.a.c.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+[INFO ] 2020-05-30 10:25:32 [restartedMain] o.a.c.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+[INFO ] 2020-05-30 10:25:33 [restartedMain] o.a.c.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+[INFO ] 2020-05-30 10:25:33 [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2020-05-30 10:25:33 [restartedMain] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3591 ms
+[INFO ] 2020-05-30 10:25:33 [restartedMain] com.zaxxer.hikari.HikariDataSource - postgres - Starting...
+[INFO ] 2020-05-30 10:25:34 [restartedMain] com.zaxxer.hikari.HikariDataSource - postgres - Start completed.
+[INFO ] 2020-05-30 10:25:34 [restartedMain] com.zaxxer.hikari.HikariDataSource - h2 - Starting...
+[INFO ] 2020-05-30 10:25:34 [restartedMain] com.zaxxer.hikari.HikariDataSource - h2 - Start completed.
+[INFO ] 2020-05-30 10:25:34 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - load a datasource named [postgres] success
+[INFO ] 2020-05-30 10:25:34 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - load a datasource named [h2] success
+[INFO ] 2020-05-30 10:25:34 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource initial loaded [2] datasource,primary datasource named [postgres]
+[INFO ] 2020-05-30 10:25:34 [restartedMain] o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/console'. Database available at 'jdbc:postgresql://localhost:56003/YP_Bid_Dev'
+[INFO ] 2020-05-30 10:25:36 [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[INFO ] 2020-05-30 10:25:36 [restartedMain] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 2020-05-30 10:25:36 [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+[INFO ] 2020-05-30 10:25:36 [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[INFO ] 2020-05-30 10:25:36 [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[INFO ] 2020-05-30 10:25:36 [restartedMain] s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[INFO ] 2020-05-30 10:25:37 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-05-30 10:25:37 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2020-05-30 10:25:37 [restartedMain] com.yuepeng.Application - Started Application in 7.858 seconds (JVM running for 9.38)
+[INFO ] 2020-05-30 10:26:44 [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2020-05-30 10:26:44 [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2020-05-30 10:26:44 [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 220 ms
+[INFO ] 2020-05-30 11:42:50 [restartedMain] com.yuepeng.Application - Starting Application on RAO0B7KCL0016I7 with PID 13972 (E:\IdeaWorkspace\YP_Bid\YP_Bid_Api\st-api\target\classes started by Administrator in E:\IdeaWorkspace\YP_Bid\YP_Bid_Api)
+[INFO ] 2020-05-30 11:42:50 [restartedMain] com.yuepeng.Application - The following profiles are active: dev
+[INFO ] 2020-05-30 11:42:50 [restartedMain] o.s.b.d.restart.ChangeableUrls - The Class-Path manifest attribute in D:\repo\com\sun\xml\bind\jaxb-impl\2.1\jaxb-impl-2.1.jar referenced one or more files that do not exist: file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb-api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/activation.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jsr173_1.0_api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb1-impl.jar
+[INFO ] 2020-05-30 11:42:50 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO ] 2020-05-30 11:42:50 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO ] 2020-05-30 11:42:52 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:42:52 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$fc4c536f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:42:52 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:42:52 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dynamicDatasourceAnnotationAdvisor' of type [com.baomidou.dynamic.datasource.aop.DynamicDataSourceAnnotationAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:42:54 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2020-05-30 11:42:54 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-05-30 11:42:54 [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 2020-05-30 11:42:54 [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.33]
+[INFO ] 2020-05-30 11:42:54 [restartedMain] o.a.c.core.AprLifecycleListener - An older version [1.2.17] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+[INFO ] 2020-05-30 11:42:54 [restartedMain] o.a.c.core.AprLifecycleListener - Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+[INFO ] 2020-05-30 11:42:54 [restartedMain] o.a.c.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+[INFO ] 2020-05-30 11:42:54 [restartedMain] o.a.c.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+[INFO ] 2020-05-30 11:42:55 [restartedMain] o.a.c.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+[INFO ] 2020-05-30 11:42:55 [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2020-05-30 11:42:55 [restartedMain] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 5661 ms
+[INFO ] 2020-05-30 11:42:56 [restartedMain] com.zaxxer.hikari.HikariDataSource - postgres - Starting...
+[INFO ] 2020-05-30 11:42:56 [restartedMain] com.zaxxer.hikari.HikariDataSource - postgres - Start completed.
+[INFO ] 2020-05-30 11:42:56 [restartedMain] com.zaxxer.hikari.HikariDataSource - h2 - Starting...
+[INFO ] 2020-05-30 11:42:57 [restartedMain] com.zaxxer.hikari.HikariDataSource - h2 - Start completed.
+[INFO ] 2020-05-30 11:42:58 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - load a datasource named [postgres] success
+[INFO ] 2020-05-30 11:42:58 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - load a datasource named [h2] success
+[INFO ] 2020-05-30 11:42:58 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource initial loaded [2] datasource,primary datasource named [postgres]
+[INFO ] 2020-05-30 11:42:58 [restartedMain] o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/console'. Database available at 'jdbc:postgresql://localhost:56003/YP_Bid_Dev'
+[INFO ] 2020-05-30 11:42:59 [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[INFO ] 2020-05-30 11:43:00 [restartedMain] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 2020-05-30 11:43:00 [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+[INFO ] 2020-05-30 11:43:00 [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[INFO ] 2020-05-30 11:43:00 [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[INFO ] 2020-05-30 11:43:00 [restartedMain] s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[INFO ] 2020-05-30 11:43:01 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-05-30 11:43:01 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2020-05-30 11:43:01 [restartedMain] com.yuepeng.Application - Started Application in 11.794 seconds (JVM running for 13.831)
+[INFO ] 2020-05-30 11:43:14 [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2020-05-30 11:43:14 [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2020-05-30 11:43:14 [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 59 ms
+[INFO ] 2020-05-30 11:47:33 [restartedMain] com.yuepeng.Application - Starting Application on RAO0B7KCL0016I7 with PID 9536 (E:\IdeaWorkspace\YP_Bid\YP_Bid_Api\st-api\target\classes started by Administrator in E:\IdeaWorkspace\YP_Bid\YP_Bid_Api)
+[INFO ] 2020-05-30 11:47:33 [restartedMain] com.yuepeng.Application - The following profiles are active: dev
+[INFO ] 2020-05-30 11:47:34 [restartedMain] o.s.b.d.restart.ChangeableUrls - The Class-Path manifest attribute in D:\repo\com\sun\xml\bind\jaxb-impl\2.1\jaxb-impl-2.1.jar referenced one or more files that do not exist: file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb-api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/activation.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jsr173_1.0_api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb1-impl.jar
+[INFO ] 2020-05-30 11:47:34 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO ] 2020-05-30 11:47:34 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO ] 2020-05-30 11:47:35 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:47:35 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$a3941064] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:47:35 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:47:35 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dynamicDatasourceAnnotationAdvisor' of type [com.baomidou.dynamic.datasource.aop.DynamicDataSourceAnnotationAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:47:36 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2020-05-30 11:47:36 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-05-30 11:47:36 [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 2020-05-30 11:47:36 [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.33]
+[INFO ] 2020-05-30 11:47:36 [restartedMain] o.a.c.core.AprLifecycleListener - An older version [1.2.17] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+[INFO ] 2020-05-30 11:47:36 [restartedMain] o.a.c.core.AprLifecycleListener - Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+[INFO ] 2020-05-30 11:47:36 [restartedMain] o.a.c.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+[INFO ] 2020-05-30 11:47:36 [restartedMain] o.a.c.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+[INFO ] 2020-05-30 11:47:37 [restartedMain] o.a.c.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+[INFO ] 2020-05-30 11:47:37 [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2020-05-30 11:47:37 [restartedMain] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3630 ms
+[INFO ] 2020-05-30 11:47:37 [restartedMain] com.zaxxer.hikari.HikariDataSource - postgres - Starting...
+[INFO ] 2020-05-30 11:47:37 [restartedMain] com.zaxxer.hikari.HikariDataSource - postgres - Start completed.
+[INFO ] 2020-05-30 11:47:37 [restartedMain] com.zaxxer.hikari.HikariDataSource - h2 - Starting...
+[INFO ] 2020-05-30 11:47:38 [restartedMain] com.zaxxer.hikari.HikariDataSource - h2 - Start completed.
+[INFO ] 2020-05-30 11:47:38 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - load a datasource named [postgres] success
+[INFO ] 2020-05-30 11:47:38 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - load a datasource named [h2] success
+[INFO ] 2020-05-30 11:47:38 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource initial loaded [2] datasource,primary datasource named [postgres]
+[INFO ] 2020-05-30 11:47:38 [restartedMain] o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/console'. Database available at 'jdbc:postgresql://localhost:56003/YP_Bid_Dev'
+[INFO ] 2020-05-30 11:47:39 [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[INFO ] 2020-05-30 11:47:39 [restartedMain] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 2020-05-30 11:47:39 [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+[INFO ] 2020-05-30 11:47:40 [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[INFO ] 2020-05-30 11:47:40 [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[INFO ] 2020-05-30 11:47:40 [restartedMain] s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[INFO ] 2020-05-30 11:47:40 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-05-30 11:47:40 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2020-05-30 11:47:40 [restartedMain] com.yuepeng.Application - Started Application in 7.099 seconds (JVM running for 10.233)
+[INFO ] 2020-05-30 11:47:42 [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2020-05-30 11:47:42 [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2020-05-30 11:47:42 [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 10 ms
+[INFO ] 2020-05-30 11:49:27 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 2020-05-30 11:49:27 [SpringContextShutdownHook] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource start closing ....
+[INFO ] 2020-05-30 11:49:27 [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource - postgres - Shutdown initiated...
+[INFO ] 2020-05-30 11:49:27 [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource - postgres - Shutdown completed.
+[INFO ] 2020-05-30 11:49:27 [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource - h2 - Shutdown initiated...
+[INFO ] 2020-05-30 11:49:27 [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource - h2 - Shutdown completed.
+[INFO ] 2020-05-30 11:49:27 [SpringContextShutdownHook] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource all closed success,bye
+[INFO ] 2020-05-30 11:49:35 [restartedMain] com.yuepeng.Application - Starting Application on RAO0B7KCL0016I7 with PID 13796 (E:\IdeaWorkspace\YP_Bid\YP_Bid_Api\st-api\target\classes started by Administrator in E:\IdeaWorkspace\YP_Bid\YP_Bid_Api)
+[INFO ] 2020-05-30 11:49:35 [restartedMain] com.yuepeng.Application - The following profiles are active: dev
+[INFO ] 2020-05-30 11:49:35 [restartedMain] o.s.b.d.restart.ChangeableUrls - The Class-Path manifest attribute in D:\repo\com\sun\xml\bind\jaxb-impl\2.1\jaxb-impl-2.1.jar referenced one or more files that do not exist: file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb-api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/activation.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jsr173_1.0_api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb1-impl.jar
+[INFO ] 2020-05-30 11:49:35 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO ] 2020-05-30 11:49:35 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO ] 2020-05-30 11:49:37 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:49:37 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$cfcfa399] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:49:37 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:49:37 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dynamicDatasourceAnnotationAdvisor' of type [com.baomidou.dynamic.datasource.aop.DynamicDataSourceAnnotationAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:49:37 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2020-05-30 11:49:37 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-05-30 11:49:37 [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 2020-05-30 11:49:37 [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.33]
+[INFO ] 2020-05-30 11:49:37 [restartedMain] o.a.c.core.AprLifecycleListener - An older version [1.2.17] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+[INFO ] 2020-05-30 11:49:37 [restartedMain] o.a.c.core.AprLifecycleListener - Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+[INFO ] 2020-05-30 11:49:37 [restartedMain] o.a.c.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+[INFO ] 2020-05-30 11:49:37 [restartedMain] o.a.c.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+[INFO ] 2020-05-30 11:49:38 [restartedMain] o.a.c.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+[INFO ] 2020-05-30 11:49:38 [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2020-05-30 11:49:38 [restartedMain] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3062 ms
+[INFO ] 2020-05-30 11:49:38 [restartedMain] com.zaxxer.hikari.HikariDataSource - postgres - Starting...
+[INFO ] 2020-05-30 11:49:39 [restartedMain] com.zaxxer.hikari.HikariDataSource - postgres - Start completed.
+[INFO ] 2020-05-30 11:49:39 [restartedMain] com.zaxxer.hikari.HikariDataSource - h2 - Starting...
+[INFO ] 2020-05-30 11:49:39 [restartedMain] com.zaxxer.hikari.HikariDataSource - h2 - Start completed.
+[INFO ] 2020-05-30 11:49:39 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - load a datasource named [postgres] success
+[INFO ] 2020-05-30 11:49:39 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - load a datasource named [h2] success
+[INFO ] 2020-05-30 11:49:39 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource initial loaded [2] datasource,primary datasource named [postgres]
+[INFO ] 2020-05-30 11:49:39 [restartedMain] o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/console'. Database available at 'jdbc:postgresql://localhost:56003/YP_Bid_Dev'
+[INFO ] 2020-05-30 11:49:40 [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[INFO ] 2020-05-30 11:49:40 [restartedMain] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 2020-05-30 11:49:40 [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+[INFO ] 2020-05-30 11:49:40 [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[INFO ] 2020-05-30 11:49:40 [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[INFO ] 2020-05-30 11:49:40 [restartedMain] s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[INFO ] 2020-05-30 11:49:40 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-05-30 11:49:40 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2020-05-30 11:49:40 [restartedMain] com.yuepeng.Application - Started Application in 6.378 seconds (JVM running for 7.71)
+[INFO ] 2020-05-30 11:49:46 [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2020-05-30 11:49:46 [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2020-05-30 11:49:46 [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+[INFO ] 2020-05-30 11:50:52 [restartedMain] com.yuepeng.Application - Starting Application on RAO0B7KCL0016I7 with PID 5564 (E:\IdeaWorkspace\YP_Bid\YP_Bid_Api\st-api\target\classes started by Administrator in E:\IdeaWorkspace\YP_Bid\YP_Bid_Api)
+[INFO ] 2020-05-30 11:50:52 [restartedMain] com.yuepeng.Application - The following profiles are active: dev
+[INFO ] 2020-05-30 11:50:52 [restartedMain] o.s.b.d.restart.ChangeableUrls - The Class-Path manifest attribute in D:\repo\com\sun\xml\bind\jaxb-impl\2.1\jaxb-impl-2.1.jar referenced one or more files that do not exist: file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb-api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/activation.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jsr173_1.0_api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb1-impl.jar
+[INFO ] 2020-05-30 11:50:52 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO ] 2020-05-30 11:50:52 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO ] 2020-05-30 11:50:53 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:50:53 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$1128c7ea] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:50:53 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:50:53 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dynamicDatasourceAnnotationAdvisor' of type [com.baomidou.dynamic.datasource.aop.DynamicDataSourceAnnotationAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:50:54 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2020-05-30 11:50:54 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-05-30 11:50:54 [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 2020-05-30 11:50:54 [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.33]
+[INFO ] 2020-05-30 11:50:54 [restartedMain] o.a.c.core.AprLifecycleListener - An older version [1.2.17] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+[INFO ] 2020-05-30 11:50:54 [restartedMain] o.a.c.core.AprLifecycleListener - Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+[INFO ] 2020-05-30 11:50:54 [restartedMain] o.a.c.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+[INFO ] 2020-05-30 11:50:54 [restartedMain] o.a.c.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+[INFO ] 2020-05-30 11:50:55 [restartedMain] o.a.c.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+[INFO ] 2020-05-30 11:50:55 [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2020-05-30 11:50:55 [restartedMain] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3371 ms
+[INFO ] 2020-05-30 11:50:55 [restartedMain] com.zaxxer.hikari.HikariDataSource - postgres - Starting...
+[INFO ] 2020-05-30 11:50:55 [restartedMain] com.zaxxer.hikari.HikariDataSource - postgres - Start completed.
+[INFO ] 2020-05-30 11:50:55 [restartedMain] com.zaxxer.hikari.HikariDataSource - h2 - Starting...
+[INFO ] 2020-05-30 11:50:56 [restartedMain] com.zaxxer.hikari.HikariDataSource - h2 - Start completed.
+[INFO ] 2020-05-30 11:50:56 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - load a datasource named [postgres] success
+[INFO ] 2020-05-30 11:50:56 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - load a datasource named [h2] success
+[INFO ] 2020-05-30 11:50:56 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource initial loaded [2] datasource,primary datasource named [postgres]
+[INFO ] 2020-05-30 11:50:56 [restartedMain] o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/console'. Database available at 'jdbc:postgresql://localhost:56003/YP_Bid_Dev'
+[INFO ] 2020-05-30 11:51:46 [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[INFO ] 2020-05-30 11:51:46 [restartedMain] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 2020-05-30 11:51:46 [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+[INFO ] 2020-05-30 11:51:47 [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[INFO ] 2020-05-30 11:51:47 [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[INFO ] 2020-05-30 11:51:47 [restartedMain] s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[INFO ] 2020-05-30 11:51:47 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-05-30 11:51:47 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2020-05-30 11:51:47 [restartedMain] com.yuepeng.Application - Started Application in 56.357 seconds (JVM running for 58.181)
+[INFO ] 2020-05-30 11:51:50 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 2020-05-30 11:51:50 [SpringContextShutdownHook] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource start closing ....
+[INFO ] 2020-05-30 11:51:50 [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource - postgres - Shutdown initiated...
+[INFO ] 2020-05-30 11:51:50 [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource - postgres - Shutdown completed.
+[INFO ] 2020-05-30 11:51:50 [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource - h2 - Shutdown initiated...
+[INFO ] 2020-05-30 11:51:50 [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource - h2 - Shutdown completed.
+[INFO ] 2020-05-30 11:51:50 [SpringContextShutdownHook] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource all closed success,bye
+[INFO ] 2020-05-30 11:51:57 [restartedMain] com.yuepeng.Application - Starting Application on RAO0B7KCL0016I7 with PID 7588 (E:\IdeaWorkspace\YP_Bid\YP_Bid_Api\st-api\target\classes started by Administrator in E:\IdeaWorkspace\YP_Bid\YP_Bid_Api)
+[INFO ] 2020-05-30 11:51:57 [restartedMain] com.yuepeng.Application - The following profiles are active: dev
+[INFO ] 2020-05-30 11:51:57 [restartedMain] o.s.b.d.restart.ChangeableUrls - The Class-Path manifest attribute in D:\repo\com\sun\xml\bind\jaxb-impl\2.1\jaxb-impl-2.1.jar referenced one or more files that do not exist: file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb-api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/activation.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jsr173_1.0_api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb1-impl.jar
+[INFO ] 2020-05-30 11:51:57 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO ] 2020-05-30 11:51:57 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO ] 2020-05-30 11:51:59 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:51:59 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$257cac0b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:51:59 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:51:59 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dynamicDatasourceAnnotationAdvisor' of type [com.baomidou.dynamic.datasource.aop.DynamicDataSourceAnnotationAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:51:59 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2020-05-30 11:51:59 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-05-30 11:51:59 [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 2020-05-30 11:51:59 [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.33]
+[INFO ] 2020-05-30 11:51:59 [restartedMain] o.a.c.core.AprLifecycleListener - An older version [1.2.17] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+[INFO ] 2020-05-30 11:51:59 [restartedMain] o.a.c.core.AprLifecycleListener - Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+[INFO ] 2020-05-30 11:51:59 [restartedMain] o.a.c.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+[INFO ] 2020-05-30 11:51:59 [restartedMain] o.a.c.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+[INFO ] 2020-05-30 11:52:00 [restartedMain] o.a.c.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+[INFO ] 2020-05-30 11:52:00 [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2020-05-30 11:52:00 [restartedMain] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3468 ms
+[INFO ] 2020-05-30 11:52:00 [restartedMain] com.zaxxer.hikari.HikariDataSource - postgres - Starting...
+[INFO ] 2020-05-30 11:52:01 [restartedMain] com.zaxxer.hikari.HikariDataSource - postgres - Start completed.
+[INFO ] 2020-05-30 11:52:01 [restartedMain] com.zaxxer.hikari.HikariDataSource - h2 - Starting...
+[INFO ] 2020-05-30 11:52:01 [restartedMain] com.zaxxer.hikari.HikariDataSource - h2 - Start completed.
+[INFO ] 2020-05-30 11:52:01 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - load a datasource named [postgres] success
+[INFO ] 2020-05-30 11:52:01 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - load a datasource named [h2] success
+[INFO ] 2020-05-30 11:52:01 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource initial loaded [2] datasource,primary datasource named [postgres]
+[INFO ] 2020-05-30 11:52:01 [restartedMain] o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/console'. Database available at 'jdbc:postgresql://localhost:56003/YP_Bid_Dev'
+[INFO ] 2020-05-30 11:52:02 [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[INFO ] 2020-05-30 11:52:02 [restartedMain] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 2020-05-30 11:52:02 [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+[INFO ] 2020-05-30 11:52:03 [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[INFO ] 2020-05-30 11:52:03 [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[INFO ] 2020-05-30 11:52:03 [restartedMain] s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[INFO ] 2020-05-30 11:52:03 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-05-30 11:52:03 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2020-05-30 11:52:03 [restartedMain] com.yuepeng.Application - Started Application in 6.9 seconds (JVM running for 8.722)
+[INFO ] 2020-05-30 11:52:12 [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2020-05-30 11:52:12 [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2020-05-30 11:52:12 [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 21 ms
+[INFO ] 2020-05-30 11:57:32 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 2020-05-30 11:57:32 [SpringContextShutdownHook] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource start closing ....
+[INFO ] 2020-05-30 11:57:32 [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource - postgres - Shutdown initiated...
+[INFO ] 2020-05-30 11:57:32 [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource - postgres - Shutdown completed.
+[INFO ] 2020-05-30 11:57:32 [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource - h2 - Shutdown initiated...
+[INFO ] 2020-05-30 11:57:32 [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource - h2 - Shutdown completed.
+[INFO ] 2020-05-30 11:57:32 [SpringContextShutdownHook] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource all closed success,bye
+[INFO ] 2020-05-30 11:57:41 [restartedMain] com.yuepeng.Application - Starting Application on RAO0B7KCL0016I7 with PID 10940 (E:\IdeaWorkspace\YP_Bid\YP_Bid_Api\st-api\target\classes started by Administrator in E:\IdeaWorkspace\YP_Bid\YP_Bid_Api)
+[INFO ] 2020-05-30 11:57:41 [restartedMain] com.yuepeng.Application - The following profiles are active: dev
+[INFO ] 2020-05-30 11:57:41 [restartedMain] o.s.b.d.restart.ChangeableUrls - The Class-Path manifest attribute in D:\repo\com\sun\xml\bind\jaxb-impl\2.1\jaxb-impl-2.1.jar referenced one or more files that do not exist: file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb-api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/activation.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jsr173_1.0_api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb1-impl.jar
+[INFO ] 2020-05-30 11:57:41 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO ] 2020-05-30 11:57:41 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO ] 2020-05-30 11:57:43 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:57:43 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$b7003e2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:57:43 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:57:43 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dynamicDatasourceAnnotationAdvisor' of type [com.baomidou.dynamic.datasource.aop.DynamicDataSourceAnnotationAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 11:57:43 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2020-05-30 11:57:43 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-05-30 11:57:43 [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 2020-05-30 11:57:43 [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.33]
+[INFO ] 2020-05-30 11:57:43 [restartedMain] o.a.c.core.AprLifecycleListener - An older version [1.2.17] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+[INFO ] 2020-05-30 11:57:43 [restartedMain] o.a.c.core.AprLifecycleListener - Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+[INFO ] 2020-05-30 11:57:43 [restartedMain] o.a.c.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+[INFO ] 2020-05-30 11:57:43 [restartedMain] o.a.c.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+[INFO ] 2020-05-30 11:57:44 [restartedMain] o.a.c.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+[INFO ] 2020-05-30 11:57:44 [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2020-05-30 11:57:44 [restartedMain] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3605 ms
+[INFO ] 2020-05-30 11:57:44 [restartedMain] com.zaxxer.hikari.HikariDataSource - postgres - Starting...
+[INFO ] 2020-05-30 11:57:45 [restartedMain] com.zaxxer.hikari.HikariDataSource - postgres - Start completed.
+[INFO ] 2020-05-30 11:57:45 [restartedMain] com.zaxxer.hikari.HikariDataSource - h2 - Starting...
+[INFO ] 2020-05-30 11:57:45 [restartedMain] com.zaxxer.hikari.HikariDataSource - h2 - Start completed.
+[INFO ] 2020-05-30 11:57:45 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - load a datasource named [postgres] success
+[INFO ] 2020-05-30 11:57:45 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - load a datasource named [h2] success
+[INFO ] 2020-05-30 11:57:45 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource initial loaded [2] datasource,primary datasource named [postgres]
+[INFO ] 2020-05-30 11:57:45 [restartedMain] o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/console'. Database available at 'jdbc:postgresql://localhost:56003/YP_Bid_Dev'
+[INFO ] 2020-05-30 11:57:46 [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[INFO ] 2020-05-30 11:57:46 [restartedMain] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 2020-05-30 11:57:46 [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+[INFO ] 2020-05-30 11:57:47 [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[INFO ] 2020-05-30 11:57:47 [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[INFO ] 2020-05-30 11:57:47 [restartedMain] s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[INFO ] 2020-05-30 11:57:47 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-05-30 11:57:47 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2020-05-30 11:57:47 [restartedMain] com.yuepeng.Application - Started Application in 7.001 seconds (JVM running for 8.697)
+[INFO ] 2020-05-30 11:58:21 [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2020-05-30 11:58:21 [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2020-05-30 11:58:21 [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 11 ms
+[INFO ] 2020-05-30 12:00:29 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 2020-05-30 12:00:29 [SpringContextShutdownHook] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource start closing ....
+[INFO ] 2020-05-30 12:00:29 [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource - postgres - Shutdown initiated...
+[INFO ] 2020-05-30 12:00:29 [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource - postgres - Shutdown completed.
+[INFO ] 2020-05-30 12:00:29 [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource - h2 - Shutdown initiated...
+[INFO ] 2020-05-30 12:00:29 [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource - h2 - Shutdown completed.
+[INFO ] 2020-05-30 12:00:29 [SpringContextShutdownHook] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource all closed success,bye
+[INFO ] 2020-05-30 12:00:38 [restartedMain] com.yuepeng.Application - Starting Application on RAO0B7KCL0016I7 with PID 11432 (E:\IdeaWorkspace\YP_Bid\YP_Bid_Api\st-api\target\classes started by Administrator in E:\IdeaWorkspace\YP_Bid\YP_Bid_Api)
+[INFO ] 2020-05-30 12:00:38 [restartedMain] com.yuepeng.Application - The following profiles are active: dev
+[INFO ] 2020-05-30 12:00:38 [restartedMain] o.s.b.d.restart.ChangeableUrls - The Class-Path manifest attribute in D:\repo\com\sun\xml\bind\jaxb-impl\2.1\jaxb-impl-2.1.jar referenced one or more files that do not exist: file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb-api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/activation.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jsr173_1.0_api.jar,file:/D:/repo/com/sun/xml/bind/jaxb-impl/2.1/jaxb1-impl.jar
+[INFO ] 2020-05-30 12:00:38 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO ] 2020-05-30 12:00:38 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO ] 2020-05-30 12:00:40 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 12:00:40 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$f7c332a5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 12:00:40 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 12:00:40 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dynamicDatasourceAnnotationAdvisor' of type [com.baomidou.dynamic.datasource.aop.DynamicDataSourceAnnotationAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2020-05-30 12:00:40 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2020-05-30 12:00:40 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-05-30 12:00:40 [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 2020-05-30 12:00:40 [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.33]
+[INFO ] 2020-05-30 12:00:40 [restartedMain] o.a.c.core.AprLifecycleListener - An older version [1.2.17] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+[INFO ] 2020-05-30 12:00:40 [restartedMain] o.a.c.core.AprLifecycleListener - Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+[INFO ] 2020-05-30 12:00:40 [restartedMain] o.a.c.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+[INFO ] 2020-05-30 12:00:40 [restartedMain] o.a.c.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+[INFO ] 2020-05-30 12:00:41 [restartedMain] o.a.c.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+[INFO ] 2020-05-30 12:00:42 [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2020-05-30 12:00:42 [restartedMain] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3487 ms
+[INFO ] 2020-05-30 12:00:42 [restartedMain] com.zaxxer.hikari.HikariDataSource - postgres - Starting...
+[INFO ] 2020-05-30 12:00:42 [restartedMain] com.zaxxer.hikari.HikariDataSource - postgres - Start completed.
+[INFO ] 2020-05-30 12:00:42 [restartedMain] com.zaxxer.hikari.HikariDataSource - h2 - Starting...
+[INFO ] 2020-05-30 12:00:42 [restartedMain] com.zaxxer.hikari.HikariDataSource - h2 - Start completed.
+[INFO ] 2020-05-30 12:00:42 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - load a datasource named [postgres] success
+[INFO ] 2020-05-30 12:00:42 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - load a datasource named [h2] success
+[INFO ] 2020-05-30 12:00:42 [restartedMain] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource initial loaded [2] datasource,primary datasource named [postgres]
+[INFO ] 2020-05-30 12:00:42 [restartedMain] o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/console'. Database available at 'jdbc:postgresql://localhost:56003/YP_Bid_Dev'
+[INFO ] 2020-05-30 12:00:43 [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[INFO ] 2020-05-30 12:00:43 [restartedMain] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 2020-05-30 12:00:44 [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+[INFO ] 2020-05-30 12:00:44 [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[INFO ] 2020-05-30 12:00:44 [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[INFO ] 2020-05-30 12:00:44 [restartedMain] s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[INFO ] 2020-05-30 12:00:44 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-05-30 12:00:44 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2020-05-30 12:00:44 [restartedMain] com.yuepeng.Application - Started Application in 7.62 seconds (JVM running for 9.427)
+[INFO ] 2020-05-30 12:00:49 [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2020-05-30 12:00:49 [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2020-05-30 12:00:49 [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 10 ms
+[INFO ] 2020-05-30 13:34:49 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 2020-05-30 13:34:49 [SpringContextShutdownHook] c.b.d.d.DynamicRoutingDataSource - dynamic-datasource start closing ....
+[INFO ] 2020-05-30 13:34:49 [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource - postgres - Shutdown initiated...

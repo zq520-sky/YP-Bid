@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.count.dao.DataCrawlerReportMapper" >
+
+  <!--分页-->
+  <select id="queryDataCrawlerReportList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.count.bean.vo.DataCrawlerReportVo">
+    select
+      tdcr.crawler_report_id,
+      tdcr.project_type,
+      tdcr.crawler_date,
+      tdcr.crawler_num
+      from t_data_crawler_report tdcr
+    <where>
+      <trim prefixOverrides="and">
+        <if test="search != null">
+          <if test="search.projectType != null">
+            and tdcr.project_type = #{search.projectType}
+          </if>
+          <if test="search.startDateTime != null">
+            <![CDATA[ and tdcr.crawler_date >= #{search.startDateTime} ]]>
+          </if>
+          <if test="search.endDateTime != null">
+            <![CDATA[ and tdcr.crawler_date <= #{search.endDateTime} ]]>
+          </if>
+        </if>
+      </trim>
+    </where>
+    order by tdcr.crawler_date desc
+  </select>
+
+  <!--导出-->
+  <select id="exportDataCrawlerReportList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.count.bean.excel.TDataCrawlerReportExcel">
+    select
+      tdcr.project_type,
+      tdcr.crawler_date,
+      tdcr.crawler_num
+    from t_data_crawler_report tdcr
+    <where>
+      <trim prefixOverrides="and">
+        <if test="search != null">
+          <if test="search.projectType != null">
+            and tdcr.project_type = #{search.projectType}
+          </if>
+          <if test="search.startDateTime != null">
+            <![CDATA[ and tdcr.crawler_date >= #{search.startDateTime} ]]>
+          </if>
+          <if test="search.endDateTime != null">
+            <![CDATA[ and tdcr.crawler_date <= #{search.endDateTime} ]]>
+          </if>
+        </if>
+      </trim>
+    </where>
+    order by tdcr.crawler_date desc
+  </select>
+
+</mapper>

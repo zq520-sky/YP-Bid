@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.planProject.dao.TPlanDatasourceMapper">
+    <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.planProject.bean.entity.TPlanDatasource">
+        <id column="datasource_id" property="datasourceId" jdbcType="INTEGER"/>
+        <result column="datasource_type" property="datasourceType" jdbcType="INTEGER"/>
+        <result column="datasource_webname" property="datasourceWebname" jdbcType="VARCHAR"/>
+        <result column="datasource_weburl" property="datasourceWeburl" jdbcType="VARCHAR"/>
+        <result column="province_id" property="provinceId" jdbcType="INTEGER"/>
+        <result column="city_id" property="cityId" jdbcType="INTEGER"/>
+        <result column="is_forbid" property="isForbid" jdbcType="INTEGER"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="create_user_id" property="createUserId" jdbcType="INTEGER"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="update_user_id" property="updateUserId" jdbcType="INTEGER"/>
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        datasource_id,
+        datasource_type,
+        datasource_webname,
+        datasource_weburl,
+        province_id,
+        city_id,
+        is_forbid,
+        remark,
+        create_user_id,
+        create_date,
+        update_user_id,
+        update_date
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from public.t_plan_datasource
+        where datasource_id = #{datasourceId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from public.t_plan_datasource
+        where datasource_id = #{datasourceId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.yuepeng.web.manage.planProject.bean.entity.TPlanDatasource">
+        insert into public.t_plan_datasource (datasource_id, datasource_type, datasource_webname,
+                                              datasource_weburl, province_id, city_id,
+                                              is_forbid, remark, create_user_id,
+                                              create_date, update_user_id, update_date)
+        values (#{datasourceId,jdbcType=INTEGER}, #{datasourceType,jdbcType=INTEGER},
+                #{datasourceWebname,jdbcType=VARCHAR},
+                #{datasourceWeburl,jdbcType=VARCHAR}, #{provinceId,jdbcType=INTEGER}, #{cityId,jdbcType=INTEGER},
+                #{isForbid,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{createUserId,jdbcType=INTEGER},
+                #{createDate,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=INTEGER}, #{updateDate,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yuepeng.web.manage.planProject.bean.entity.TPlanDatasource">
+        insert into public.t_plan_datasource
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="datasourceId != null">
+                datasource_id,
+            </if>
+            <if test="datasourceType != null">
+                datasource_type,
+            </if>
+            <if test="datasourceWebname != null">
+                datasource_webname,
+            </if>
+            <if test="datasourceWeburl != null">
+                datasource_weburl,
+            </if>
+            <if test="provinceId != null">
+                province_id,
+            </if>
+            <if test="cityId != null">
+                city_id,
+            </if>
+            <if test="isForbid != null">
+                is_forbid,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="createUserId != null">
+                create_user_id,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateUserId != null">
+                update_user_id,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="datasourceId != null">
+                #{datasourceId,jdbcType=INTEGER},
+            </if>
+            <if test="datasourceType != null">
+                #{datasourceType,jdbcType=INTEGER},
+            </if>
+            <if test="datasourceWebname != null">
+                #{datasourceWebname,jdbcType=VARCHAR},
+            </if>
+            <if test="datasourceWeburl != null">
+                #{datasourceWeburl,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceId != null">
+                #{provinceId,jdbcType=INTEGER},
+            </if>
+            <if test="cityId != null">
+                #{cityId,jdbcType=INTEGER},
+            </if>
+            <if test="isForbid != null">
+                #{isForbid,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                #{createUserId,jdbcType=INTEGER},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateUserId != null">
+                #{updateUserId,jdbcType=INTEGER},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.yuepeng.web.manage.planProject.bean.entity.TPlanDatasource">
+        update public.t_plan_datasource
+        <set>
+            <if test="datasourceType != null">
+                datasource_type = #{datasourceType,jdbcType=INTEGER},
+            </if>
+            <if test="datasourceWebname != null">
+                datasource_webname = #{datasourceWebname,jdbcType=VARCHAR},
+            </if>
+            <if test="datasourceWeburl != null">
+                datasource_weburl = #{datasourceWeburl,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceId != null">
+                province_id = #{provinceId,jdbcType=INTEGER},
+            </if>
+            <if test="cityId != null">
+                city_id = #{cityId,jdbcType=INTEGER},
+            </if>
+            <if test="isForbid != null">
+                is_forbid = #{isForbid,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                create_user_id = #{createUserId,jdbcType=INTEGER},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateUserId != null">
+                update_user_id = #{updateUserId,jdbcType=INTEGER},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where datasource_id = #{datasourceId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.planProject.bean.entity.TPlanDatasource">
+        update public.t_plan_datasource
+        set datasource_type    = #{datasourceType,jdbcType=INTEGER},
+            datasource_webname = #{datasourceWebname,jdbcType=VARCHAR},
+            datasource_weburl  = #{datasourceWeburl,jdbcType=VARCHAR},
+            province_id        = #{provinceId,jdbcType=INTEGER},
+            city_id            = #{cityId,jdbcType=INTEGER},
+            is_forbid          = #{isForbid,jdbcType=INTEGER},
+            remark             = #{remark,jdbcType=VARCHAR},
+            create_user_id     = #{createUserId,jdbcType=INTEGER},
+            create_date        = #{createDate,jdbcType=TIMESTAMP},
+            update_user_id     = #{updateUserId,jdbcType=INTEGER},
+            update_date        = #{updateDate,jdbcType=TIMESTAMP}
+        where datasource_id = #{datasourceId,jdbcType=INTEGER}
+    </update>
+
+
+    <sql id="queryPlanDatasourceList_where">
+        <if test="search != null">
+            <if test="search.datasourceWebname != null and search.datasourceWebname != ''">
+                and s.datasource_webname like '%'||#{search.datasourceWebname,jdbcType=VARCHAR}||'%'
+            </if>
+            <if test="search.datasourceWeburl != null and search.datasourceWeburl != ''">
+                and s.datasource_weburl like '%'||#{search.datasourceWeburl,jdbcType=VARCHAR}||'%'
+            </if>
+            <if test="search.datasourceType != null">
+                and s.datasource_type = #{search.datasourceType,jdbcType=INTEGER}
+            </if>
+            <if test="search.provinceId != null">
+                and c.province_id = #{search.provinceId,jdbcType=INTEGER}
+            </if>
+            <if test="search.cityId != null">
+                and c.city_id = #{search.cityId,jdbcType=INTEGER}
+            </if>
+        </if>
+    </sql>
+
+    <!-- 查找拟建数据来源 -->
+    <select id="queryPlanDatasourceList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.planProject.bean.vo.PlanDatasourceVo">
+        SELECT
+        s.datasource_id, s.datasource_type, s.datasource_webname, s.datasource_weburl, s.province_id,
+        s.city_id, s.is_forbid, s.remark, p.province_name,c.city_name,case s.datasource_type when 1 then '省级在线监管平台' when
+        2 then '省级政务服务网' when 3 then '其他' end as datasource_type_cn,
+        case s.is_forbid when 0 then '正常' when 1 then '已禁用' end as is_forbid_cn
+        from t_plan_datasource s
+        inner join t_sys_city c on s.city_id = c.city_id
+        inner join t_sys_province p on p.province_id = s.province_id
+        <where>
+            <include refid="queryPlanDatasourceList_where"/>
+        </where>
+    </select>
+
+    <!-- 导出拟建数据来源 -->
+    <select id="exportPlanDatasourceList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.planProject.bean.excel.PlanDatasourceEntity">
+        SELECT
+        s.datasource_id, s.datasource_type, s.datasource_webname, s.datasource_weburl, s.province_id,
+        s.city_id, s.is_forbid, s.remark, p.province_name,c.city_name,case s.datasource_type when 1 then '省级在线监管平台' when
+        2 then '省级政务服务网' when 3 then '其他' end as datasource_type_cn,
+        case s.is_forbid when 0 then '正常' when 1 then '已禁用' end as is_forbid_cn
+        from t_plan_datasource s
+        inner join t_sys_city c on s.city_id = c.city_id
+        inner join t_sys_province p on p.province_id = s.province_id
+        <where>
+            <include refid="queryPlanDatasourceList_where"/>
+        </where>
+    </select>
+
+    <!-- 查看拟建项目来源 -->
+    <select id="viewDatasourceListById" parameterType="java.lang.Integer"
+            resultType="com.yuepeng.web.manage.planProject.bean.vo.PlanDatasourceVo">
+        SELECT s.datasource_id,
+               s.datasource_type,
+               s.datasource_webname,
+               s.datasource_weburl,
+               s.province_id,
+               s.city_id,
+               s.is_forbid,
+               s.remark,
+               p.province_name,
+               c.city_name,
+               case s.datasource_type
+                   when 1 then '省级在线监管平台'
+                   when
+                       2 then '省级政务服务网'
+                   when 3 then '其他' end                                as datasource_type_cn,
+               case s.is_forbid when 0 then '正常' when 1 then '已禁用' end as is_forbid_cn
+        from t_plan_datasource s
+                 inner join t_sys_city c on s.city_id = c.city_id
+                 inner join t_sys_province p on p.province_id = s.province_id
+        where s.datasource_id = #{datasourceId,javaType=INTEGER}
+    </select>
+</mapper>

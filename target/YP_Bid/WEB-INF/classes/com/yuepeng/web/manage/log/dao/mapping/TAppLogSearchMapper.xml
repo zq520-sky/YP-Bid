@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.log.dao.TAppLogSearchMapper" >
+  <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.log.bean.entity.TAppLogSearch" >
+    <id column="log_search_id" property="logSearchId" jdbcType="INTEGER" />
+    <result column="cust_id" property="custId" jdbcType="INTEGER" />
+    <result column="search_word" property="searchWord" jdbcType="VARCHAR" />
+    <result column="search_times" property="searchTimes" jdbcType="INTEGER" />
+    <result column="search_time" property="searchTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    log_search_id, cust_id, search_word, search_times, search_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.t_app_log_search
+    where log_search_id = #{logSearchId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from public.t_app_log_search
+    where log_search_id = #{logSearchId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuepeng.web.manage.log.bean.entity.TAppLogSearch" >
+    insert into public.t_app_log_search (log_search_id, cust_id, search_word, 
+      search_times, search_time)
+    values (#{logSearchId,jdbcType=INTEGER}, #{custId,jdbcType=INTEGER}, #{searchWord,jdbcType=VARCHAR}, 
+      #{searchTimes,jdbcType=INTEGER}, #{searchTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuepeng.web.manage.log.bean.entity.TAppLogSearch" >
+    insert into public.t_app_log_search
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="logSearchId != null" >
+        log_search_id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="searchWord != null" >
+        search_word,
+      </if>
+      <if test="searchTimes != null" >
+        search_times,
+      </if>
+      <if test="searchTime != null" >
+        search_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="logSearchId != null" >
+        #{logSearchId,jdbcType=INTEGER},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="searchWord != null" >
+        #{searchWord,jdbcType=VARCHAR},
+      </if>
+      <if test="searchTimes != null" >
+        #{searchTimes,jdbcType=INTEGER},
+      </if>
+      <if test="searchTime != null" >
+        #{searchTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.log.bean.entity.TAppLogSearch" >
+    update public.t_app_log_search
+    <set >
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="searchWord != null" >
+        search_word = #{searchWord,jdbcType=VARCHAR},
+      </if>
+      <if test="searchTimes != null" >
+        search_times = #{searchTimes,jdbcType=INTEGER},
+      </if>
+      <if test="searchTime != null" >
+        search_time = #{searchTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where log_search_id = #{logSearchId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.log.bean.entity.TAppLogSearch" >
+    update public.t_app_log_search
+    set cust_id = #{custId,jdbcType=INTEGER},
+      search_word = #{searchWord,jdbcType=VARCHAR},
+      search_times = #{searchTimes,jdbcType=INTEGER},
+      search_time = #{searchTime,jdbcType=TIMESTAMP}
+    where log_search_id = #{logSearchId,jdbcType=INTEGER}
+  </update>
+
+  <!--客户搜索记录 list-->
+  <select id="queryAppLogSearchList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.log.bean.vo.AppLogSearchVo">
+    /*SELECT log.log_search_id,cust.cust_code,cust.mobile,cust.head_img,cust.nick_name,log.search_word,log.search_time FROM t_customer cust left join t_app_log_search log on cust.cust_id = log.cust_id
+    where cust.cust_id = 1 and cust.mobile = '18720918640'*/
+    SELECT
+        log.log_search_id,
+        cust.cust_id,
+        cust.cust_code,
+        cust.mobile,
+        cust.head_img,
+        cust.nick_name,
+        log.search_word,
+        log.search_time
+    FROM t_customer cust left join t_app_log_search log on cust.cust_id = log.cust_id
+    <where>
+      <trim prefixOverrides="and">
+        <if test="search != null">
+          <if test="search.custCode != null and search.custCode !=''">
+            and cust.cust_code = #{search.custCode}
+          </if>
+          <if test="search.mobile != null and search.mobile !=''">
+            and cust.mobile = #{search.mobile}
+          </if>
+        </if>
+      </trim>
+    </where>
+    order by log.search_time desc
+  </select>
+
+  <!--导出客户搜索记录-->
+  <select id="exportCustSearchLogList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.log.bean.excel.CustomerSearchLogExcel">
+    SELECT
+      cust.cust_code,
+      cust.mobile,
+      cust.nick_name,
+      log.search_word,
+      log.search_time
+    FROM t_customer cust left join t_app_log_search log on cust.cust_id = log.cust_id
+    <where>
+      <trim prefixOverrides="and">
+        <if test="search != null">
+          <if test="search.custCode != null and search.custCode !=''">
+            and cust.cust_code = #{search.custCode}
+          </if>
+          <if test="search.mobile != null and search.mobile !=''">
+            and cust.mobile = #{search.mobile}
+          </if>
+        </if>
+      </trim>
+    </where>
+    order by log.search_time desc
+  </select>
+
+  <!--通过logSearchId查看客户搜索记录相关信息-->
+  <select id="queryCstMsgBySearchId" parameterType="Integer" resultType="com.yuepeng.web.manage.log.bean.vo.CustomerSearchLookVo">
+    SELECT
+        log.log_search_id,
+        cust.cust_id,
+        cust.cust_code,
+        cust.mobile,
+        cust.head_img,
+        cust.nick_name,
+		cust.sex,
+		tsp.province_name,
+		tsc.city_name,
+        log.search_word,
+        log.search_time
+    FROM t_customer cust left join t_app_log_search log on cust.cust_id = log.cust_id left join t_sys_province tsp on tsp.province_id = cust.province_id left join t_sys_city tsc on tsc.city_id = cust.city_id
+	where log.log_search_id = #{logSearchId}
+  </select>
+</mapper>

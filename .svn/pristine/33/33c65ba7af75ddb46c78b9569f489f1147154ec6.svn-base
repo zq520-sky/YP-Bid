@@ -1,0 +1,36 @@
+package com.yuepeng.web.manage.datasource.dao;
+
+import com.yuepeng.web.manage.datasource.bean.entity.TDatasourceType;
+import com.yuepeng.web.manage.datasource.bean.vo.DatasourceTreeVo;
+import com.yuepeng.web.manage.datasource.bean.vo.DatasourceTypeVo;
+import com.yuepeng.web.manage.datasource.bean.excel.DatasourceTypeExcel;
+import com.yuepeng.platform.common.dao.AutoMapperInteger;
+import com.yuepeng.platform.framework.mybatis.pagination.Pagination;
+import org.apache.ibatis.session.RowBounds;
+import java.util.List;
+
+/**
+ * 招标数据来源类型表
+
+0：省平台
+1：市平台
+1：央企业招投标
+2：...(DatasourceType)表数据库访问层
+ *
+ * @author wzq
+ * @since 2020-05-19 08:58:55
+ */
+public interface TDatasourceTypeMapper extends AutoMapperInteger<TDatasourceType>{
+
+    List<DatasourceTypeVo> queryDatasourceTypePageList(Pagination<DatasourceTypeVo> paramBean, RowBounds rowBounds) throws Exception;
+
+    List<DatasourceTypeExcel> exportDatasourceTypePageList(Pagination<TDatasourceType> paramBean, RowBounds rowBounds) throws Exception;
+
+    DatasourceTypeVo viewDatasourceType(Integer datasourceTypeId) throws Exception;
+
+    List<DatasourceTypeVo> selectDatasourceTypes() throws Exception;
+
+    List<DatasourceTreeVo> selectDatasourceTypeInfos() throws Exception;
+
+    List<DatasourceTreeVo> selectDatasourceTypeDetails() throws Exception;
+}

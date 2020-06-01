@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.customer.dao.TMemberMapper" >
+  <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.customer.bean.entity.TMember" >
+    <id column="member_id" property="memberId" jdbcType="INTEGER" />
+    <result column="cust_id" property="custId" jdbcType="INTEGER" />
+    <result column="member_type" property="memberType" jdbcType="INTEGER" />
+    <result column="role_province_ids" property="roleProvinceIds" jdbcType="VARCHAR" />
+    <result column="role_province_names" property="roleProvinceNames" jdbcType="VARCHAR" />
+    <result column="use_start_time" property="useStartTime" jdbcType="TIMESTAMP" />
+    <result column="use_end_time" property="useEndTime" jdbcType="TIMESTAMP" />
+    <result column="create_user_id" property="createUserId" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_user_id" property="updateUserId" jdbcType="INTEGER" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    member_id, cust_id, member_type, role_province_ids, role_province_names, use_start_time, 
+    use_end_time, create_user_id, create_date, update_user_id, update_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.t_member
+    where member_id = #{memberId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from public.t_member
+    where member_id = #{memberId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuepeng.web.manage.customer.bean.entity.TMember" >
+    insert into public.t_member (member_id, cust_id, member_type, 
+      role_province_ids, role_province_names, use_start_time, 
+      use_end_time, create_user_id, create_date, 
+      update_user_id, update_date)
+    values (#{memberId,jdbcType=INTEGER}, #{custId,jdbcType=INTEGER}, #{memberType,jdbcType=INTEGER}, 
+      #{roleProvinceIds,jdbcType=VARCHAR}, #{roleProvinceNames,jdbcType=VARCHAR}, #{useStartTime,jdbcType=TIMESTAMP}, 
+      #{useEndTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateUserId,jdbcType=INTEGER}, #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuepeng.web.manage.customer.bean.entity.TMember" >
+    insert into public.t_member
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="memberType != null" >
+        member_type,
+      </if>
+      <if test="roleProvinceIds != null" >
+        role_province_ids,
+      </if>
+      <if test="roleProvinceNames != null" >
+        role_province_names,
+      </if>
+      <if test="useStartTime != null" >
+        use_start_time,
+      </if>
+      <if test="useEndTime != null" >
+        use_end_time,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="memberType != null" >
+        #{memberType,jdbcType=INTEGER},
+      </if>
+      <if test="roleProvinceIds != null" >
+        #{roleProvinceIds,jdbcType=VARCHAR},
+      </if>
+      <if test="roleProvinceNames != null" >
+        #{roleProvinceNames,jdbcType=VARCHAR},
+      </if>
+      <if test="useStartTime != null" >
+        #{useStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useEndTime != null" >
+        #{useEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.customer.bean.entity.TMember" >
+    update public.t_member
+    <set >
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="memberType != null" >
+        member_type = #{memberType,jdbcType=INTEGER},
+      </if>
+      <if test="roleProvinceIds != null" >
+        role_province_ids = #{roleProvinceIds,jdbcType=VARCHAR},
+      </if>
+      <if test="roleProvinceNames != null" >
+        role_province_names = #{roleProvinceNames,jdbcType=VARCHAR},
+      </if>
+      <if test="useStartTime != null" >
+        use_start_time = #{useStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useEndTime != null" >
+        use_end_time = #{useEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where member_id = #{memberId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.customer.bean.entity.TMember" >
+    update public.t_member
+    set cust_id = #{custId,jdbcType=INTEGER},
+      member_type = #{memberType,jdbcType=INTEGER},
+      role_province_ids = #{roleProvinceIds,jdbcType=VARCHAR},
+      role_province_names = #{roleProvinceNames,jdbcType=VARCHAR},
+      use_start_time = #{useStartTime,jdbcType=TIMESTAMP},
+      use_end_time = #{useEndTime,jdbcType=TIMESTAMP},
+      create_user_id = #{createUserId,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=INTEGER},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where member_id = #{memberId,jdbcType=INTEGER}
+  </update>
+
+
+  <sql id="queryPageList_where">
+    <if test="search != null">
+      <if test="search.custCode != null ">
+        and tc.cust_code like '%'||#{search.custCode,jdbcType=VARCHAR}||'%'
+      </if>
+      <if test="search.mobile != null and search.mobile != ''">
+        and tc.mobile like '%'||#{search.mobile,jdbcType=VARCHAR}||'%'
+      </if>
+      <if test="search.createDateBegin != null">
+        <![CDATA[ and tm.create_date >= #{search.createDateBegin,jdbcType=TIMESTAMP} ]]>
+      </if>
+      <if test="search.createDateEnd != null">
+        <![CDATA[ and tm.create_date <= #{search.createDateEnd,jdbcType=TIMESTAMP} ]]>
+      </if>
+      <if test="search.memberType != null">
+        and tm.member_type = #{search.memberType,jdbcType=INTEGER}
+      </if>
+    </if>
+  </sql>
+
+  <select id="queryMemberList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.customer.bean.vo.MemberVo">
+    SELECT
+      tm.member_id,
+      tm.cust_id,
+      tm.member_type,
+      tm.role_province_ids,
+      tm.role_province_names,
+      tm.use_start_time,
+      tm.use_end_time,
+      tm.create_user_id,
+      tm.create_date,
+      tm.update_user_id,
+      tm.update_date,
+      tc.cust_code,
+      tc.mobile,
+      tc.head_img,
+      tc.nick_name,
+      tc.sex
+    FROM
+      t_member tm
+      INNER JOIN t_customer tc ON tc.cust_id = tm.cust_id
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    ORDER BY tm.create_date desc
+  </select>
+
+  <select id="exportMemberList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.customer.bean.excel.MemberExcel">
+    SELECT
+      tm.member_id,
+      tm.cust_id,
+      tm.member_type,
+      tm.role_province_ids,
+      tm.role_province_names,
+      tm.use_start_time,
+      tm.use_end_time,
+      tm.create_user_id,
+      tm.create_date,
+      tm.update_user_id,
+      tm.update_date,
+      tc.cust_code,
+      tc.mobile,
+      tc.head_img,
+      tc.nick_name,
+      tc.sex
+    FROM
+      t_member tm
+      INNER JOIN t_customer tc ON tc.cust_id = tm.cust_id
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    ORDER BY tm.create_date desc
+  </select>
+
+  <select id="viewMember" resultType="com.yuepeng.web.manage.customer.bean.vo.MemberVo">
+    SELECT
+      tm.member_id,
+      tm.cust_id,
+      tm.member_type,
+      tm.role_province_ids,
+      tm.role_province_names,
+      tm.use_start_time,
+      tm.use_end_time,
+      tm.create_user_id,
+      tm.create_date,
+      tm.update_user_id,
+      tm.update_date,
+      tc.cust_code,
+      tc.mobile,
+      tc.head_img,
+      tc.nick_name,
+      tc.sex,
+      tc.register_date,
+      tcc.company_name,
+      tcc.job,
+      tsc.province_name,
+      tsc.city_name
+    FROM
+      t_member tm
+      INNER JOIN t_customer tc ON tc.cust_id = tm.cust_id
+      LEFT JOIN t_sys_city tsc ON tsc.city_id = tc.city_id
+      LEFT JOIN t_customer_company tcc on tcc.cust_id = tm.cust_id
+    WHERE tm.member_id = #{memberId}
+  </select>
+
+  <select id="getByCustId" resultType="com.yuepeng.web.manage.customer.bean.entity.TMember">
+    select <include refid="Base_Column_List"/> from t_member where cust_id = #{custId}
+  </select>
+</mapper>

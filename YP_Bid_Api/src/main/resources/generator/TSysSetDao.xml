@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.TSysSetDao">
+    <resultMap id="BaseResultMap" type="com.yuepeng.module.entity.SysSetEntity">
+        <id column="set_id" jdbcType="INTEGER" property="setId"/>
+        <result column="unit_name" jdbcType="VARCHAR" property="unitName"/>
+        <result column="sys_name" jdbcType="VARCHAR" property="sysName"/>
+        <result column="sys_logo" jdbcType="VARCHAR" property="sysLogo"/>
+        <result column="day_num_add" jdbcType="INTEGER" property="dayNumAdd"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        set_id,
+        unit_name,
+        sys_name,
+        sys_logo,
+        day_num_add
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from "t_sys_set"
+        where set_id = #{setId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from "t_sys_set"
+        where set_id = #{setId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="set_id" keyProperty="setId" parameterType="com.yuepeng.module.entity.SysSetEntity"
+            useGeneratedKeys="true">
+        insert into "t_sys_set" (unit_name, sys_name, sys_logo,
+                                 day_num_add)
+        values (#{unitName,jdbcType=VARCHAR}, #{sysName,jdbcType=VARCHAR}, #{sysLogo,jdbcType=VARCHAR},
+                #{dayNumAdd,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" keyColumn="set_id" keyProperty="setId"
+            parameterType="com.yuepeng.module.entity.SysSetEntity" useGeneratedKeys="true">
+        insert into "t_sys_set"
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="unitName != null">
+                unit_name,
+            </if>
+            <if test="sysName != null">
+                sys_name,
+            </if>
+            <if test="sysLogo != null">
+                sys_logo,
+            </if>
+            <if test="dayNumAdd != null">
+                day_num_add,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="unitName != null">
+                #{unitName,jdbcType=VARCHAR},
+            </if>
+            <if test="sysName != null">
+                #{sysName,jdbcType=VARCHAR},
+            </if>
+            <if test="sysLogo != null">
+                #{sysLogo,jdbcType=VARCHAR},
+            </if>
+            <if test="dayNumAdd != null">
+                #{dayNumAdd,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.module.entity.SysSetEntity">
+        update "t_sys_set"
+        <set>
+            <if test="unitName != null">
+                unit_name = #{unitName,jdbcType=VARCHAR},
+            </if>
+            <if test="sysName != null">
+                sys_name = #{sysName,jdbcType=VARCHAR},
+            </if>
+            <if test="sysLogo != null">
+                sys_logo = #{sysLogo,jdbcType=VARCHAR},
+            </if>
+            <if test="dayNumAdd != null">
+                day_num_add = #{dayNumAdd,jdbcType=INTEGER},
+            </if>
+        </set>
+        where set_id = #{setId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yuepeng.module.entity.SysSetEntity">
+        update "t_sys_set"
+        set unit_name   = #{unitName,jdbcType=VARCHAR},
+            sys_name    = #{sysName,jdbcType=VARCHAR},
+            sys_logo    = #{sysLogo,jdbcType=VARCHAR},
+            day_num_add = #{dayNumAdd,jdbcType=INTEGER}
+        where set_id = #{setId,jdbcType=INTEGER}
+    </update>
+</mapper>

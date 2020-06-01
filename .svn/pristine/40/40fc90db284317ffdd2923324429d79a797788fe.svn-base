@@ -1,0 +1,65 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<%@ include file="/resources/platform/inc.jsp" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <script src="${ctx.path}/resources/js/common/DataForm.js?v=${ctx.version}"></script>
+    <script type="text/javascript">
+        $(function () {
+            console.log("${data.unitName}")
+            loadCriteria();
+        });
+
+
+        //加载查询条件
+        function loadCriteria() {
+        }
+    </script>
+</head>
+<body>
+
+<!-- 系统设置 -->
+<form method="post" id="setSysForm" action="${ctx.path}/manage/system/info/addSys${ctx.bizSuffix}">
+    <div class="add_list">
+        <h5 hidden="true">
+            <em style="color: red;">*</em>用户id：
+        </h5>
+        <div class="add_value" hidden="true">
+            <input type="text" id="setId" name="setId" maxlength="22" class="inputtext" value="${data.setId}"/>
+        </div>
+        <h5>
+            <em style="color: red;">*</em>系统名称：
+        </h5>
+        <div class="add_value">
+            <input type="text" id="sysName" name="sysName" maxlength="22" class="inputtext" value="${data.sysName}"/>
+        </div>
+    </div>
+    <div class="add_list">
+        <h5>
+            <em style="color: red;">*</em>单位名称：
+        </h5>
+        <div class="add_value">
+            <input type="text" id="unitName" name="unitName" maxlength="22" class="inputtext" value="${data.unitName}"/>
+        </div>
+    </div>
+    <div class="add_list">
+        <h5>
+            <em style="color: red;">*</em>系统LOGO：
+        </h5>
+        <div class="add_value">
+            <input type="text" id="sysLogo" name="sysLogo" maxlength="20" class="inputtext" value="${data.sysLogo}"/>
+        </div>
+    </div>
+    <div class="add_list">
+        <h5>
+            <em style="color: red;">*</em>每日新增累加值：
+        </h5>
+        <div class="add_value">
+            <input type="text" id="dayNumAdd" name="dayNumAdd" maxlength="22" class="inputtext"
+                   value="${data.dayNumAdd}"/>
+        </div>
+    </div>
+    <input type="submit" value="确定">
+</form>
+</body>
+</html>

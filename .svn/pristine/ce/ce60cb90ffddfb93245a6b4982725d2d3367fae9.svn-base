@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.log.dao.CustomerVisitLogMapper" >
+
+  <!-- list-->
+  <select id="queryCstVisitLogList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.log.bean.vo.CustomerVisitLogVo">
+    SELECT
+        cst.cust_id,
+	    cst.cust_code,
+	    cst.mobile,
+	    tpr.industry_name,
+	    tp.project_title,
+	    tpv.visit_date,
+        tpv.visit_id
+    FROM t_customer cst left join t_project_visit tpv on  cst.cust_id = tpv.cust_id left join t_project tp on tpv.project_id = tp.project_id left join t_project_range tpr on tpr.project_id = tp.project_id
+    <where>
+      <trim prefixOverrides="and">
+        <if test="search != null">
+            <if test="search.custCode != null and search.custCode !=''">
+                and cst.cust_code = #{search.custCode}
+            </if>
+            <if test="search.mobile != null and search.mobile !=''">
+                and cst.mobile = #{search.mobile}
+            </if>
+        </if>
+      </trim>
+    </where>
+    order by tpv.visit_date desc
+  </select>
+
+  <!--导出-->
+  <select id="exportCstVisitLogList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.log.bean.excel.CustomerVisitLogExcel">
+    SELECT
+        cst.cust_code,
+        cst.mobile,
+        tpr.industry_name,
+        tp.project_title,
+        tpv.visit_date
+    FROM t_customer cst left join t_project_visit tpv on  cst.cust_id = tpv.cust_id left join t_project tp on tpv.project_id = tp.project_id left join t_project_range tpr on tpr.project_id = tp.project_id
+    <where>
+      <trim prefixOverrides="and">
+        <if test="search != null">
+          <if test="search.mobile != null and search.mobile !=''">
+            and cst.mobile = #{search.mobile}
+          </if>
+          <if test="search.custCode != null and search.custCode !=''">
+            and cst.cust_code = #{search.custCode}
+          </if>
+        </if>
+      </trim>
+    </where>
+    order by tpv.visit_date desc
+  </select>
+
+  <!--通过客户id visitId查询相关信息-->
+  <select id="queryCstMsgByVisitId" parameterType="Integer" resultType="com.yuepeng.web.manage.log.bean.vo.CustomerVisitLookVo">
+    SELECT
+        cst.cust_id,
+	    cst.cust_code,
+		cst.mobile,
+		cst.head_img,
+		cst.nick_name,
+		cst.sex,
+	    tpr.industry_name,
+	    tp.project_title,
+	    tpv.visit_date,
+	    tpv.visit_id
+    FROM t_customer cst,t_project_visit tpv,t_project tp,t_project_range tpr
+	WHERE
+	    cst.cust_id = tpv.cust_id and tpv.project_id = tp.project_id and tpr.project_id = tp.project_id
+		and tpv.visit_id = #{visitId}
+  </select>
+</mapper>

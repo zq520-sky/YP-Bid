@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.customer.dao.TCustFeedbackMapper" >
+  <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.customer.bean.entity.TFeedback" >
+    <id column="feedback_id" property="feedbackId" jdbcType="INTEGER" />
+    <result column="feedback_opinion" property="feedbackOpinion" jdbcType="VARCHAR" />
+    <result column="feedback_time" property="feedbackTime" jdbcType="TIMESTAMP" />
+    <result column="cust_id" property="custId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    feedback_id, feedback_opinion, feedback_time, cust_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.t_feedback
+    where feedback_id = #{feedbackId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from public.t_feedback
+    where feedback_id = #{feedbackId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuepeng.web.manage.customer.bean.entity.TFeedback" >
+    insert into public.t_feedback (feedback_id, feedback_opinion, feedback_time, 
+      cust_id)
+    values (#{feedbackId,jdbcType=INTEGER}, #{feedbackOpinion,jdbcType=VARCHAR}, #{feedbackTime,jdbcType=TIMESTAMP}, 
+      #{custId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuepeng.web.manage.customer.bean.entity.TFeedback" >
+    insert into public.t_feedback
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="feedbackId != null" >
+        feedback_id,
+      </if>
+      <if test="feedbackOpinion != null" >
+        feedback_opinion,
+      </if>
+      <if test="feedbackTime != null" >
+        feedback_time,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="feedbackId != null" >
+        #{feedbackId,jdbcType=INTEGER},
+      </if>
+      <if test="feedbackOpinion != null" >
+        #{feedbackOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackTime != null" >
+        #{feedbackTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.customer.bean.entity.TFeedback" >
+    update public.t_feedback
+    <set >
+      <if test="feedbackOpinion != null" >
+        feedback_opinion = #{feedbackOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackTime != null" >
+        feedback_time = #{feedbackTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where feedback_id = #{feedbackId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.customer.bean.entity.TFeedback" >
+    update public.t_feedback
+    set feedback_opinion = #{feedbackOpinion,jdbcType=VARCHAR},
+      feedback_time = #{feedbackTime,jdbcType=TIMESTAMP},
+      cust_id = #{custId,jdbcType=INTEGER}
+    where feedback_id = #{feedbackId,jdbcType=INTEGER}
+  </update>
+
+  <sql id="ColumnByVo">
+    t.cust_code,t.mobile,t.head_img,t.nick_name
+  </sql>
+
+  <sql id="queryFeedbackList_where">
+    <if test="search != null">
+      <if test="search.custCode != null and search.custCode != ''">
+        and c.cust_code = #{search.custCode,jdbcType=VARCHAR}||'%'
+      </if>
+      <if test="search.mobile != null and search.mobile != ''">
+        and s.mobile like '%'||#{search.mobile,jdbcType=VARCHAR}||'%'
+      </if>
+    </if>
+  </sql>
+  <!-- 客户反馈分页 -->
+  <select id="queryFeedbackList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+          resultType="com.yuepeng.web.manage.customer.bean.vo.FeedbackVo">
+    SELECT<include refid="ColumnByVo"/>,f.feedback_id,f.feedback_opinion,f.feedback_time
+    from t_feedback f
+    inner join t_customer t on t.cust_id = f.cust_id
+    <where>
+      <include refid="queryFeedbackList_where"/>
+    </where>
+  </select>
+
+
+  <!-- 客户反馈页面导出 -->
+  <select id="exportFeedbackList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+          resultType="com.yuepeng.web.manage.customer.bean.excel.FeedbackExcel">
+    SELECT<include refid="ColumnByVo"/>,f.feedback_id,f.feedback_opinion,f.feedback_time
+    from t_feedback f
+    inner join t_customer t on t.cust_id = f.cust_id
+    <where>
+      <include refid="queryFeedbackList_where"/>
+    </where>
+  </select>
+
+  <!-- 客户反馈页面查看 -->
+  <select id="selectFeedbackListById" parameterType="java.lang.Integer"
+          resultType="com.yuepeng.web.manage.customer.bean.vo.FeedbackVo">
+    SELECT<include refid="ColumnByVo"/>,f.feedback_id,f.feedback_opinion,f.feedback_time
+    from t_feedback f
+    inner join t_customer t on t.cust_id = f.cust_id
+    where f.feedback_id = #{feedbackId,javaType = INTEGER}
+  </select>
+</mapper>

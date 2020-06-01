@@ -1,0 +1,75 @@
+package com.yuepeng.web.manage.log.service.impl;
+
+import com.yuepeng.platform.common.service.impl.SuperServiceIntegerImpl;
+import com.yuepeng.platform.framework.mybatis.pagination.PageContext;
+import com.yuepeng.platform.framework.mybatis.pagination.Pagination;
+import com.yuepeng.web.manage.log.bean.entity.TAppLogSearch;
+import com.yuepeng.web.manage.log.bean.excel.CustomerSearchLogExcel;
+import com.yuepeng.web.manage.log.bean.vo.AppLogSearchVo;
+import com.yuepeng.web.manage.log.bean.vo.CustomerMesVo;
+import com.yuepeng.web.manage.log.bean.vo.CustomerSearchLookVo;
+import com.yuepeng.web.manage.log.dao.TAppLogLoginMapper;
+import com.yuepeng.web.manage.log.dao.TAppLogSearchMapper;
+import com.yuepeng.web.manage.log.service.AppLogSearchService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * @Description: 客户搜索记录 Service
+ * @Author: xtq
+ * @Date: 2020/5/27 22:18
+ * Copyright (c) 2019, Samton. All rights reserved
+ */
+@Service
+public class AppLogSearchServiceImpl extends SuperServiceIntegerImpl<TAppLogSearchMapper, TAppLogSearch> implements AppLogSearchService {
+
+    @Autowired
+    private TAppLogLoginMapper appLogLoginMapper;
+
+    /**
+     * 客户搜索记录list
+     * @param paramBean
+     * @return
+     * @throws Exception
+     */
+    public Pagination<AppLogSearchVo> queryAppLogSearchList(Pagination<AppLogSearchVo> paramBean) throws Exception {
+        Pagination<AppLogSearchVo> pagination = PageContext.initialize(paramBean.getPage(), paramBean.getRows());
+        List<AppLogSearchVo> list = mapper.queryAppLogSearchList(paramBean, pagination.getRowBounds());
+        pagination.setData(list);
+        return pagination;
+    }
+
+    /**
+     * 通过id查询客户搜索记录相关数据
+     * @param custId
+     * @return
+     */
+    public CustomerMesVo findAppLogSearchById(Integer custId) {
+        CustomerMesVo customerMesVo = appLogLoginMapper.findByLogLoginId(custId);
+        return customerMesVo;
+    }
+
+    /**
+     * 导出客户搜索记录
+     * @param paramBean
+     * @return
+     */
+    public Pagination<CustomerSearchLogExcel> exportCustSearchLogList(Pagination<AppLogSearchVo> paramBean) {
+        Pagination<CustomerSearchLogExcel> pagination = PageContext.initialize(paramBean.getPage(), paramBean.getRows());
+        List<CustomerSearchLogExcel> list = mapper.exportCustSearchLogList(paramBean, pagination.getRowBounds());
+        pagination.setData(list);
+        return pagination;
+    }
+
+    /**
+     * 通过logSearchId查看客户搜索记录相关信息
+     * @param logSearchId
+     * @return
+     */
+    public CustomerSearchLookVo queryCstMsgBySearchId(Integer logSearchId) {
+        CustomerSearchLookVo resCustomerSearchLookVo = mapper.queryCstMsgBySearchId(logSearchId);
+        return resCustomerSearchLookVo;
+    }
+}

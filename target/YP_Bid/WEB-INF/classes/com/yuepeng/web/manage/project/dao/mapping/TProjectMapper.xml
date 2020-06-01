@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuepeng.web.manage.project.dao.TProjectMapper">
+  <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.project.bean.entity.TProject">
+    <id column="project_id" jdbcType="INTEGER" property="projectId" />
+    <result column="project_title" jdbcType="VARCHAR" property="projectTitle" />
+    <result column="project_code" jdbcType="VARCHAR" property="projectCode" />
+    <result column="project_money" jdbcType="NUMERIC" property="projectMoney" />
+    <result column="project_company_id" jdbcType="INTEGER" property="projectCompanyId" />
+    <result column="project_company_name" jdbcType="VARCHAR" property="projectCompanyName" />
+    <result column="project_detail" jdbcType="VARCHAR" property="projectDetail" />
+    <result column="release_date" jdbcType="TIMESTAMP" property="releaseDate" />
+    <result column="province_id" jdbcType="INTEGER" property="provinceId" />
+    <result column="city_id" jdbcType="INTEGER" property="cityId" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="add_date" jdbcType="TIMESTAMP" property="addDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    project_id, project_title, project_code, project_money, project_company_id, project_company_name, 
+    project_detail, release_date, province_id, city_id, remark, add_date, update_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from public.t_project
+    where project_id = #{projectId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from public.t_project
+    where project_id = #{projectId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuepeng.web.manage.project.bean.entity.TProject">
+    insert into public.t_project (project_id, project_title, project_code, 
+      project_money, project_company_id, project_company_name, 
+      project_detail, release_date, province_id, 
+      city_id, remark, add_date, 
+      update_date)
+    values (#{projectId,jdbcType=INTEGER}, #{projectTitle,jdbcType=VARCHAR}, #{projectCode,jdbcType=VARCHAR}, 
+      #{projectMoney,jdbcType=NUMERIC}, #{projectCompanyId,jdbcType=INTEGER}, #{projectCompanyName,jdbcType=VARCHAR}, 
+      #{projectDetail,jdbcType=VARCHAR}, #{releaseDate,jdbcType=TIMESTAMP}, #{provinceId,jdbcType=INTEGER}, 
+      #{cityId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{addDate,jdbcType=TIMESTAMP}, 
+      #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuepeng.web.manage.project.bean.entity.TProject">
+    insert into public.t_project
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="projectId != null">
+        project_id,
+      </if>
+      <if test="projectTitle != null">
+        project_title,
+      </if>
+      <if test="projectCode != null">
+        project_code,
+      </if>
+      <if test="projectMoney != null">
+        project_money,
+      </if>
+      <if test="projectCompanyId != null">
+        project_company_id,
+      </if>
+      <if test="projectCompanyName != null">
+        project_company_name,
+      </if>
+      <if test="projectDetail != null">
+        project_detail,
+      </if>
+      <if test="releaseDate != null">
+        release_date,
+      </if>
+      <if test="provinceId != null">
+        province_id,
+      </if>
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="addDate != null">
+        add_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="projectId != null">
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="projectTitle != null">
+        #{projectTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCode != null">
+        #{projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectMoney != null">
+        #{projectMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="projectCompanyId != null">
+        #{projectCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="projectCompanyName != null">
+        #{projectCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectDetail != null">
+        #{projectDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseDate != null">
+        #{releaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="provinceId != null">
+        #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="addDate != null">
+        #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.project.bean.entity.TProject">
+    update public.t_project
+    <set>
+      <if test="projectTitle != null">
+        project_title = #{projectTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCode != null">
+        project_code = #{projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectMoney != null">
+        project_money = #{projectMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="projectCompanyId != null">
+        project_company_id = #{projectCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="projectCompanyName != null">
+        project_company_name = #{projectCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectDetail != null">
+        project_detail = #{projectDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseDate != null">
+        release_date = #{releaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="provinceId != null">
+        province_id = #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="addDate != null">
+        add_date = #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where project_id = #{projectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.project.bean.entity.TProject">
+    update public.t_project
+    set project_title = #{projectTitle,jdbcType=VARCHAR},
+      project_code = #{projectCode,jdbcType=VARCHAR},
+      project_money = #{projectMoney,jdbcType=NUMERIC},
+      project_company_id = #{projectCompanyId,jdbcType=INTEGER},
+      project_company_name = #{projectCompanyName,jdbcType=VARCHAR},
+      project_detail = #{projectDetail,jdbcType=VARCHAR},
+      release_date = #{releaseDate,jdbcType=TIMESTAMP},
+      province_id = #{provinceId,jdbcType=INTEGER},
+      city_id = #{cityId,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      add_date = #{addDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where project_id = #{projectId,jdbcType=INTEGER}
+  </update>
+
+  <sql id="queryPageList_where">
+    <if test="search != null">
+      <if test="search.titleOrContext != null and search.titleOrContext != ''">
+        <if test="search.searchType == 1 ">
+          and tp.project_title like '%'||#{search.titleOrContext,jdbcType=VARCHAR}||'%'
+        </if>
+        <if test="search.searchType == 2 ">
+          and tp.project_detail like '%'||#{search.titleOrContext,jdbcType=VARCHAR}||'%'
+        </if>
+      </if>
+      <if test="search.addDateBegin != null">
+        <![CDATA[ and tp.add_date >= #{search.addDateBegin,jdbcType=TIMESTAMP} ]]>
+      </if>
+      <if test="search.addDateEnd != null">
+        <![CDATA[ and tp.add_date <= #{search.addDateEnd,jdbcType=TIMESTAMP} ]]>
+      </if>
+      <if test="search.infotypeId != null">
+        and tpr.infotype_id = #{search.infotypeId,jdbcType=INTEGER}
+      </if>
+      <if test="search.industryId != null">
+        and tpr.industry_id = #{search.industryId,jdbcType=INTEGER}
+      </if>
+    </if>
+  </sql>
+
+  <select id="queryProjectPageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+          resultType="com.yuepeng.web.manage.project.bean.vo.ProjectVo">
+    SELECT
+      tp.project_id,
+      tp.project_title,
+      tp.project_code,
+      tp.project_money,
+      tp.project_company_id,
+      tp.project_company_name,
+      tp.release_date,
+      tp.province_id,
+      tp.city_id,
+      tp.remark,
+      tp.add_date,
+      tp.update_date,
+      tpr.datasource_webname,
+      tpr.datasource_infotype_name,
+      tpr.infotype_name,
+      tpr.datasource_type_name,
+      tpr.datasource_industry_name,
+      tpr.industry_name,
+      td.datasource_weburl,
+      tsc.province_name,
+      tsc.city_name
+    FROM
+      t_project tp
+      LEFT JOIN t_project_range tpr ON tpr.project_id = tp.project_id
+      LEFT JOIN t_datasource td ON tpr.datasource_id = td.datasource_id
+      LEFT JOIN t_sys_city tsc ON tp.city_id = tsc.city_id
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    ORDER BY tp.add_date DESC
+  </select>
+
+  <select id="exportProjectPageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+          resultType="com.yuepeng.web.manage.project.bean.excel.ProjectExcel">
+    SELECT
+      tp.project_id,
+      tp.project_title,
+      tp.project_code,
+      tp.project_money,
+      tp.project_company_id,
+      tp.project_company_name,
+      tp.release_date,
+      tp.province_id,
+      tp.city_id,
+      tp.remark,
+      tp.add_date,
+      tp.update_date,
+      tpr.datasource_webname,
+      tpr.datasource_infotype_name,
+      tpr.infotype_name,
+      tpr.datasource_type_name,
+      tpr.datasource_industry_name,
+      tpr.industry_name,
+      td.datasource_weburl,
+      tsc.province_name,
+      tsc.city_name
+    FROM
+      t_project tp
+      LEFT JOIN t_project_range tpr ON tpr.project_id = tp.project_id
+      LEFT JOIN t_datasource td ON tpr.datasource_id = td.datasource_id
+      LEFT JOIN t_sys_city tsc ON tp.city_id = tsc.city_id
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    ORDER BY tp.add_date DESC
+  </select>
+
+  <select id="viewProject" resultType="com.yuepeng.web.manage.project.bean.vo.ProjectVo">
+    SELECT
+      tp.project_id,
+      tp.project_title,
+      tp.project_code,
+      tp.project_money,
+      tp.project_company_id,
+      tp.project_company_name,
+      tp.project_detail,
+      tp.release_date,
+      tp.province_id,
+      tp.city_id,
+      tp.remark,
+      tp.add_date,
+      tp.update_date,
+      tpr.datasource_webname,
+      tpr.datasource_infotype_name,
+      tpr.infotype_name,
+      tpr.datasource_type_name,
+      tpr.datasource_industry_name,
+      tpr.industry_name,
+      tpr.datasource_type_id,
+      tpr.datasource_infotype_id,
+      tpr.datasource_industry_id,
+      tpr.infotype_id,
+      tpr.industry_id,
+      td.datasource_weburl,
+      tsc.province_name,
+      tsc.city_name
+    FROM
+      t_project tp
+      LEFT JOIN t_project_range tpr ON tpr.project_id = tp.project_id
+      LEFT JOIN t_datasource td ON tpr.datasource_id = td.datasource_id
+      LEFT JOIN t_sys_city tsc ON tp.city_id = tsc.city_id
+    WHERE tp.project_id = #{projectId}
+  </select>
+
+  <select id="selectListByCompanyId" resultType="com.yuepeng.web.manage.project.bean.entity.TProject">
+    select <include refid="Base_Column_List"/> from t_project where project_company_id = #{projectCompanyId}
+  </select>
+</mapper>

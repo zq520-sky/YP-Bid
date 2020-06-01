@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.log.dao.DataCrawlerLogMapper" >
+
+
+    <select id="queryDataCrawlerLogList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.log.bean.vo.DataCrawlerLogVo">
+        select
+            tdser.datacrawler_service_name,
+            td.datasource_webname,
+            tdcl.crawler_start_time,
+            tdcl.crawler_end_time,
+            tdcl.crawler_num
+        from t_data_crawler_log tdcl left join t_datacrawler_set tds on tdcl.datacrawler_set_id = tds.datacrawler_set_id left join t_datasource td on td.datasource_id = tds.datasource_id left join t_datacrawler_service tdser on tdser.datacrawler_service_id = tds.datacrawler_service_id
+        <where>
+            <trim prefixOverrides="and">
+                <if test="search != null">
+                    <if test="search.datasourceWebname != null and search.datasourceWebname !=''">
+                        and td.datasource_webname = #{search.datasourceWebname}
+                    </if>
+                    <if test="search.crawlerStartTime != null">
+                        <![CDATA[ and tdcl.crawlerStartTime >= #{search.crawlerStartTime,jdbcType=TIMESTAMP} ]]>
+                    </if>
+                    <if test="search.crawlerEndTime != null">
+                        <![CDATA[ and tdcl.crawlerEndTime >= #{search.crawlerEndTime,jdbcType=TIMESTAMP} ]]>
+                    </if>
+                </if>
+            </trim>
+        </where>
+    </select>
+
+    <!--导出记录-->
+    <select id="exportDataCrawlerLogList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.log.bean.excel.DataCrawlerLogExcel">
+        select
+            tdser.datacrawler_service_name,
+            td.datasource_webname,
+            tdcl.crawler_start_time,
+            tdcl.crawler_end_time,
+            tdcl.crawler_num
+        from t_data_crawler_log tdcl left join t_datacrawler_set tds on tdcl.datacrawler_set_id = tds.datacrawler_set_id left join t_datasource td on td.datasource_id = tds.datasource_id left join t_datacrawler_service tdser on tdser.datacrawler_service_id = tds.datacrawler_service_id
+        <where>
+            <trim prefixOverrides="and">
+                <if test="search != null">
+                    <if test="search.datasourceWebname != null and search.datasourceWebname !=''">
+                        and td.datasource_webname = #{search.datasourceWebname}
+                    </if>
+                    <if test="search.crawlerStartTime != null">
+                        <![CDATA[ and tdcl.crawlerStartTime >= #{search.crawlerStartTime,jdbcType=TIMESTAMP} ]]>
+                    </if>
+                    <if test="search.crawlerEndTime != null">
+                        <![CDATA[ and tdcl.crawlerEndTime >= #{search.crawlerEndTime,jdbcType=TIMESTAMP} ]]>
+                    </if>
+                </if>
+            </trim>
+        </where>
+    </select>
+
+</mapper>

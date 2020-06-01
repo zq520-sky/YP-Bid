@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.dict.dao.TProjectKeywordMapper">
+    <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.dict.bean.entity.TProjectKeyword">
+        <id column="project_keyword_id" property="projectKeywordId" jdbcType="INTEGER"/>
+        <result column="project_keyword" property="projectKeyword" jdbcType="VARCHAR"/>
+        <result column="order_num" property="orderNum" jdbcType="INTEGER"/>
+        <result column="create_user_id" property="createUserId" jdbcType="INTEGER"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="update_user_id" property="updateUserId" jdbcType="INTEGER"/>
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        project_keyword_id,
+        project_keyword,
+        order_num,
+        create_user_id,
+        create_date,
+        update_user_id,
+        update_date
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from public.t_project_keyword
+        where project_keyword_id = #{projectKeywordId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from public.t_project_keyword
+        where project_keyword_id = #{projectKeywordId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.yuepeng.web.manage.dict.bean.entity.TProjectKeyword">
+        insert into public.t_project_keyword (project_keyword_id, project_keyword,
+                                              order_num, create_user_id, create_date,
+                                              update_user_id, update_date)
+        values (#{projectKeywordId,jdbcType=INTEGER}, #{projectKeyword,jdbcType=VARCHAR},
+                #{orderNum,jdbcType=INTEGER}, #{createUserId,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP},
+                #{updateUserId,jdbcType=INTEGER}, #{updateDate,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yuepeng.web.manage.dict.bean.entity.TProjectKeyword">
+        insert into public.t_project_keyword
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="projectKeywordId != null">
+                project_keyword_id,
+            </if>
+            <if test="projectKeyword != null">
+                project_keyword,
+            </if>
+            <if test="orderNum != null">
+                order_num,
+            </if>
+            <if test="createUserId != null">
+                create_user_id,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateUserId != null">
+                update_user_id,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="projectKeywordId != null">
+                #{projectKeywordId,jdbcType=INTEGER},
+            </if>
+            <if test="projectKeyword != null">
+                #{projectKeyword,jdbcType=VARCHAR},
+            </if>
+            <if test="orderNum != null">
+                #{orderNum,jdbcType=INTEGER},
+            </if>
+            <if test="createUserId != null">
+                #{createUserId,jdbcType=INTEGER},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateUserId != null">
+                #{updateUserId,jdbcType=INTEGER},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.dict.bean.entity.TProjectKeyword">
+        update public.t_project_keyword
+        <set>
+            <if test="projectKeyword != null">
+                project_keyword = #{projectKeyword,jdbcType=VARCHAR},
+            </if>
+            <if test="orderNum != null">
+                order_num = #{orderNum,jdbcType=INTEGER},
+            </if>
+            <if test="createUserId != null">
+                create_user_id = #{createUserId,jdbcType=INTEGER},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateUserId != null">
+                update_user_id = #{updateUserId,jdbcType=INTEGER},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where project_keyword_id = #{projectKeywordId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.dict.bean.entity.TProjectKeyword">
+        update public.t_project_keyword
+        set project_keyword = #{projectKeyword,jdbcType=VARCHAR},
+            order_num       = #{orderNum,jdbcType=INTEGER},
+            create_user_id  = #{createUserId,jdbcType=INTEGER},
+            create_date     = #{createDate,jdbcType=TIMESTAMP},
+            update_user_id  = #{updateUserId,jdbcType=INTEGER},
+            update_date     = #{updateDate,jdbcType=TIMESTAMP}
+        where project_keyword_id = #{projectKeywordId,jdbcType=INTEGER}
+    </update>
+
+
+    <sql id="queryProjectKeywordList_where">
+        <if test="search != null">
+            <if test="search.projectKeyword != null and search.projectKeyword != ''">
+                and p.project_keyword like '%'|| #{search.projectKeyword,jdbcType=VARCHAR}||'%'
+            </if>
+        </if>
+    </sql>
+    <!-- 招标信息类型分页 -->
+    <select id="queryProjectKeywordList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.dict.bean.vo.ProjectKeywordVo">
+        SELECT p.project_keyword_id,p.project_keyword,p.order_num
+        from t_project_keyword p
+        <where>
+            <include refid="queryProjectKeywordList_where"/>
+        </where>
+    </select>
+
+
+    <!-- 招标信息类型导出 -->
+    <select id="exportProjectKeywordList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.dict.bean.excel.ProjectKeywordEntity">
+        SELECT p.project_keyword_id,p.project_keyword,p.order_num
+        from t_project_keyword p
+        <where>
+            <include refid="queryProjectKeywordList_where"/>
+        </where>
+    </select>
+
+    <!-- 招标信息类型查看 -->
+    <select id="selectProjectKeywordListById" parameterType="java.lang.Integer"
+            resultType="com.yuepeng.web.manage.dict.bean.vo.ProjectKeywordVo">
+        SELECT p.project_keyword_id,p.project_keyword,p.order_num
+        from t_project_keyword p
+        where p.project_keyword_id = #{projectKeywordId,javaType = INTEGER}
+    </select>
+</mapper>

@@ -1,0 +1,50 @@
+package com.yuepeng.module.entity;
+
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+import java.io.Serializable;
+
+import lombok.Data;
+
+/**
+ * 系统设置表(SysSet)表实体类
+ *
+ * @author wzq
+ * @since 2020-05-30 15:22:01
+ */
+@Data
+@SuppressWarnings("serial")
+@TableName("t_sys_set")
+public class SysSetEntity extends Model<SysSetEntity> {
+    /**
+     * 系统设置ID
+     */
+    private Integer setId;
+    /**
+     * 单位名称
+     */
+    private String unitName;
+    /**
+     * 系统名称
+     */
+    private String sysName;
+    /**
+     * 系统LOGO
+     */
+    private String sysLogo;
+    /**
+     * 每日新增累加值
+     */
+    private Integer dayNumAdd;
+
+    /**
+     * 获取主键值
+     *
+     * @return 主键值
+     */
+    @Override
+    protected Serializable pkVal() {
+        return this.setId;
+    }
+}

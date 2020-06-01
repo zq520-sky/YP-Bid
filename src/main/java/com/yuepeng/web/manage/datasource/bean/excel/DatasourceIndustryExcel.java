@@ -1,0 +1,58 @@
+package com.yuepeng.web.manage.datasource.bean.excel;
+
+import cn.afterturn.easypoi.excel.annotation.Excel;
+import com.yuepeng.web.manage.datasource.bean.entity.TDatasourceIndustry;
+import java.io.Serializable;
+/**
+ * DatasourceIndustryExcel
+ *
+ * @author wzq
+ * @since 2020-05-22 16:20:57
+ */
+public class DatasourceIndustryExcel extends TDatasourceIndustry implements Serializable{
+    @Excel(name = "数据来源类型名称", width =25)
+    private String datasourceTypeName;
+
+    @Excel(name = "数据来源名称(网站)", width = 30)
+    private String datasourceWebname;
+
+    @Excel(name = "行业类型名称", width = 15)
+    private String datasourceIndustryName;
+
+    @Excel(name = "对应招标行业类型", width = 25)
+    private String industryName;
+
+    public String getDatasourceTypeName() {
+        return datasourceTypeName;
+    }
+
+    public void setDatasourceTypeName(String datasourceTypeName) {
+        this.datasourceTypeName = datasourceTypeName;
+    }
+
+    public String getDatasourceWebname() {
+        return datasourceWebname;
+    }
+
+    public void setDatasourceWebname(String datasourceWebname) {
+        this.datasourceWebname = datasourceWebname;
+    }
+
+    @Override
+    public String getDatasourceIndustryName() {
+        return datasourceIndustryName;
+    }
+
+    @Override
+    public void setDatasourceIndustryName(String datasourceIndustryName) {
+        this.datasourceIndustryName = datasourceIndustryName;
+    }
+
+    public String getIndustryName() {
+        return industryName;
+    }
+
+    public void setIndustryName(String industryName) {
+        this.industryName = industryName;
+    }
+}

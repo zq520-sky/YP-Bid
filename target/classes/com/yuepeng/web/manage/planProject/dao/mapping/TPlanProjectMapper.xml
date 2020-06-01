@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.planProject.dao.TPlanProjectMapper">
+    <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.planProject.bean.entity.TPlanProject">
+        <id column="plan_project_id" property="planProjectId" jdbcType="INTEGER"/>
+        <result column="datasource_id" property="datasourceId" jdbcType="INTEGER"/>
+        <result column="project_name" property="projectName" jdbcType="VARCHAR"/>
+        <result column="project_code" property="projectCode" jdbcType="VARCHAR"/>
+        <result column="country_code" property="countryCode" jdbcType="VARCHAR"/>
+        <result column="project_type" property="projectType" jdbcType="VARCHAR"/>
+        <result column="project_unit" property="projectUnit" jdbcType="VARCHAR"/>
+        <result column="setup_unit" property="setupUnit" jdbcType="VARCHAR"/>
+        <result column="setup_date" property="setupDate" jdbcType="DATE"/>
+        <result column="examine_depart" property="examineDepart" jdbcType="VARCHAR"/>
+        <result column="examine_items" property="examineItems" jdbcType="VARCHAR"/>
+        <result column="examine_result" property="examineResult" jdbcType="VARCHAR"/>
+        <result column="examine_date" property="examineDate" jdbcType="DATE"/>
+        <result column="project_detail" property="projectDetail" jdbcType="VARCHAR"/>
+        <result column="add_date" property="addDate" jdbcType="TIMESTAMP"/>
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
+        <result column="stage_id" property="stageId" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        plan_project_id,
+        datasource_id,
+        project_name,
+        project_code,
+        country_code,
+        project_type,
+        project_unit,
+        setup_unit,
+        setup_date,
+        examine_depart,
+        examine_items,
+        examine_result,
+        examine_date,
+        project_detail,
+        add_date,
+        update_date,
+        stage_id
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from public.t_plan_project
+        where plan_project_id = #{planProjectId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from public.t_plan_project
+        where plan_project_id = #{planProjectId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.yuepeng.web.manage.planProject.bean.entity.TPlanProject">
+        insert into public.t_plan_project (plan_project_id, datasource_id, project_name,
+                                           project_code, country_code, project_type,
+                                           project_unit, setup_unit, setup_date,
+                                           examine_depart, examine_items, examine_result,
+                                           examine_date, project_detail, add_date,
+                                           update_date, stage_id)
+        values (#{planProjectId,jdbcType=INTEGER}, #{datasourceId,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR},
+                #{projectCode,jdbcType=VARCHAR}, #{countryCode,jdbcType=VARCHAR}, #{projectType,jdbcType=VARCHAR},
+                #{projectUnit,jdbcType=VARCHAR}, #{setupUnit,jdbcType=VARCHAR}, #{setupDate,jdbcType=DATE},
+                #{examineDepart,jdbcType=VARCHAR}, #{examineItems,jdbcType=VARCHAR}, #{examineResult,jdbcType=VARCHAR},
+                #{examineDate,jdbcType=DATE}, #{projectDetail,jdbcType=VARCHAR}, #{addDate,jdbcType=TIMESTAMP},
+                #{updateDate,jdbcType=TIMESTAMP}, #{stageId,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yuepeng.web.manage.planProject.bean.entity.TPlanProject">
+        insert into public.t_plan_project
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="planProjectId != null">
+                plan_project_id,
+            </if>
+            <if test="datasourceId != null">
+                datasource_id,
+            </if>
+            <if test="projectName != null">
+                project_name,
+            </if>
+            <if test="projectCode != null">
+                project_code,
+            </if>
+            <if test="countryCode != null">
+                country_code,
+            </if>
+            <if test="projectType != null">
+                project_type,
+            </if>
+            <if test="projectUnit != null">
+                project_unit,
+            </if>
+            <if test="setupUnit != null">
+                setup_unit,
+            </if>
+            <if test="setupDate != null">
+                setup_date,
+            </if>
+            <if test="examineDepart != null">
+                examine_depart,
+            </if>
+            <if test="examineItems != null">
+                examine_items,
+            </if>
+            <if test="examineResult != null">
+                examine_result,
+            </if>
+            <if test="examineDate != null">
+                examine_date,
+            </if>
+            <if test="projectDetail != null">
+                project_detail,
+            </if>
+            <if test="addDate != null">
+                add_date,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+            <if test="stageId != null">
+                stage_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="planProjectId != null">
+                #{planProjectId,jdbcType=INTEGER},
+            </if>
+            <if test="datasourceId != null">
+                #{datasourceId,jdbcType=INTEGER},
+            </if>
+            <if test="projectName != null">
+                #{projectName,jdbcType=VARCHAR},
+            </if>
+            <if test="projectCode != null">
+                #{projectCode,jdbcType=VARCHAR},
+            </if>
+            <if test="countryCode != null">
+                #{countryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="projectType != null">
+                #{projectType,jdbcType=VARCHAR},
+            </if>
+            <if test="projectUnit != null">
+                #{projectUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="setupUnit != null">
+                #{setupUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="setupDate != null">
+                #{setupDate,jdbcType=DATE},
+            </if>
+            <if test="examineDepart != null">
+                #{examineDepart,jdbcType=VARCHAR},
+            </if>
+            <if test="examineItems != null">
+                #{examineItems,jdbcType=VARCHAR},
+            </if>
+            <if test="examineResult != null">
+                #{examineResult,jdbcType=VARCHAR},
+            </if>
+            <if test="examineDate != null">
+                #{examineDate,jdbcType=DATE},
+            </if>
+            <if test="projectDetail != null">
+                #{projectDetail,jdbcType=VARCHAR},
+            </if>
+            <if test="addDate != null">
+                #{addDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="stageId != null">
+                #{stageId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.yuepeng.web.manage.planProject.bean.entity.TPlanProject">
+        update public.t_plan_project
+        <set>
+            <if test="datasourceId != null">
+                datasource_id = #{datasourceId,jdbcType=INTEGER},
+            </if>
+            <if test="projectName != null">
+                project_name = #{projectName,jdbcType=VARCHAR},
+            </if>
+            <if test="projectCode != null">
+                project_code = #{projectCode,jdbcType=VARCHAR},
+            </if>
+            <if test="countryCode != null">
+                country_code = #{countryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="projectType != null">
+                project_type = #{projectType,jdbcType=VARCHAR},
+            </if>
+            <if test="projectUnit != null">
+                project_unit = #{projectUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="setupUnit != null">
+                setup_unit = #{setupUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="setupDate != null">
+                setup_date = #{setupDate,jdbcType=DATE},
+            </if>
+            <if test="examineDepart != null">
+                examine_depart = #{examineDepart,jdbcType=VARCHAR},
+            </if>
+            <if test="examineItems != null">
+                examine_items = #{examineItems,jdbcType=VARCHAR},
+            </if>
+            <if test="examineResult != null">
+                examine_result = #{examineResult,jdbcType=VARCHAR},
+            </if>
+            <if test="examineDate != null">
+                examine_date = #{examineDate,jdbcType=DATE},
+            </if>
+            <if test="projectDetail != null">
+                project_detail = #{projectDetail,jdbcType=VARCHAR},
+            </if>
+            <if test="addDate != null">
+                add_date = #{addDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="stageId != null">
+                stage_id = #{stageId,jdbcType=INTEGER},
+            </if>
+        </set>
+        where plan_project_id = #{planProjectId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.planProject.bean.entity.TPlanProject">
+        update public.t_plan_project
+        set datasource_id  = #{datasourceId,jdbcType=INTEGER},
+            project_name   = #{projectName,jdbcType=VARCHAR},
+            project_code   = #{projectCode,jdbcType=VARCHAR},
+            country_code   = #{countryCode,jdbcType=VARCHAR},
+            project_type   = #{projectType,jdbcType=VARCHAR},
+            project_unit   = #{projectUnit,jdbcType=VARCHAR},
+            setup_unit     = #{setupUnit,jdbcType=VARCHAR},
+            setup_date     = #{setupDate,jdbcType=DATE},
+            examine_depart = #{examineDepart,jdbcType=VARCHAR},
+            examine_items  = #{examineItems,jdbcType=VARCHAR},
+            examine_result = #{examineResult,jdbcType=VARCHAR},
+            examine_date   = #{examineDate,jdbcType=DATE},
+            project_detail = #{projectDetail,jdbcType=VARCHAR},
+            add_date       = #{addDate,jdbcType=TIMESTAMP},
+            update_date    = #{updateDate,jdbcType=TIMESTAMP},
+            stage_id       = #{stageId,jdbcType=INTEGER}
+        where plan_project_id = #{planProjectId,jdbcType=INTEGER}
+    </update>
+
+    <sql id="queryPagePlanVoList_where">
+        <if test="search != null">
+            <if test="search.projectName != null and search.projectName != ''">
+                <if test="search.searchType == 1 ">
+                    and p.project_name like '%'||#{search.projectName,jdbcType=VARCHAR}||'%'
+                </if>
+                <if test="search.searchType == 2 ">
+                    and p.project_detail like '%'||#{search.projectName,jdbcType=VARCHAR}||'%'
+                </if>
+            </if>
+            <if test="search.projectCode != null and search.projectCode != ''">
+                and p.project_code like '%'||#{search.projectCode,jdbcType=VARCHAR}||'%'
+                or p.country_code like '%'||#{search.countryCode,jdbcType=VARCHAR}||'%'
+            </if>
+            <if test="search.createDateBegin != null">
+                <![CDATA[ and p.add_date >= #{search.createDateBegin,jdbcType=TIMESTAMP} ]]>
+            </if>
+            <if test="search.createDateEnd != null">
+                <![CDATA[ and p.add_date <= #{search.createDateEnd,jdbcType=TIMESTAMP} ]]>
+            </if>
+        </if>
+    </sql>
+
+    <!-- 客户订阅查询页面查找 -->
+    <select id="queryPlanList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.planProject.bean.vo.PlanProjectVo">
+        SELECT p.plan_project_id, p.datasource_id, p.project_name, p.project_code, p.country_code, p.project_type,
+        p.project_unit, p.setup_unit, p.setup_date, p.examine_depart, p.examine_items, p.examine_result,
+        p.examine_date, p.project_detail, p.add_date, p.update_date, p.stage_id,r.datasource_webname,
+        s.datasource_type_name,r.datasource_weburl,t.province_name,t.city_name
+        from t_plan_project p
+        inner join t_datasource r on p.datasource_id = r.datasource_id
+        inner join t_sys_city t on r.province_id = t.province_id
+        inner join t_datasource_type s on r.datasource_type_id = s.datasource_type_id
+        <where>
+            <include refid="queryPagePlanVoList_where"/>
+        </where>
+    </select>
+
+
+    <!-- 客户订阅查询页面导出 -->
+    <select id="exportPlanSearchList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.planProject.bean.excel.PlanProjectEntity">
+        SELECT p.plan_project_id, p.datasource_id, p.project_name, p.project_code, p.country_code, p.project_type,
+        p.project_unit, p.setup_unit, p.setup_date, p.examine_depart, p.examine_items, p.examine_result,
+        p.examine_date, p.project_detail, p.add_date, p.update_date, p.stage_id,r.datasource_webname,
+        s.datasource_type_name,r.datasource_weburl,t.province_name,t.city_name
+        from t_plan_project p
+        inner join t_datasource r on p.datasource_id = r.datasource_id
+        inner join t_sys_city t on r.province_id = t.province_id
+        inner join t_datasource_type s on r.datasource_type_id = s.datasource_type_id
+        <where>
+            <include refid="queryPagePlanVoList_where"/>
+        </where>
+    </select>
+
+    <!-- 客户订阅查询页面查看 -->
+    <select id="selectPlanSearchListById" parameterType="java.lang.Integer"
+            resultType="com.yuepeng.web.manage.planProject.bean.vo.PlanProjectVo">
+        select p.plan_project_id,
+               p.datasource_id,
+               p.project_name,
+               p.project_code,
+               p.country_code,
+               p.project_type,
+               p.project_unit,
+               p.setup_unit,
+               p.setup_date,
+               p.examine_depart,
+               p.examine_items,
+               p.examine_result,
+               p.examine_date,
+               p.project_detail,
+               p.add_date,
+               p.update_date,
+               p.stage_id,
+               r.datasource_webname,
+               s.datasource_type_name,
+               r.datasource_weburl,
+               t.province_name,
+               t.city_name
+        from t_plan_project p
+                 inner join t_datasource r on p.datasource_id = r.datasource_id
+                 inner join t_sys_city t on r.province_id = t.province_id
+                 inner join t_datasource_type s on r.datasource_type_id = s.datasource_type_id
+        where p.plan_project_id = #{planProjectId,javaType = INTEGER}
+    </select>
+
+</mapper>

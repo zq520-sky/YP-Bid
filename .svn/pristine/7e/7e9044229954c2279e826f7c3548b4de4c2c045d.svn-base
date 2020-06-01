@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.project.dao.TSearchHotwordMapper">
+    <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.project.bean.entity.TSearchHotword">
+        <id column="hotword_id" property="hotwordId" jdbcType="INTEGER"/>
+        <result column="project_type" property="projectType" jdbcType="INTEGER"/>
+        <result column="hotword_name" property="hotwordName" jdbcType="VARCHAR"/>
+        <result column="search_times" property="searchTimes" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        hotword_id,
+        project_type,
+        hotword_name,
+        search_times
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from public.t_search_hotword
+        where hotword_id = #{hotwordId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from public.t_search_hotword
+        where hotword_id = #{hotwordId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.yuepeng.web.manage.project.bean.entity.TSearchHotword">
+        insert into public.t_search_hotword (hotword_id, project_type, hotword_name,
+                                             search_times)
+        values (#{hotwordId,jdbcType=INTEGER}, #{projectType,jdbcType=INTEGER}, #{hotwordName,jdbcType=VARCHAR},
+                #{searchTimes,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yuepeng.web.manage.project.bean.entity.TSearchHotword">
+        insert into public.t_search_hotword
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="hotwordId != null">
+                hotword_id,
+            </if>
+            <if test="projectType != null">
+                project_type,
+            </if>
+            <if test="hotwordName != null">
+                hotword_name,
+            </if>
+            <if test="searchTimes != null">
+                search_times,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="hotwordId != null">
+                #{hotwordId,jdbcType=INTEGER},
+            </if>
+            <if test="projectType != null">
+                #{projectType,jdbcType=INTEGER},
+            </if>
+            <if test="hotwordName != null">
+                #{hotwordName,jdbcType=VARCHAR},
+            </if>
+            <if test="searchTimes != null">
+                #{searchTimes,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.project.bean.entity.TSearchHotword">
+        update public.t_search_hotword
+        <set>
+            <if test="projectType != null">
+                project_type = #{projectType,jdbcType=INTEGER},
+            </if>
+            <if test="hotwordName != null">
+                hotword_name = #{hotwordName,jdbcType=VARCHAR},
+            </if>
+            <if test="searchTimes != null">
+                search_times = #{searchTimes,jdbcType=INTEGER},
+            </if>
+        </set>
+        where hotword_id = #{hotwordId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.project.bean.entity.TSearchHotword">
+        update public.t_search_hotword
+        set project_type = #{projectType,jdbcType=INTEGER},
+            hotword_name = #{hotwordName,jdbcType=VARCHAR},
+            search_times = #{searchTimes,jdbcType=INTEGER}
+        where hotword_id = #{hotwordId,jdbcType=INTEGER}
+    </update>
+
+    <sql id="queryPageHotWordVoList_where">
+        <if test="search != null">
+            <if test="search.hotwordName != null and search.hotwordName != ''">
+                and s.hotword_name like '%'||#{search.hotwordName,jdbcType=VARCHAR}||'%'
+            </if>
+        </if>
+    </sql>
+
+    <!-- 搜索热词设置分页 -->
+    <select id="queryHotwordList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.project.bean.vo.SearchHotwordVo">
+        SELECT
+        s.hotword_id,s.project_type,s.hotword_name,s.search_times,s.create_date
+        from t_search_hotword s
+        <where>
+            <include refid="queryPageHotWordVoList_where"/>
+        </where>
+    </select>
+
+    <!-- 搜索热词设置查看 -->
+    <select id="queryHotwordListById" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.project.bean.vo.SearchHotwordVo">
+        SELECT s.hotword_id,
+               s.project_type,
+               s.hotword_name,
+               s.search_times,
+               s.create_date
+        from t_search_hotword s
+        where s.hotword_id = #{hotwordId,javaType = INTEGER}
+    </select>
+
+    <!-- 搜索热词设置导出 -->
+    <select id="exportHotwordList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.project.bean.excel.SearchHotwordEntity">
+        SELECT
+        s.hotword_id,s.project_type,s.hotword_name,s.search_times,s.create_date
+        from t_search_hotword s
+        <where>
+            <include refid="queryPageHotWordVoList_where"/>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.finance.dao.TOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.finance.bean.entity.TOrder" >
+    <id column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="cust_id" property="custId" jdbcType="INTEGER" />
+    <result column="order_code" property="orderCode" jdbcType="VARCHAR" />
+    <result column="order_price" property="orderPrice" jdbcType="NUMERIC" />
+    <result column="pay_mode" property="payMode" jdbcType="INTEGER" />
+    <result column="pay_order_code" property="payOrderCode" jdbcType="VARCHAR" />
+    <result column="pay_flag" property="payFlag" jdbcType="INTEGER" />
+    <result column="pay_price" property="payPrice" jdbcType="NUMERIC" />
+    <result column="pay_date" property="payDate" jdbcType="TIMESTAMP" />
+    <result column="order_date" property="orderDate" jdbcType="TIMESTAMP" />
+    <result column="is_invoice" property="isInvoice" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_id, cust_id, order_code, order_price, pay_mode, pay_order_code, pay_flag, pay_price, 
+    pay_date, order_date, is_invoice, remark, create_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.t_order
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from public.t_order
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuepeng.web.manage.finance.bean.entity.TOrder" >
+    insert into public.t_order (order_id, cust_id, order_code, 
+      order_price, pay_mode, pay_order_code, 
+      pay_flag, pay_price, pay_date, 
+      order_date, is_invoice, remark, 
+      create_date)
+    values (#{orderId,jdbcType=INTEGER}, #{custId,jdbcType=INTEGER}, #{orderCode,jdbcType=VARCHAR}, 
+      #{orderPrice,jdbcType=NUMERIC}, #{payMode,jdbcType=INTEGER}, #{payOrderCode,jdbcType=VARCHAR}, 
+      #{payFlag,jdbcType=INTEGER}, #{payPrice,jdbcType=NUMERIC}, #{payDate,jdbcType=TIMESTAMP}, 
+      #{orderDate,jdbcType=TIMESTAMP}, #{isInvoice,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuepeng.web.manage.finance.bean.entity.TOrder" >
+    insert into public.t_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="orderCode != null" >
+        order_code,
+      </if>
+      <if test="orderPrice != null" >
+        order_price,
+      </if>
+      <if test="payMode != null" >
+        pay_mode,
+      </if>
+      <if test="payOrderCode != null" >
+        pay_order_code,
+      </if>
+      <if test="payFlag != null" >
+        pay_flag,
+      </if>
+      <if test="payPrice != null" >
+        pay_price,
+      </if>
+      <if test="payDate != null" >
+        pay_date,
+      </if>
+      <if test="orderDate != null" >
+        order_date,
+      </if>
+      <if test="isInvoice != null" >
+        is_invoice,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="orderCode != null" >
+        #{orderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPrice != null" >
+        #{orderPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="payMode != null" >
+        #{payMode,jdbcType=INTEGER},
+      </if>
+      <if test="payOrderCode != null" >
+        #{payOrderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payFlag != null" >
+        #{payFlag,jdbcType=INTEGER},
+      </if>
+      <if test="payPrice != null" >
+        #{payPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="payDate != null" >
+        #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderDate != null" >
+        #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isInvoice != null" >
+        #{isInvoice,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.finance.bean.entity.TOrder" >
+    update public.t_order
+    <set >
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="orderCode != null" >
+        order_code = #{orderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPrice != null" >
+        order_price = #{orderPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="payMode != null" >
+        pay_mode = #{payMode,jdbcType=INTEGER},
+      </if>
+      <if test="payOrderCode != null" >
+        pay_order_code = #{payOrderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payFlag != null" >
+        pay_flag = #{payFlag,jdbcType=INTEGER},
+      </if>
+      <if test="payPrice != null" >
+        pay_price = #{payPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="payDate != null" >
+        pay_date = #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderDate != null" >
+        order_date = #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isInvoice != null" >
+        is_invoice = #{isInvoice,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.finance.bean.entity.TOrder" >
+    update public.t_order
+    set cust_id = #{custId,jdbcType=INTEGER},
+      order_code = #{orderCode,jdbcType=VARCHAR},
+      order_price = #{orderPrice,jdbcType=NUMERIC},
+      pay_mode = #{payMode,jdbcType=INTEGER},
+      pay_order_code = #{payOrderCode,jdbcType=VARCHAR},
+      pay_flag = #{payFlag,jdbcType=INTEGER},
+      pay_price = #{payPrice,jdbcType=NUMERIC},
+      pay_date = #{payDate,jdbcType=TIMESTAMP},
+      order_date = #{orderDate,jdbcType=TIMESTAMP},
+      is_invoice = #{isInvoice,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+
+
+  <sql id="queryPageList_where">
+    <if test="search != null">
+      <if test="search.custCode != null ">
+        and tc.cust_code like '%'||#{search.custCode,jdbcType=VARCHAR}||'%'
+      </if>
+      <if test="search.mobile != null and search.mobile != ''">
+        and tc.mobile like '%'||#{search.mobile,jdbcType=VARCHAR}||'%'
+      </if>
+      <if test="search.orderDateBegin != null">
+        <![CDATA[ and tor.order_date >= #{search.orderDateBegin,jdbcType=TIMESTAMP} ]]>
+      </if>
+      <if test="search.orderDateEnd != null">
+        <![CDATA[ and tor.order_date <= #{search.orderDateEnd,jdbcType=TIMESTAMP} ]]>
+      </if>
+      <if test="search.payMode != null">
+        and tor.pay_mode = #{search.payMode,jdbcType=INTEGER}
+      </if>
+    </if>
+  </sql>
+
+  <select id="queryOrderPageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.finance.bean.vo.OrderVo">
+    SELECT
+      tor.order_id,
+      tor.cust_id,
+      tor.order_code,
+      tor.order_price,
+      tor.pay_mode,
+      tor.pay_order_code,
+      tor.pay_flag,
+      tor.pay_price,
+      tor.pay_date,
+      tor.order_date,
+      tor.is_invoice,
+      tor.remark,
+      tor.create_date,
+      tc.cust_code,
+      tc.mobile,
+      tc.nick_name,
+      tc.member_type
+    FROM
+      t_order tor
+      INNER JOIN t_customer tc ON tor.cust_id = tc.cust_id
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    ORDER BY tor.order_date DESC
+  </select>
+
+  <select id="exportOrderPageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination" resultType="com.yuepeng.web.manage.finance.bean.excel.OrderExcel">
+    SELECT
+      tor.order_id,
+      tor.cust_id,
+      tor.order_code,
+      tor.order_price,
+      tor.pay_mode,
+      tor.pay_order_code,
+      tor.pay_flag,
+      tor.pay_price,
+      tor.pay_date,
+      tor.order_date,
+      tor.is_invoice,
+      tor.remark,
+      tor.create_date,
+      tc.cust_code,
+      tc.mobile,
+      tc.nick_name,
+      tc.member_type
+    FROM
+      t_order tor
+      INNER JOIN t_customer tc ON tor.cust_id = tc.cust_id
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    ORDER BY tor.order_date DESC
+  </select>
+
+  <select id="viewOrder" resultType="com.yuepeng.web.manage.finance.bean.vo.OrderVo">
+    SELECT
+      tor.order_id,
+      tor.cust_id,
+      tor.order_code,
+      tor.order_price,
+      tor.pay_mode,
+      tor.pay_order_code,
+      tor.pay_flag,
+      tor.pay_price,
+      tor.pay_date,
+      tor.order_date,
+      tor.is_invoice,
+      tor.remark,
+      tor.create_date,
+      tc.cust_code,
+      tc.mobile,
+      tc.nick_name,
+      tc.member_type
+    FROM
+      t_order tor
+      INNER JOIN t_customer tc ON tor.cust_id = tc.cust_id
+    WHERE tor.order_id = #{orderId}
+  </select>
+</mapper>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.system.dao.TSysSetMapper">
+    <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.system.bean.entity.TSysSet">
+        <id column="set_id" property="setId" jdbcType="INTEGER"/>
+        <result column="unit_name" property="unitName" jdbcType="VARCHAR"/>
+        <result column="sys_name" property="sysName" jdbcType="VARCHAR"/>
+        <result column="sys_logo" property="sysLogo" jdbcType="VARCHAR"/>
+        <result column="day_num_add" property="dayNumAdd" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        set_id,
+        unit_name,
+        sys_name,
+        sys_logo,
+        day_num_add
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from public.t_sys_set
+        where set_id = #{setId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from public.t_sys_set
+        where set_id = #{setId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.yuepeng.web.manage.system.bean.entity.TSysSet">
+        insert into public.t_sys_set (set_id, unit_name, sys_name,
+                                      sys_logo, day_num_add)
+        values (#{setId,jdbcType=INTEGER}, #{unitName,jdbcType=VARCHAR}, #{sysName,jdbcType=VARCHAR},
+                #{sysLogo,jdbcType=VARCHAR}, #{dayNumAdd,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yuepeng.web.manage.system.bean.entity.TSysSet">
+        insert into public.t_sys_set
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="setId != null">
+                set_id,
+            </if>
+            <if test="unitName != null">
+                unit_name,
+            </if>
+            <if test="sysName != null">
+                sys_name,
+            </if>
+            <if test="sysLogo != null">
+                sys_logo,
+            </if>
+            <if test="dayNumAdd != null">
+                day_num_add,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="setId != null">
+                #{setId,jdbcType=INTEGER},
+            </if>
+            <if test="unitName != null">
+                #{unitName,jdbcType=VARCHAR},
+            </if>
+            <if test="sysName != null">
+                #{sysName,jdbcType=VARCHAR},
+            </if>
+            <if test="sysLogo != null">
+                #{sysLogo,jdbcType=VARCHAR},
+            </if>
+            <if test="dayNumAdd != null">
+                #{dayNumAdd,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.system.bean.entity.TSysSet">
+        update public.t_sys_set
+        <set>
+            <if test="unitName != null">
+                unit_name = #{unitName,jdbcType=VARCHAR},
+            </if>
+            <if test="sysName != null">
+                sys_name = #{sysName,jdbcType=VARCHAR},
+            </if>
+            <if test="sysLogo != null">
+                sys_logo = #{sysLogo,jdbcType=VARCHAR},
+            </if>
+            <if test="dayNumAdd != null">
+                day_num_add = #{dayNumAdd,jdbcType=INTEGER},
+            </if>
+        </set>
+        where set_id = #{setId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.system.bean.entity.TSysSet">
+        update public.t_sys_set
+        set unit_name   = #{unitName,jdbcType=VARCHAR},
+            sys_name    = #{sysName,jdbcType=VARCHAR},
+            sys_logo    = #{sysLogo,jdbcType=VARCHAR},
+            day_num_add = #{dayNumAdd,jdbcType=INTEGER}
+        where set_id = #{setId,jdbcType=INTEGER}
+    </update>
+
+
+    <select id="querySysPageList" resultType="com.yuepeng.web.manage.system.bean.vo.SysSetVo">
+        SELECT s.set_id,
+               s.unit_name,
+               s.sys_name,
+               s.sys_logo,
+               s.day_num_add
+        FROM t_sys_set s
+        limit 1
+    </select>
+</mapper>

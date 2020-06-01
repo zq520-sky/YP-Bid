@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.describe.dao.TSubscribeSetMapper">
+    <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.describe.bean.entity.TSubscribeSet">
+        <id column="subscribe_set_id" property="subscribeSetId" jdbcType="INTEGER"/>
+        <result column="serarch_type" property="serarchType" jdbcType="INTEGER"/>
+        <result column="key_words" property="keyWords" jdbcType="VARCHAR"/>
+        <result column="province_ids" property="provinceIds" jdbcType="VARCHAR"/>
+        <result column="city_ids" property="cityIds" jdbcType="VARCHAR"/>
+        <result column="area_names" property="areaNames" jdbcType="VARCHAR"/>
+        <result column="infotype_ids" property="infotypeIds" jdbcType="VARCHAR"/>
+        <result column="infotype_names" property="infotypeNames" jdbcType="VARCHAR"/>
+        <result column="subscribe_set_time" property="subscribeSetTime" jdbcType="TIMESTAMP"/>
+        <result column="cust_id" property="custId" jdbcType="INTEGER"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        subscribe_set_id,
+        serarch_type,
+        key_words,
+        province_ids,
+        city_ids,
+        area_names,
+        infotype_ids,
+        infotype_names,
+        subscribe_set_time,
+        cust_id,
+        create_date,
+        update_date
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from public.t_subscribe_set
+        where subscribe_set_id = #{subscribeSetId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from public.t_subscribe_set
+        where subscribe_set_id = #{subscribeSetId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.yuepeng.web.manage.describe.bean.entity.TSubscribeSet">
+        insert into public.t_subscribe_set (subscribe_set_id, serarch_type, key_words,
+                                            province_ids, city_ids, area_names,
+                                            infotype_ids, infotype_names, subscribe_set_time,
+                                            cust_id, create_date, update_date)
+        values (#{subscribeSetId,jdbcType=INTEGER}, #{serarchType,jdbcType=INTEGER}, #{keyWords,jdbcType=VARCHAR},
+                #{provinceIds,jdbcType=VARCHAR}, #{cityIds,jdbcType=VARCHAR}, #{areaNames,jdbcType=VARCHAR},
+                #{infotypeIds,jdbcType=VARCHAR}, #{infotypeNames,jdbcType=VARCHAR},
+                #{subscribeSetTime,jdbcType=TIMESTAMP},
+                #{custId,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yuepeng.web.manage.describe.bean.entity.TSubscribeSet">
+        insert into public.t_subscribe_set
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="subscribeSetId != null">
+                subscribe_set_id,
+            </if>
+            <if test="serarchType != null">
+                serarch_type,
+            </if>
+            <if test="keyWords != null">
+                key_words,
+            </if>
+            <if test="provinceIds != null">
+                province_ids,
+            </if>
+            <if test="cityIds != null">
+                city_ids,
+            </if>
+            <if test="areaNames != null">
+                area_names,
+            </if>
+            <if test="infotypeIds != null">
+                infotype_ids,
+            </if>
+            <if test="infotypeNames != null">
+                infotype_names,
+            </if>
+            <if test="subscribeSetTime != null">
+                subscribe_set_time,
+            </if>
+            <if test="custId != null">
+                cust_id,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="subscribeSetId != null">
+                #{subscribeSetId,jdbcType=INTEGER},
+            </if>
+            <if test="serarchType != null">
+                #{serarchType,jdbcType=INTEGER},
+            </if>
+            <if test="keyWords != null">
+                #{keyWords,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceIds != null">
+                #{provinceIds,jdbcType=VARCHAR},
+            </if>
+            <if test="cityIds != null">
+                #{cityIds,jdbcType=VARCHAR},
+            </if>
+            <if test="areaNames != null">
+                #{areaNames,jdbcType=VARCHAR},
+            </if>
+            <if test="infotypeIds != null">
+                #{infotypeIds,jdbcType=VARCHAR},
+            </if>
+            <if test="infotypeNames != null">
+                #{infotypeNames,jdbcType=VARCHAR},
+            </if>
+            <if test="subscribeSetTime != null">
+                #{subscribeSetTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="custId != null">
+                #{custId,jdbcType=INTEGER},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.describe.bean.entity.TSubscribeSet">
+        update public.t_subscribe_set
+        <set>
+            <if test="serarchType != null">
+                serarch_type = #{serarchType,jdbcType=INTEGER},
+            </if>
+            <if test="keyWords != null">
+                key_words = #{keyWords,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceIds != null">
+                province_ids = #{provinceIds,jdbcType=VARCHAR},
+            </if>
+            <if test="cityIds != null">
+                city_ids = #{cityIds,jdbcType=VARCHAR},
+            </if>
+            <if test="areaNames != null">
+                area_names = #{areaNames,jdbcType=VARCHAR},
+            </if>
+            <if test="infotypeIds != null">
+                infotype_ids = #{infotypeIds,jdbcType=VARCHAR},
+            </if>
+            <if test="infotypeNames != null">
+                infotype_names = #{infotypeNames,jdbcType=VARCHAR},
+            </if>
+            <if test="subscribeSetTime != null">
+                subscribe_set_time = #{subscribeSetTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="custId != null">
+                cust_id = #{custId,jdbcType=INTEGER},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where subscribe_set_id = #{subscribeSetId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.describe.bean.entity.TSubscribeSet">
+        update public.t_subscribe_set
+        set serarch_type       = #{serarchType,jdbcType=INTEGER},
+            key_words          = #{keyWords,jdbcType=VARCHAR},
+            province_ids       = #{provinceIds,jdbcType=VARCHAR},
+            city_ids           = #{cityIds,jdbcType=VARCHAR},
+            area_names         = #{areaNames,jdbcType=VARCHAR},
+            infotype_ids       = #{infotypeIds,jdbcType=VARCHAR},
+            infotype_names     = #{infotypeNames,jdbcType=VARCHAR},
+            subscribe_set_time = #{subscribeSetTime,jdbcType=TIMESTAMP},
+            cust_id            = #{custId,jdbcType=INTEGER},
+            create_date        = #{createDate,jdbcType=TIMESTAMP},
+            update_date        = #{updateDate,jdbcType=TIMESTAMP}
+        where subscribe_set_id = #{subscribeSetId,jdbcType=INTEGER}
+    </update>
+
+    <sql id="ColumnByVo">
+        s
+        .
+        serarch_type,
+        s
+        .
+        key_words,
+        s
+        .
+        area_names,
+        s
+        .
+        subscribe_set_time,
+        s
+        .
+        infotype_ids,s.subscribe_set_id,s.update_date
+    </sql>
+
+    <sql id="queryPageCustSubScribeVoList_where">
+        <if test="search != null">
+            <if test="search.mobile != null and search.mobile != ''">
+                and c.mobile like '%'||#{search.mobile,jdbcType=VARCHAR}||'%'
+                or c.cust_code like '%'||#{search.custCode,jdbcType=VARCHAR}||'%'
+            </if>
+            <if test="search.keyWords != null and search.keyWords != ''">
+                and s.key_words like '%'||#{search.keyWords,jdbcType=VARCHAR}||'%'
+            </if>
+        </if>
+    </sql>
+
+    <!-- 客户订阅设置页面查找 -->
+    <select id="querySubscribeSetList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.describe.bean.vo.SubscribeVo">
+        SELECT<include refid="ColumnByVo"/>,c.cust_code,c.mobile,c.member_type,
+        case c.member_type when 0 then '普通会员' when 1 then '省级VIP' when 2 then '高级VIP' when 3 then '项目VIP' end as
+        member_type_sn,case serarch_type when 0 then '标题搜索' when 1 then '全文搜索' end as serarch_type_cn
+        from t_subscribe_set s
+        inner join t_customer c on s.cust_id = c.cust_id
+        <where>
+            <include refid="queryPageCustSubScribeVoList_where"/>
+        </where>
+    </select>
+
+
+    <!-- 客户订阅设置页面导出 -->
+    <select id="exportSubscribeSetList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.describe.bean.excel.custSubscribeEntity">
+        select
+        <include refid="ColumnByVo"/>,c.cust_code,c.mobile,c.member_type,
+        case c.member_type when 0 then '普通会员' when 1 then '省级VIP' when 2 then '高级VIP' when 3 then '项目VIP' end as
+        member_type_sn,case serarch_type when 0 then '标题搜索' when 1 then '全文搜索' end as serarch_type_cn
+        from t_subscribe_set s
+        inner join t_customer c on s.cust_id = c.cust_id
+        <where>
+            <include refid="queryPageCustSubScribeVoList_where"/>
+        </where>
+    </select>
+
+    <!-- 客户订阅设置页面查看 -->
+    <select id="selectSubscribeSetListById" parameterType="java.lang.Integer"
+            resultType="com.yuepeng.web.manage.describe.bean.vo.SubscribeVo">
+        select
+        <include refid="ColumnByVo"/>,c.cust_code,c.mobile,c.member_type,
+        case c.member_type when 0 then '普通会员' when 1 then '省级VIP' when 2 then '高级VIP' when 3 then '项目VIP' end as
+        member_type_sn,case serarch_type when 0 then '标题搜索' when 1 then '全文搜索' end as serarch_type_cn
+        from t_subscribe_set s
+        inner join t_customer c on s.cust_id = c.cust_id
+        where s.subscribe_set_id = #{subscribeSetId,javaType = INTEGER}
+    </select>
+</mapper>

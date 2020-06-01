@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.collect.dao.TProjectCollectMapper">
+    <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.collect.bean.entity.TProjectCollect">
+        <id column="collect_id" property="collectId" jdbcType="INTEGER"/>
+        <result column="project_id" property="projectId" jdbcType="INTEGER"/>
+        <result column="cust_id" property="custId" jdbcType="INTEGER"/>
+        <result column="collect_date" property="collectDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        collect_id,
+        project_id,
+        cust_id,
+        collect_date
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from public.t_project_collect
+        where collect_id = #{collectId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from public.t_project_collect
+        where collect_id = #{collectId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.yuepeng.web.manage.collect.bean.entity.TProjectCollect">
+        insert into public.t_project_collect (collect_id, project_id, cust_id,
+                                              collect_date)
+        values (#{collectId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{custId,jdbcType=INTEGER},
+                #{collectDate,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yuepeng.web.manage.collect.bean.entity.TProjectCollect">
+        insert into public.t_project_collect
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="collectId != null">
+                collect_id,
+            </if>
+            <if test="projectId != null">
+                project_id,
+            </if>
+            <if test="custId != null">
+                cust_id,
+            </if>
+            <if test="collectDate != null">
+                collect_date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="collectId != null">
+                #{collectId,jdbcType=INTEGER},
+            </if>
+            <if test="projectId != null">
+                #{projectId,jdbcType=INTEGER},
+            </if>
+            <if test="custId != null">
+                #{custId,jdbcType=INTEGER},
+            </if>
+            <if test="collectDate != null">
+                #{collectDate,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.collect.bean.entity.TProjectCollect">
+        update public.t_project_collect
+        <set>
+            <if test="projectId != null">
+                project_id = #{projectId,jdbcType=INTEGER},
+            </if>
+            <if test="custId != null">
+                cust_id = #{custId,jdbcType=INTEGER},
+            </if>
+            <if test="collectDate != null">
+                collect_date = #{collectDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where collect_id = #{collectId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.collect.bean.entity.TProjectCollect">
+        update public.t_project_collect
+        set project_id   = #{projectId,jdbcType=INTEGER},
+            cust_id      = #{custId,jdbcType=INTEGER},
+            collect_date = #{collectDate,jdbcType=TIMESTAMP}
+        where collect_id = #{collectId,jdbcType=INTEGER}
+    </update>
+
+    <sql id="queryPageCustCollectVoList_where">
+        <if test="search != null">
+            <if test="search.mobile != null and search.mobile != ''">
+                and t.mobile like '%'||#{search.mobile,jdbcType=VARCHAR}||'%'
+                or t.cust_code like '%'||#{search.mobile,jdbcType=VARCHAR}||'%'
+            </if>
+            <if test="search.projectTitle != null and search.projectTitle != ''">
+                and p.project_title like '%'||#{search.projectTitle,jdbcType=VARCHAR}||'%'
+            </if>
+        </if>
+    </sql>
+
+    <!-- 客户收藏页面查找 -->
+    <select id="queryCollectList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.collect.bean.vo.ProjectCollectVo">
+        SELECT
+        t.cust_code,t.mobile,t.member_type,case t.member_type when 0 then '普通用户' when 1 then '省级VIP' when 2 then '高级VIP'
+        when 3 then
+        '项目VIP' end as member_type_cn,
+        <!-- t_project_range表中数据-->
+        r.infotype_name,
+        <!-- t_industry表中数据-->
+        i.industry_name,
+        <!-- t_project表中数据-->
+        p.project_title,
+        <!-- t_project_collect表中数据-->
+        c.collect_date,
+        c.collect_id
+        from t_project_collect c
+        inner join t_project p on p.project_id = c.project_id
+        inner join t_customer t on t.cust_id = c.cust_id
+        inner join t_project_range r on r.project_id = p.project_id
+        inner join t_industry i on i.industry_id = r.industry_id
+        <where>
+            <include refid="queryPageCustCollectVoList_where"/>
+        </where>
+    </select>
+
+    <!-- 客户收藏页面导出 -->
+    <select id="exportCollectList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.collect.bean.excel.ProjectCollectEntity">
+        SELECT
+        t.cust_code,t.mobile,t.member_type,case t.member_type when 0 then '普通用户' when 1 then '省级VIP' when 2 then '高级VIP'
+        when 3 then
+        '项目VIP' end as member_type_cn,
+        <!-- t_project_range表中数据-->
+        r.infotype_name,
+        <!-- t_industry表中数据-->
+        i.industry_name,
+        <!-- t_project表中数据-->
+        p.project_title,
+        <!-- t_project_collect表中数据-->
+        c.collect_date,
+        c.collect_id
+        from t_project_collect c
+        inner join t_project p on p.project_id = c.project_id
+        inner join t_customer t on t.cust_id = c.cust_id
+        inner join t_project_range r on r.project_id = p.project_id
+        inner join t_industry i on i.industry_id = r.industry_id
+        <where>
+            <include refid="queryPageCustCollectVoList_where"/>
+        </where>
+    </select>
+
+    <!-- 客户收藏页面查看 -->
+    <select id="selectCollectListById" parameterType="java.lang.Integer"
+            resultType="com.yuepeng.web.manage.collect.bean.vo.ProjectCollectVo">
+        SELECT
+        t.cust_code,t.mobile,t.member_type,case t.member_type when 0 then '普通用户' when 1 then '省级VIP' when 2 then '高级VIP'
+        when 3 then
+        '项目VIP' end as member_type_cn,
+        <!-- t_project_range表中数据-->
+        r.infotype_name,
+        <!-- t_industry表中数据-->
+        i.industry_name,
+        <!-- t_project表中数据-->
+        p.project_title,
+        <!-- t_project_collect表中数据-->
+        c.collect_date,
+        c.collect_id
+        from t_project_collect c
+        inner join t_project p on p.project_id = c.project_id
+        inner join t_customer t on t.cust_id = c.cust_id
+        inner join t_project_range r on r.project_id = p.project_id
+        inner join t_industry i on i.industry_id = r.industry_id
+        where c.collect_id = #{collectId,javaType = INTEGER}
+    </select>
+</mapper>

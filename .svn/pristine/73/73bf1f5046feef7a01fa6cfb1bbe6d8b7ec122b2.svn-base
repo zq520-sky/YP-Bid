@@ -1,0 +1,83 @@
+package com.yuepeng.web.manage.log.controller;
+
+import com.yuepeng.platform.framework.base.BaseController;
+import com.yuepeng.platform.framework.constant.WebConstant;
+import com.yuepeng.platform.framework.mybatis.pagination.Pagination;
+import com.yuepeng.platform.pm.bean.entity.TSysLog;
+import com.yuepeng.platform.pm.constant.PmStateConstant;
+import com.yuepeng.platform.pm.service.ILogService;
+import com.yuepeng.web.manage.log.bean.excel.CustomerLoginLogExcel;
+import com.yuepeng.web.manage.log.bean.vo.AppLogLoginVo;
+import com.yuepeng.web.manage.log.bean.vo.CustomerMesVo;
+import com.yuepeng.web.manage.log.service.AppLogLoginService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import java.util.Date;
+import java.util.Map;
+
+/**
+ * @Description:  客户登录日志 Controller
+ * @Author: xtq
+ * @Date: 2020/5/27 14:47
+ * Copyright (c) 2019, Samton. All rights reserved
+ */
+@Controller
+@RequestMapping("/manage/log/")
+public class CustomerLoginLogController extends BaseController {
+
+    @Autowired
+    private AppLogLoginService appLogLoginService;
+
+    @Resource
+    private ILogService logService;
+
+    /**
+     * 查询客户登录日志表 -分页list
+     * @param paramBean
+     * @param appLogLoginVo
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("queryAppLogLoginList" + WebConstant.PAGE_SUFFIX)
+    public String queryAppLogLoginList(Pagination<AppLogLoginVo> paramBean, AppLogLoginVo appLogLoginVo) throws Exception{
+        paramBean.setSearch(appLogLoginVo);
+        Pagination<AppLogLoginVo> pageData = appLogLoginService.queryAppLogLoginList(paramBean);
+        this.addAttr("pageData", pageData);
+        return "log/custLoginLog";
+    }
+
+    /**
+     * 通过id查询客户相关信息
+     * @param custId
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("queryCustByCustId" + WebConstant.PAGE_SUFFIX)
+    @ResponseBody
+    public Map<String,Object> findAppLogLoginById(Integer custId) throws Exception {
+        CustomerMesVo customerMesVo = appLogLoginService.findAppLogLoginById(custId);
+        Map<String, Object> map = this.getResultMap(true, customerMesVo);
+        return map;
+    }
+
+    /**
+     * 导出客户登录日志
+     * @param paramBean
+     * @param appLogLoginVo
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("exportCustLoginLogList" + WebConstant.BUSINESS_SUFFIX)
+    public String exportCustLoginLogList(Pagination<AppLogLoginVo> paramBean, AppLogLoginVo appLogLoginVo) throws Exception {
+        paramBean.setSearch(appLogLoginVo);
+        Pagination<CustomerLoginLogExcel> list = appLogLoginService.exportCustLoginLogList(paramBean);
+        logService.addLog(new TSysLog("客户登录日志-导出", "导出客户登录日志！", PmStateConstant.LOG_PLATFORM));
+        this.export(response, "客户登录日志" + String.format("%1$tY%1$tm%1$td", new Date()), CustomerLoginLogExcel.class, list.getData());
+
+        return null;
+    }
+}

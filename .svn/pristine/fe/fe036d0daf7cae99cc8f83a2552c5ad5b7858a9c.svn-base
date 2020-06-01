@@ -1,0 +1,19 @@
+package com.yuepeng.web.manage.finance.service.impl;
+
+import com.yuepeng.platform.common.service.impl.SuperServiceIntegerImpl;
+import com.yuepeng.web.manage.finance.bean.entity.TOrder;
+import com.yuepeng.web.manage.finance.dao.TOrderMapper;
+import com.yuepeng.web.manage.finance.service.IOrderService;
+import org.springframework.stereotype.Service;
+
+/**
+ * 〈功能概述〉<br>
+ *
+ * @className: OrderServiceImpl
+ * @package: com.yuepeng.web.manage.finance.service.impl
+ * @author: wzq
+ * @date: 2020/5/12 11:36
+ */
+@Service
+public class OrderServiceImpl extends SuperServiceIntegerImpl<TOrderMapper, TOrder> implements IOrderService {
+}

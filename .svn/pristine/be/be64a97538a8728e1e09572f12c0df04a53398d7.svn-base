@@ -1,0 +1,57 @@
+package com.yuepeng.web.manage.describe.controller;
+
+import com.yuepeng.platform.framework.base.BaseController;
+import com.yuepeng.platform.framework.constant.WebConstant;
+import com.yuepeng.platform.framework.mybatis.pagination.Pagination;
+import com.yuepeng.platform.pm.bean.entity.TSysLog;
+import com.yuepeng.platform.pm.constant.PmStateConstant;
+import com.yuepeng.platform.pm.service.ILogService;
+import com.yuepeng.web.manage.describe.bean.excel.custSubscribeEntity;
+import com.yuepeng.web.manage.describe.bean.vo.SubscribeVo;
+import com.yuepeng.web.manage.describe.service.ISubscribeService;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import javax.annotation.Resource;
+import java.util.Date;
+import java.util.Map;
+
+/**
+ * @Description: 客户订阅控制类
+ * @Author: ZhongShengbin
+ * @Date: 2020/05/17 14:23
+ * Copyright (c) 2019, Samton. All rights reserved
+ */
+@Controller
+@RequestMapping("/manage/subscribe/")
+public class SubscribeController extends BaseController {
+    @Resource
+    private ISubscribeService subscribeService;
+
+    @Resource
+    private ILogService logService;
+
+    @RequestMapping("set/querySubscribesetList"+ WebConstant.PAGE_SUFFIX)
+    public String queryCustAccountList(Pagination<SubscribeVo> paramBean, SubscribeVo subscribeVo) throws Exception{
+        paramBean.setSearch(subscribeVo);
+        Pagination<SubscribeVo> pageData = subscribeService.querySubscribePageList(paramBean);
+        this.addAttr("pageData", pageData);
+        return "describe/custDescribe";
+    }
+
+    @RequestMapping("set/exportSubscribesetList" + WebConstant.BUSINESS_SUFFIX)
+    public String exportCustAccountList(Pagination<SubscribeVo> paramBean, SubscribeVo subscribeVo) throws Exception {
+        paramBean.setSearch(subscribeVo);
+        Pagination<custSubscribeEntity> list = subscribeService.exportSubscribePageList(paramBean);
+        logService.addLog(new TSysLog("客户信息管理-导出", "导出客户管理信息！", PmStateConstant.LOG_PLATFORM));
+        this.export(response,"客户账户管理" + String.format("%1$tY%1$tm%1$td", new Date()), custSubscribeEntity.class, list.getData());
+        return null;
+    }
+
+    @RequestMapping("set/querySubscribesetListById" + WebConstant.BUSINESS_SUFFIX)
+    @ResponseBody
+    public Map<String, Object> viewReturn(Integer subscribeSetId) throws Exception {
+        SubscribeVo subscribeVo = subscribeService.querySubscribePageListById(subscribeSetId);
+        return this.getResultMap(true, subscribeVo);
+    }
+}

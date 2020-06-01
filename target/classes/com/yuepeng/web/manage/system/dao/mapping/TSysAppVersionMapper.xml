@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.system.dao.TSysAppVersionMapper">
+    <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.system.bean.entity.TSysAppVersion">
+        <id column="version_id" property="versionId" jdbcType="INTEGER"/>
+        <result column="version_code" property="versionCode" jdbcType="VARCHAR"/>
+        <result column="is_force_update" property="isForceUpdate" jdbcType="INTEGER"/>
+        <result column="down_url" property="downUrl" jdbcType="VARCHAR"/>
+        <result column="update_memo" property="updateMemo" jdbcType="VARCHAR"/>
+        <result column="publish_time" property="publishTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        v
+        .
+        version_id,
+        v
+        .
+        version_code,
+        v
+        .
+        is_force_update,
+        v
+        .
+        down_url,
+        v
+        .
+        update_memo,
+        v
+        .
+        publish_time
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from public.t_sys_app_version
+        where version_id = #{versionId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from public.t_sys_app_version
+        where version_id = #{versionId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.yuepeng.web.manage.system.bean.entity.TSysAppVersion">
+        insert into public.t_sys_app_version (version_id, version_code, is_force_update,
+                                              down_url, update_memo, publish_time)
+        values (#{versionId,jdbcType=INTEGER}, #{versionCode,jdbcType=VARCHAR}, #{isForceUpdate,jdbcType=INTEGER},
+                #{downUrl,jdbcType=VARCHAR}, #{updateMemo,jdbcType=VARCHAR}, #{publishTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yuepeng.web.manage.system.bean.entity.TSysAppVersion">
+        insert into public.t_sys_app_version
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="versionId != null">
+                version_id,
+            </if>
+            <if test="versionCode != null">
+                version_code,
+            </if>
+            <if test="isForceUpdate != null">
+                is_force_update,
+            </if>
+            <if test="downUrl != null">
+                down_url,
+            </if>
+            <if test="updateMemo != null">
+                update_memo,
+            </if>
+            <if test="publishTime != null">
+                publish_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="versionId != null">
+                #{versionId,jdbcType=INTEGER},
+            </if>
+            <if test="versionCode != null">
+                #{versionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="isForceUpdate != null">
+                #{isForceUpdate,jdbcType=INTEGER},
+            </if>
+            <if test="downUrl != null">
+                #{downUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="updateMemo != null">
+                #{updateMemo,jdbcType=VARCHAR},
+            </if>
+            <if test="publishTime != null">
+                #{publishTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.system.bean.entity.TSysAppVersion">
+        update public.t_sys_app_version
+        <set>
+            <if test="versionCode != null">
+                version_code = #{versionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="isForceUpdate != null">
+                is_force_update = #{isForceUpdate,jdbcType=INTEGER},
+            </if>
+            <if test="downUrl != null">
+                down_url = #{downUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="updateMemo != null">
+                update_memo = #{updateMemo,jdbcType=VARCHAR},
+            </if>
+            <if test="publishTime != null">
+                publish_time = #{publishTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where version_id = #{versionId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.system.bean.entity.TSysAppVersion">
+        update public.t_sys_app_version
+        set version_code    = #{versionCode,jdbcType=VARCHAR},
+            is_force_update = #{isForceUpdate,jdbcType=INTEGER},
+            down_url        = #{downUrl,jdbcType=VARCHAR},
+            update_memo     = #{updateMemo,jdbcType=VARCHAR},
+            publish_time    = #{publishTime,jdbcType=TIMESTAMP}
+        where version_id = #{versionId,jdbcType=INTEGER}
+    </update>
+
+
+    <sql id="queryVersionVoList_where">
+        <if test="search != null">
+            <if test="search.versionCode != null and search.versionCode != ''">
+                and v.version_code like '%'||#{search.versionCode,jdbcType=VARCHAR}||'%'
+            </if>
+        </if>
+    </sql>
+    <!-- 版本管理页面查找 -->
+    <select id="queryVersionList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.system.bean.vo.SysAppVersionVo">
+        SELECT <include refid="Base_Column_List"></include>,case v.is_force_update when 0 then '否' when 1 then '是' end
+        as is_force_update_cn
+        from t_sys_app_version v
+        <where>
+            <include refid="queryVersionVoList_where"/>
+        </where>
+    </select>
+
+
+    <!-- 版本管理页面导出 -->
+    <select id="exportVersionList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.system.bean.excel.SysAppVersionEntity">
+        SELECT <include refid="Base_Column_List"></include>,case v.is_force_update when 0 then '否' when 1 then '是' end
+        as is_force_update_cn
+        from t_sys_app_version v
+        <where>
+            <include refid="queryVersionVoList_where"/>
+        </where>
+    </select>
+
+    <!-- 版本管理页面查看 -->
+    <select id="selectVersionListById" parameterType="java.lang.Integer"
+            resultType="com.yuepeng.web.manage.system.bean.vo.SysAppVersionVo">
+        SELECT <include refid="Base_Column_List"></include>,case v.is_force_update when 0 then '否' when 1 then '是' end
+        as is_force_update_cn
+        from t_sys_app_version v
+        where v.version_id = #{versionId,javaType = INTEGER}
+    </select>
+</mapper>

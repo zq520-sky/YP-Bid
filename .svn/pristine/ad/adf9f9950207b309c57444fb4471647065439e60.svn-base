@@ -1,0 +1,14 @@
+package com.yuepeng.web.manage.finance.bean.vo;
+
+import com.yuepeng.web.manage.finance.bean.entity.TOrderInvoice;
+
+/**
+ * 〈功能概述〉<br>
+ *
+ * @className: OrderInvoiceVo
+ * @package: com.yuepeng.web.manage.finance.bean.vo
+ * @author: wzq
+ * @date: 2020/5/14 20:12
+ */
+public class OrderInvoiceVo extends TOrderInvoice {
+}

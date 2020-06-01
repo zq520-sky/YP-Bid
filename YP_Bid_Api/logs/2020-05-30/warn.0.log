@@ -1,0 +1,14 @@
+[WARN ] 2020-05-30 10:23:54 [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+[WARN ] 2020-05-30 11:48:14 [http-nio-8080-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException]
+[WARN ] 2020-05-30 11:50:10 [http-nio-8080-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException]
+[WARN ] 2020-05-30 11:50:32 [http-nio-8080-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException]
+[WARN ] 2020-05-30 11:52:28 [http-nio-8080-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException]
+[WARN ] 2020-05-30 11:52:42 [http-nio-8080-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException]
+[WARN ] 2020-05-30 11:52:45 [http-nio-8080-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException]
+[WARN ] 2020-05-30 11:58:29 [http-nio-8080-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException]
+[WARN ] 2020-05-30 12:00:29 [h2 housekeeper] com.zaxxer.hikari.pool.HikariPool - h2 - Thread starvation or clock leap detected (housekeeper delta=1m14s40ms777µs90ns).
+[WARN ] 2020-05-30 12:00:29 [postgres housekeeper] com.zaxxer.hikari.pool.HikariPool - postgres - Thread starvation or clock leap detected (housekeeper delta=1m14s195ms637µs296ns).
+[WARN ] 2020-05-30 12:00:29 [http-nio-8080-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException]
+[WARN ] 2020-05-30 12:01:27 [http-nio-8080-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException]
+[WARN ] 2020-05-30 13:33:17 [postgres housekeeper] com.zaxxer.hikari.pool.HikariPool - postgres - Thread starvation or clock leap detected (housekeeper delta=1h10m49s218ms854µs341ns).
+[WARN ] 2020-05-30 13:33:17 [h2 housekeeper] com.zaxxer.hikari.pool.HikariPool - h2 - Thread starvation or clock leap detected (housekeeper delta=1h10m49s222ms770µs584ns).

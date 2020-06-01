@@ -1,0 +1,133 @@
+package com.yuepeng.web.manage.describe.bean.entity;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.io.Serializable;
+import java.util.Date;
+
+public class TSubscribeSet implements Serializable {
+    private Integer subscribeSetId;
+
+    private Integer serarchType;
+
+    private String keyWords;
+
+    private String provinceIds;
+
+    private String cityIds;
+
+    private String areaNames;
+
+    private String infotypeIds;
+
+    private String infotypeNames;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date subscribeSetTime;
+
+    private Integer custId;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updateDate;
+
+    private static final long serialVersionUID = 1L;
+
+    public Integer getSubscribeSetId() {
+        return subscribeSetId;
+    }
+
+    public void setSubscribeSetId(Integer subscribeSetId) {
+        this.subscribeSetId = subscribeSetId;
+    }
+
+    public Integer getSerarchType() {
+        return serarchType;
+    }
+
+    public void setSerarchType(Integer serarchType) {
+        this.serarchType = serarchType;
+    }
+
+    public String getKeyWords() {
+        return keyWords;
+    }
+
+    public void setKeyWords(String keyWords) {
+        this.keyWords = keyWords;
+    }
+
+    public String getProvinceIds() {
+        return provinceIds;
+    }
+
+    public void setProvinceIds(String provinceIds) {
+        this.provinceIds = provinceIds;
+    }
+
+    public String getCityIds() {
+        return cityIds;
+    }
+
+    public void setCityIds(String cityIds) {
+        this.cityIds = cityIds;
+    }
+
+    public String getAreaNames() {
+        return areaNames;
+    }
+
+    public void setAreaNames(String areaNames) {
+        this.areaNames = areaNames;
+    }
+
+    public String getInfotypeIds() {
+        return infotypeIds;
+    }
+
+    public void setInfotypeIds(String infotypeIds) {
+        this.infotypeIds = infotypeIds;
+    }
+
+    public String getInfotypeNames() {
+        return infotypeNames;
+    }
+
+    public void setInfotypeNames(String infotypeNames) {
+        this.infotypeNames = infotypeNames;
+    }
+
+    public Date getSubscribeSetTime() {
+        return subscribeSetTime;
+    }
+
+    public void setSubscribeSetTime(Date subscribeSetTime) {
+        this.subscribeSetTime = subscribeSetTime;
+    }
+
+    public Integer getCustId() {
+        return custId;
+    }
+
+    public void setCustId(Integer custId) {
+        this.custId = custId;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+}

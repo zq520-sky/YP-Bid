@@ -1,0 +1,30 @@
+package com.yuepeng.web.manage.collect.dao;
+
+import com.yuepeng.platform.common.dao.AutoMapperInteger;
+import com.yuepeng.platform.framework.mybatis.pagination.Pagination;
+import com.yuepeng.web.manage.collect.bean.entity.TProjectCollect;
+import com.yuepeng.web.manage.collect.bean.excel.ProjectCollectEntity;
+import com.yuepeng.web.manage.collect.bean.vo.ProjectCollectVo;
+import com.yuepeng.web.manage.describe.bean.excel.custSubscribeEntity;
+import com.yuepeng.web.manage.describe.bean.vo.SubscribeVo;
+import org.apache.ibatis.session.RowBounds;
+
+import java.util.List;
+
+public interface TProjectCollectMapper extends AutoMapperInteger<TProjectCollect> {
+    int deleteByPrimaryKey(Integer collectId);
+
+    int insert(TProjectCollect record);
+
+    int insertSelective(TProjectCollect record);
+
+    int updateByPrimaryKeySelective(TProjectCollect record);
+
+    int updateByPrimaryKey(TProjectCollect record);
+
+    List<ProjectCollectVo> queryCollectList(Pagination<ProjectCollectVo> paramBean, RowBounds rowBounds)throws Exception;
+
+    List<ProjectCollectEntity> exportCollectList(Pagination<ProjectCollectVo> paramBean, RowBounds rowBounds) throws Exception;
+
+    ProjectCollectVo selectCollectListById(Integer collectId) throws Exception;
+}

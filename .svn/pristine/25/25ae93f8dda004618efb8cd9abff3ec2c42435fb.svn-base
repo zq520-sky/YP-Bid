@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.system.dao.TMemberRoleMapper">
+    <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.system.bean.entity.TMemberRole">
+        <id column="member_role_id" property="memberRoleId" jdbcType="INTEGER"/>
+        <result column="member_type" property="memberType" jdbcType="INTEGER"/>
+        <result column="is_textsearch" property="isTextsearch" jdbcType="INTEGER"/>
+        <result column="read_project_num" property="readProjectNum" jdbcType="INTEGER"/>
+        <result column="subscribe_num" property="subscribeNum" jdbcType="INTEGER"/>
+        <result column="collect_num" property="collectNum" jdbcType="INTEGER"/>
+        <result column="recommend_num" property="recommendNum" jdbcType="INTEGER"/>
+        <result column="plan_project_num" property="planProjectNum" jdbcType="INTEGER"/>
+        <result column="advanced_num" property="advancedNum" jdbcType="INTEGER"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="create_user_id" property="createUserId" jdbcType="INTEGER"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="update_user_id" property="updateUserId" jdbcType="INTEGER"/>
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        member_role_id,
+        member_type,
+        is_textsearch,
+        read_project_num,
+        subscribe_num,
+        collect_num,
+        recommend_num,
+        plan_project_num,
+        advanced_num,
+        remark,
+        create_user_id,
+        create_date,
+        update_user_id,
+        update_date
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from public.t_member_role
+        where member_role_id = #{memberRoleId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from public.t_member_role
+        where member_role_id = #{memberRoleId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.yuepeng.web.manage.system.bean.entity.TMemberRole">
+        insert into public.t_member_role (member_role_id, member_type, is_textsearch,
+                                          read_project_num, subscribe_num, collect_num,
+                                          recommend_num, plan_project_num, advanced_num,
+                                          remark, create_user_id, create_date,
+                                          update_user_id, update_date)
+        values (#{memberRoleId,jdbcType=INTEGER}, #{memberType,jdbcType=INTEGER}, #{isTextsearch,jdbcType=INTEGER},
+                #{readProjectNum,jdbcType=INTEGER}, #{subscribeNum,jdbcType=INTEGER}, #{collectNum,jdbcType=INTEGER},
+                #{recommendNum,jdbcType=INTEGER}, #{planProjectNum,jdbcType=INTEGER}, #{advancedNum,jdbcType=INTEGER},
+                #{remark,jdbcType=VARCHAR}, #{createUserId,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP},
+                #{updateUserId,jdbcType=INTEGER}, #{updateDate,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yuepeng.web.manage.system.bean.entity.TMemberRole">
+        insert into public.t_member_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="memberRoleId != null">
+                member_role_id,
+            </if>
+            <if test="memberType != null">
+                member_type,
+            </if>
+            <if test="isTextsearch != null">
+                is_textsearch,
+            </if>
+            <if test="readProjectNum != null">
+                read_project_num,
+            </if>
+            <if test="subscribeNum != null">
+                subscribe_num,
+            </if>
+            <if test="collectNum != null">
+                collect_num,
+            </if>
+            <if test="recommendNum != null">
+                recommend_num,
+            </if>
+            <if test="planProjectNum != null">
+                plan_project_num,
+            </if>
+            <if test="advancedNum != null">
+                advanced_num,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="createUserId != null">
+                create_user_id,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateUserId != null">
+                update_user_id,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="memberRoleId != null">
+                #{memberRoleId,jdbcType=INTEGER},
+            </if>
+            <if test="memberType != null">
+                #{memberType,jdbcType=INTEGER},
+            </if>
+            <if test="isTextsearch != null">
+                #{isTextsearch,jdbcType=INTEGER},
+            </if>
+            <if test="readProjectNum != null">
+                #{readProjectNum,jdbcType=INTEGER},
+            </if>
+            <if test="subscribeNum != null">
+                #{subscribeNum,jdbcType=INTEGER},
+            </if>
+            <if test="collectNum != null">
+                #{collectNum,jdbcType=INTEGER},
+            </if>
+            <if test="recommendNum != null">
+                #{recommendNum,jdbcType=INTEGER},
+            </if>
+            <if test="planProjectNum != null">
+                #{planProjectNum,jdbcType=INTEGER},
+            </if>
+            <if test="advancedNum != null">
+                #{advancedNum,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                #{createUserId,jdbcType=INTEGER},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateUserId != null">
+                #{updateUserId,jdbcType=INTEGER},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.system.bean.entity.TMemberRole">
+        update public.t_member_role
+        <set>
+            <if test="memberType != null">
+                member_type = #{memberType,jdbcType=INTEGER},
+            </if>
+            <if test="isTextsearch != null">
+                is_textsearch = #{isTextsearch,jdbcType=INTEGER},
+            </if>
+            <if test="readProjectNum != null">
+                read_project_num = #{readProjectNum,jdbcType=INTEGER},
+            </if>
+            <if test="subscribeNum != null">
+                subscribe_num = #{subscribeNum,jdbcType=INTEGER},
+            </if>
+            <if test="collectNum != null">
+                collect_num = #{collectNum,jdbcType=INTEGER},
+            </if>
+            <if test="recommendNum != null">
+                recommend_num = #{recommendNum,jdbcType=INTEGER},
+            </if>
+            <if test="planProjectNum != null">
+                plan_project_num = #{planProjectNum,jdbcType=INTEGER},
+            </if>
+            <if test="advancedNum != null">
+                advanced_num = #{advancedNum,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                create_user_id = #{createUserId,jdbcType=INTEGER},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateUserId != null">
+                update_user_id = #{updateUserId,jdbcType=INTEGER},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where member_role_id = #{memberRoleId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.system.bean.entity.TMemberRole">
+        update public.t_member_role
+        set member_type      = #{memberType,jdbcType=INTEGER},
+            is_textsearch    = #{isTextsearch,jdbcType=INTEGER},
+            read_project_num = #{readProjectNum,jdbcType=INTEGER},
+            subscribe_num    = #{subscribeNum,jdbcType=INTEGER},
+            collect_num      = #{collectNum,jdbcType=INTEGER},
+            recommend_num    = #{recommendNum,jdbcType=INTEGER},
+            plan_project_num = #{planProjectNum,jdbcType=INTEGER},
+            advanced_num     = #{advancedNum,jdbcType=INTEGER},
+            remark           = #{remark,jdbcType=VARCHAR},
+            create_user_id   = #{createUserId,jdbcType=INTEGER},
+            create_date      = #{createDate,jdbcType=TIMESTAMP},
+            update_user_id   = #{updateUserId,jdbcType=INTEGER},
+            update_date      = #{updateDate,jdbcType=TIMESTAMP}
+        where member_role_id = #{memberRoleId,jdbcType=INTEGER}
+    </update>
+
+
+    <sql id="queryVersionVoList_where">
+        <if test="search != null">
+            <if test="search.memberType != null">
+                and r.member_type = #{search.memberType,jdbcType=INTEGER}
+            </if>
+        </if>
+    </sql>
+    <!-- 会员权限页面查找 -->
+    <select id="queryMemberRoleList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.system.bean.vo.MemberRoleVo">
+        SELECT <include refid="Base_Column_List"></include>,case r.member_type when 0 then '普通用户' when 1 then '省级VIP'
+        when 2 then '高级VIP' when 3 then '项目VIP' end as member_type_cn
+        from t_member_role r
+        <where>
+            <include refid="queryVersionVoList_where"/>
+        </where>
+    </select>
+
+
+    <!-- 会员权限页面导出 -->
+    <select id="exportMemberRoleList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.system.bean.excel.MemberRoleEntity">
+        SELECT <include refid="Base_Column_List"></include>,case r.member_type when 0 then '普通用户' when 1 then '省级VIP'
+        when 2 then '高级VIP' when 3 then '项目VIP' end as member_type_cn
+        from t_member_role r
+        <where>
+            <include refid="queryVersionVoList_where"/>
+        </where>
+    </select>
+
+    <!-- 会员权限页面查看 -->
+    <select id="selectMemberRoleById" parameterType="java.lang.Integer"
+            resultType="com.yuepeng.web.manage.system.bean.vo.MemberRoleVo">
+        SELECT <include refid="Base_Column_List"></include>,case r.member_type when 0 then '普通用户' when 1 then '省级VIP'
+        when 2 then '高级VIP' when 3 then '项目VIP' end as member_type_cn
+        from t_member_role r
+        where r.member_role_id = #{memberRoleId,javaType = INTEGER}
+    </select>
+</mapper>

@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.finance.dao.TOrderInvoiceMapper" >
+  <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.finance.bean.entity.TOrderInvoice" >
+    <id column="invoice_id" property="invoiceId" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="cust_id" property="custId" jdbcType="INTEGER" />
+    <result column="invoice_type" property="invoiceType" jdbcType="INTEGER" />
+    <result column="invoice_money" property="invoiceMoney" jdbcType="NUMERIC" />
+    <result column="apply_time" property="applyTime" jdbcType="TIMESTAMP" />
+    <result column="unit_name" property="unitName" jdbcType="VARCHAR" />
+    <result column="unit_tin" property="unitTin" jdbcType="VARCHAR" />
+    <result column="unit_address" property="unitAddress" jdbcType="VARCHAR" />
+    <result column="unit_tel" property="unitTel" jdbcType="VARCHAR" />
+    <result column="unit_bank" property="unitBank" jdbcType="VARCHAR" />
+    <result column="unit_bankaccount" property="unitBankaccount" jdbcType="VARCHAR" />
+    <result column="addressee" property="addressee" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="make_time" property="makeTime" jdbcType="TIMESTAMP" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    invoice_id, order_id, cust_id, invoice_type, invoice_money, apply_time, unit_name, 
+    unit_tin, unit_address, unit_tel, unit_bank, unit_bankaccount, addressee, tel, address, 
+    status, make_time, create_date, update_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.t_order_invoice
+    where invoice_id = #{invoiceId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from public.t_order_invoice
+    where invoice_id = #{invoiceId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuepeng.web.manage.finance.bean.entity.TOrderInvoice" >
+    insert into public.t_order_invoice (invoice_id, order_id, cust_id, 
+      invoice_type, invoice_money, apply_time, 
+      unit_name, unit_tin, unit_address, 
+      unit_tel, unit_bank, unit_bankaccount, 
+      addressee, tel, address, 
+      status, make_time, create_date, 
+      update_date)
+    values (#{invoiceId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{custId,jdbcType=INTEGER}, 
+      #{invoiceType,jdbcType=INTEGER}, #{invoiceMoney,jdbcType=NUMERIC}, #{applyTime,jdbcType=TIMESTAMP}, 
+      #{unitName,jdbcType=VARCHAR}, #{unitTin,jdbcType=VARCHAR}, #{unitAddress,jdbcType=VARCHAR}, 
+      #{unitTel,jdbcType=VARCHAR}, #{unitBank,jdbcType=VARCHAR}, #{unitBankaccount,jdbcType=VARCHAR}, 
+      #{addressee,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{makeTime,jdbcType=TIMESTAMP}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuepeng.web.manage.finance.bean.entity.TOrderInvoice" >
+    insert into public.t_order_invoice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="invoiceId != null" >
+        invoice_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="invoiceType != null" >
+        invoice_type,
+      </if>
+      <if test="invoiceMoney != null" >
+        invoice_money,
+      </if>
+      <if test="applyTime != null" >
+        apply_time,
+      </if>
+      <if test="unitName != null" >
+        unit_name,
+      </if>
+      <if test="unitTin != null" >
+        unit_tin,
+      </if>
+      <if test="unitAddress != null" >
+        unit_address,
+      </if>
+      <if test="unitTel != null" >
+        unit_tel,
+      </if>
+      <if test="unitBank != null" >
+        unit_bank,
+      </if>
+      <if test="unitBankaccount != null" >
+        unit_bankaccount,
+      </if>
+      <if test="addressee != null" >
+        addressee,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="makeTime != null" >
+        make_time,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="invoiceId != null" >
+        #{invoiceId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceType != null" >
+        #{invoiceType,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceMoney != null" >
+        #{invoiceMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="applyTime != null" >
+        #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unitName != null" >
+        #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="unitTin != null" >
+        #{unitTin,jdbcType=VARCHAR},
+      </if>
+      <if test="unitAddress != null" >
+        #{unitAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="unitTel != null" >
+        #{unitTel,jdbcType=VARCHAR},
+      </if>
+      <if test="unitBank != null" >
+        #{unitBank,jdbcType=VARCHAR},
+      </if>
+      <if test="unitBankaccount != null" >
+        #{unitBankaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="addressee != null" >
+        #{addressee,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="makeTime != null" >
+        #{makeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuepeng.web.manage.finance.bean.entity.TOrderInvoice" >
+    update public.t_order_invoice
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceType != null" >
+        invoice_type = #{invoiceType,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceMoney != null" >
+        invoice_money = #{invoiceMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="applyTime != null" >
+        apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unitName != null" >
+        unit_name = #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="unitTin != null" >
+        unit_tin = #{unitTin,jdbcType=VARCHAR},
+      </if>
+      <if test="unitAddress != null" >
+        unit_address = #{unitAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="unitTel != null" >
+        unit_tel = #{unitTel,jdbcType=VARCHAR},
+      </if>
+      <if test="unitBank != null" >
+        unit_bank = #{unitBank,jdbcType=VARCHAR},
+      </if>
+      <if test="unitBankaccount != null" >
+        unit_bankaccount = #{unitBankaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="addressee != null" >
+        addressee = #{addressee,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="makeTime != null" >
+        make_time = #{makeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where invoice_id = #{invoiceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.finance.bean.entity.TOrderInvoice" >
+    update public.t_order_invoice
+    set order_id = #{orderId,jdbcType=INTEGER},
+      cust_id = #{custId,jdbcType=INTEGER},
+      invoice_type = #{invoiceType,jdbcType=INTEGER},
+      invoice_money = #{invoiceMoney,jdbcType=NUMERIC},
+      apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      unit_name = #{unitName,jdbcType=VARCHAR},
+      unit_tin = #{unitTin,jdbcType=VARCHAR},
+      unit_address = #{unitAddress,jdbcType=VARCHAR},
+      unit_tel = #{unitTel,jdbcType=VARCHAR},
+      unit_bank = #{unitBank,jdbcType=VARCHAR},
+      unit_bankaccount = #{unitBankaccount,jdbcType=VARCHAR},
+      addressee = #{addressee,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      make_time = #{makeTime,jdbcType=TIMESTAMP},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where invoice_id = #{invoiceId,jdbcType=INTEGER}
+  </update>
+
+
+  <sql id="queryPageList_where">
+    <if test="search != null">
+      <if test="search.custCodeOrMobile != null ">
+        and (tc.cust_code like '%'||#{search.custCodeOrMobile,jdbcType=VARCHAR}||'%' or tc.mobile like '%'||#{search.custCodeOrMobile,jdbcType=VARCHAR}||'%')
+      </if>
+      <if test="search.applyTimeBegin != null">
+        <![CDATA[ and toi.apply_time >= #{search.applyTimeBegin,jdbcType=TIMESTAMP} ]]>
+      </if>
+      <if test="search.applyTimeEnd != null">
+        <![CDATA[ and toi.apply_time <= #{search.applyTimeEnd,jdbcType=TIMESTAMP} ]]>
+      </if>
+      <if test="search.payMode != null">
+        and tor.pay_mode = #{search.payMode,jdbcType=INTEGER}
+      </if>
+      <if test="search.status != null">
+        and toi.status = #{search.status,jdbcType=INTEGER}
+      </if>
+    </if>
+  </sql>
+
+  <select id="queryOrderInvoicePageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"  resultType="com.yuepeng.web.manage.finance.bean.vo.OrderInvoiceVo">
+    SELECT
+      toi.invoice_id,
+      toi.order_id,
+      toi.cust_id,
+      toi.invoice_type,
+      toi.invoice_money,
+      toi.apply_time,
+      toi.unit_name,
+      toi.unit_tin,
+      toi.unit_address,
+      toi.unit_tel,
+      toi.unit_bank,
+      toi.unit_bankaccount,
+      toi.addressee,
+      toi.tel,
+      toi.address,
+      toi.status,
+      toi.make_time,
+      toi.create_date,
+      toi.update_date,
+      tor.pay_mode,
+      tor.order_code,
+      tc.cust_code,
+      tc.mobile,
+      tc.nick_name
+    FROM
+      t_order_invoice toi
+      INNER JOIN t_order tor ON tor.order_id = toi.order_id
+      INNER JOIN t_customer tc ON tc.cust_id = toi.cust_id
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    ORDER BY
+    toi.apply_time DESC
+  </select>
+
+  <select id="exportOrderInvoicePageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"  resultType="com.yuepeng.web.manage.finance.bean.excel.OrderInvoiceExcel">
+    SELECT
+      toi.invoice_id,
+      toi.order_id,
+      toi.cust_id,
+      toi.invoice_type,
+      toi.invoice_money,
+      toi.apply_time,
+      toi.unit_name,
+      toi.unit_tin,
+      toi.unit_address,
+      toi.unit_tel,
+      toi.unit_bank,
+      toi.unit_bankaccount,
+      toi.addressee,
+      toi.tel,
+      toi.address,
+      toi.status,
+      toi.make_time,
+      toi.create_date,
+      toi.update_date,
+      tor.pay_mode,
+      tor.order_code,
+      tc.cust_code,
+      tc.mobile,
+      tc.nick_name
+    FROM
+      t_order_invoice toi
+      INNER JOIN t_order tor ON tor.order_id = toi.order_id
+      INNER JOIN t_customer tc ON tc.cust_id = toi.cust_id
+    <where>
+      <include refid="queryPageList_where" />
+    </where>
+    ORDER BY
+    toi.apply_time DESC
+  </select>
+
+  <select id="viewOrderInvoice" resultType="com.yuepeng.web.manage.finance.bean.vo.OrderInvoiceVo">
+    SELECT
+      toi.invoice_id,
+      toi.order_id,
+      toi.cust_id,
+      toi.invoice_type,
+      toi.invoice_money,
+      toi.apply_time,
+      toi.unit_name,
+      toi.unit_tin,
+      toi.unit_address,
+      toi.unit_tel,
+      toi.unit_bank,
+      toi.unit_bankaccount,
+      toi.addressee,
+      toi.tel,
+      toi.address,
+      toi.status,
+      toi.make_time,
+      toi.create_date,
+      toi.update_date,
+      tor.pay_mode,
+      tor.order_code,
+      tc.cust_code,
+      tc.mobile,
+      tc.sex,
+      tc.nick_name,
+      tc.register_date,
+      tcc.company_name,
+      tcc.job,
+      tsc.province_name,
+      tsc.city_name
+    FROM
+      t_order_invoice toi
+      INNER JOIN t_order tor ON tor.order_id = toi.order_id
+      INNER JOIN t_customer tc ON tc.cust_id = toi.cust_id
+      LEFT JOIN t_sys_city tsc ON tsc.city_id = tc.city_id
+      LEFT JOIN t_customer_company tcc ON tcc.cust_id = tc.cust_id
+    WHERE toi.invoice_id = #{invoiceId}
+  </select>
+</mapper>

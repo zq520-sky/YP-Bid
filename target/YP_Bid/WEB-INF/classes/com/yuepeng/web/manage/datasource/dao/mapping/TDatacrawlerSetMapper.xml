@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuepeng.web.manage.datasource.dao.TDatacrawlerSetMapper">
+    <resultMap id="BaseResultMap" type="com.yuepeng.web.manage.datasource.bean.entity.TDatacrawlerSet">
+        <id column="datacrawler_set_id" property="datacrawlerSetId" jdbcType="INTEGER"/>
+        <result column="datacrawler_service_id" property="datacrawlerServiceId" jdbcType="INTEGER"/>
+        <result column="datasource_id" property="datasourceId" jdbcType="INTEGER"/>
+        <result column="exe_start_time" property="exeStartTime" jdbcType="TIMESTAMP"/>
+        <result column="exe_end_time" property="exeEndTime" jdbcType="TIMESTAMP"/>
+        <result column="exe_interval_min" property="exeIntervalMin" jdbcType="INTEGER"/>
+        <result column="exe_nums_day" property="exeNumsDay" jdbcType="INTEGER"/>
+        <result column="is_forbid" property="isForbid" jdbcType="INTEGER"/>
+        <result column="run_state" property="runState" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        datacrawler_set_id,
+        datacrawler_service_id,
+        datasource_id,
+        exe_start_time,
+        exe_end_time,
+        exe_interval_min,
+        exe_nums_day,
+        is_forbid,
+        run_state
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from public.t_datacrawler_set
+        where datacrawler_set_id = #{datacrawlerSetId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from public.t_datacrawler_set
+        where datacrawler_set_id = #{datacrawlerSetId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.yuepeng.web.manage.datasource.bean.entity.TDatacrawlerSet">
+        insert into public.t_datacrawler_set (datacrawler_set_id, datacrawler_service_id,
+                                              datasource_id, exe_start_time, exe_end_time,
+                                              exe_interval_min, exe_nums_day, is_forbid,
+                                              run_state)
+        values (#{datacrawlerSetId,jdbcType=INTEGER}, #{datacrawlerServiceId,jdbcType=INTEGER},
+                #{datasourceId,jdbcType=INTEGER}, #{exeStartTime,jdbcType=TIMESTAMP}, #{exeEndTime,jdbcType=TIMESTAMP},
+                #{exeIntervalMin,jdbcType=INTEGER}, #{exeNumsDay,jdbcType=INTEGER}, #{isForbid,jdbcType=INTEGER},
+                #{runState,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yuepeng.web.manage.datasource.bean.entity.TDatacrawlerSet">
+        insert into public.t_datacrawler_set
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="datacrawlerSetId != null">
+                datacrawler_set_id,
+            </if>
+            <if test="datacrawlerServiceId != null">
+                datacrawler_service_id,
+            </if>
+            <if test="datasourceId != null">
+                datasource_id,
+            </if>
+            <if test="exeStartTime != null">
+                exe_start_time,
+            </if>
+            <if test="exeEndTime != null">
+                exe_end_time,
+            </if>
+            <if test="exeIntervalMin != null">
+                exe_interval_min,
+            </if>
+            <if test="exeNumsDay != null">
+                exe_nums_day,
+            </if>
+            <if test="isForbid != null">
+                is_forbid,
+            </if>
+            <if test="runState != null">
+                run_state,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="datacrawlerSetId != null">
+                #{datacrawlerSetId,jdbcType=INTEGER},
+            </if>
+            <if test="datacrawlerServiceId != null">
+                #{datacrawlerServiceId,jdbcType=INTEGER},
+            </if>
+            <if test="datasourceId != null">
+                #{datasourceId,jdbcType=INTEGER},
+            </if>
+            <if test="exeStartTime != null">
+                #{exeStartTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="exeEndTime != null">
+                #{exeEndTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="exeIntervalMin != null">
+                #{exeIntervalMin,jdbcType=INTEGER},
+            </if>
+            <if test="exeNumsDay != null">
+                #{exeNumsDay,jdbcType=INTEGER},
+            </if>
+            <if test="isForbid != null">
+                #{isForbid,jdbcType=INTEGER},
+            </if>
+            <if test="runState != null">
+                #{runState,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.yuepeng.web.manage.datasource.bean.entity.TDatacrawlerSet">
+        update public.t_datacrawler_set
+        <set>
+            <if test="datacrawlerServiceId != null">
+                datacrawler_service_id = #{datacrawlerServiceId,jdbcType=INTEGER},
+            </if>
+            <if test="datasourceId != null">
+                datasource_id = #{datasourceId,jdbcType=INTEGER},
+            </if>
+            <if test="exeStartTime != null">
+                exe_start_time = #{exeStartTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="exeEndTime != null">
+                exe_end_time = #{exeEndTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="exeIntervalMin != null">
+                exe_interval_min = #{exeIntervalMin,jdbcType=INTEGER},
+            </if>
+            <if test="exeNumsDay != null">
+                exe_nums_day = #{exeNumsDay,jdbcType=INTEGER},
+            </if>
+            <if test="isForbid != null">
+                is_forbid = #{isForbid,jdbcType=INTEGER},
+            </if>
+            <if test="runState != null">
+                run_state = #{runState,jdbcType=INTEGER},
+            </if>
+        </set>
+        where datacrawler_set_id = #{datacrawlerSetId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yuepeng.web.manage.datasource.bean.entity.TDatacrawlerSet">
+        update public.t_datacrawler_set
+        set datacrawler_service_id = #{datacrawlerServiceId,jdbcType=INTEGER},
+            datasource_id          = #{datasourceId,jdbcType=INTEGER},
+            exe_start_time         = #{exeStartTime,jdbcType=TIMESTAMP},
+            exe_end_time           = #{exeEndTime,jdbcType=TIMESTAMP},
+            exe_interval_min       = #{exeIntervalMin,jdbcType=INTEGER},
+            exe_nums_day           = #{exeNumsDay,jdbcType=INTEGER},
+            is_forbid              = #{isForbid,jdbcType=INTEGER},
+            run_state              = #{runState,jdbcType=INTEGER}
+        where datacrawler_set_id = #{datacrawlerSetId,jdbcType=INTEGER}
+    </update>
+
+
+    <sql id="queryPageList_where">
+        <if test="search != null">
+            <if test="search.datasourceWebname != null and search.datasourceWebname != ''">
+                and d.datasource_webname like '%'||#{search.datasourceWebname,jdbcType=VARCHAR}||'%'
+            </if>
+            <if test="search.isForbid != null">
+                and s.is_forbid = #{search.isForbid}
+            </if>
+            <if test="search.datacrawlerServiceId != null">
+                and s.datacrawler_service_id = #{search.datacrawlerServiceId}
+            </if>
+        </if>
+    </sql>
+
+    <select id="queryCrawPageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.datasource.bean.vo.DatacrawlerSetVo">
+        SELECT
+        s.datacrawler_set_id, s.datacrawler_service_id, s.datasource_id, s.exe_start_time, s.exe_end_time,
+        s.exe_interval_min, s.exe_nums_day, s.is_forbid,
+        s.run_state,d.datasource_webname,d.datasource_weburl,p.datasource_type_name,
+        st.datacrawler_service_id,st.datacrawler_service_name,case s.is_forbid when 0 then '正常' when 1 then '已禁用' end as
+        is_forbid_cn,
+        v.province_name,c.city_name
+        FROM
+        t_datacrawler_set s
+        inner join t_datasource d on s.datasource_id = d.datasource_id
+        inner join t_datasource_type p on d.datasource_type_id = p.datasource_type_id
+        inner join t_datacrawler_service st on s.datacrawler_service_id = st.datacrawler_service_id
+        inner join t_sys_province v on v.province_id = d.province_id
+        inner join t_sys_city c on c.city_id = d.city_id
+        <where>
+            <include refid="queryPageList_where"/>
+        </where>
+    </select>
+
+    <select id="exportCrawPageList" parameterType="com.yuepeng.platform.framework.mybatis.pagination.Pagination"
+            resultType="com.yuepeng.web.manage.datasource.bean.excel.DatacrawlerExcel">
+        SELECT
+        s.datacrawler_set_id, s.datacrawler_service_id, s.datasource_id, s.exe_start_time, s.exe_end_time,
+        s.exe_interval_min, s.exe_nums_day, s.is_forbid,
+        s.run_state,d.datasource_webname,d.datasource_weburl,p.datasource_type_name,
+        st.datacrawler_service_id,st.datacrawler_service_name,case s.is_forbid when 0 then '正常' when 1 then '已禁用' end as
+        is_forbid_cn,
+        v.province_name,c.city_name
+        FROM
+        t_datacrawler_set s
+        inner join t_datasource d on s.datasource_id = d.datasource_id
+        inner join t_datasource_type p on d.datasource_type_id = p.datasource_type_id
+        inner join t_datacrawler_service st on s.datacrawler_service_id = st.datacrawler_service_id
+        inner join t_sys_province v on v.province_id = d.province_id
+        inner join t_sys_city c on c.city_id = d.city_id
+        <where>
+            <include refid="queryPageList_where"/>
+        </where>
+    </select>
+
+    <select id="viewCraw" resultType="com.yuepeng.web.manage.datasource.bean.vo.DatacrawlerSetVo">
+        SELECT s.datacrawler_set_id,
+               s.datacrawler_service_id,
+               s.datasource_id,
+               s.exe_start_time,
+               s.exe_end_time,
+               s.exe_interval_min,
+               s.exe_nums_day,
+               s.is_forbid,
+               s.run_state,
+               d.datasource_webname,
+               d.datasource_weburl,
+               p.datasource_type_name,
+               st.datacrawler_service_id,
+               st.datacrawler_service_name,
+               case s.is_forbid when 0 then '正常' when 1 then '已禁用' end as is_forbid_cn,
+               v.province_name,
+               c.city_name
+        FROM t_datacrawler_set s
+                 inner join t_datasource d on s.datasource_id = d.datasource_id
+                 inner join t_datasource_type p on d.datasource_type_id = p.datasource_type_id
+                 inner join t_datacrawler_service st on s.datacrawler_service_id = st.datacrawler_service_id
+                 inner join t_sys_province v on v.province_id = d.province_id
+                 inner join t_sys_city c on c.city_id = d.city_id
+        WHERE s.datacrawler_set_id = #{datacrawlerSetId}
+    </select>
+
+    <select id="getCrawTypes" resultType="com.yuepeng.web.manage.datasource.bean.vo.DatacrawlerSetVo">
+        select t.datacrawler_service_id,t.datacrawler_service_name
+        from t_datacrawler_service t
+        order by t.datacrawler_service_id asc
+    </select>
+</mapper>

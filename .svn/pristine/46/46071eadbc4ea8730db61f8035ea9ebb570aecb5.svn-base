@@ -1,0 +1,23 @@
+package com.yuepeng.web.manage.system.service.Impl;
+
+import com.yuepeng.platform.common.service.impl.SuperServiceIntegerImpl;
+import com.yuepeng.web.manage.system.bean.entity.TSysSet;
+import com.yuepeng.web.manage.system.bean.vo.SysSetVo;
+import com.yuepeng.web.manage.system.dao.TSysSetMapper;
+import com.yuepeng.web.manage.system.service.ISysSetService;
+import org.springframework.stereotype.Service;
+
+/**
+ * @Description:
+ * @Author: ZhongShengbin
+ * @Date: 2020/05/27 17:10
+ * Copyright (c) 2019, Samton. All rights reserved
+ */
+@Service
+public class SysSetServiceImpl extends SuperServiceIntegerImpl<TSysSetMapper, TSysSet> implements ISysSetService {
+
+    public SysSetVo querySysSetPageList() throws Exception {
+        SysSetVo list = mapper.querySysPageList();
+        return list;
+    }
+}

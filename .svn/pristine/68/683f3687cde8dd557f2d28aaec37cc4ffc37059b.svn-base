@@ -1,0 +1,151 @@
+package com.yuepeng.web.manage.log.bean.vo;
+
+/**
+ * @Description:
+ * @Author: xtq
+ * @Date: 2020/5/27 17:22
+ * Copyright (c) 2019, Samton. All rights reserved
+ */
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * 查看客户信息vo
+ */
+public class CustomerMesVo implements Serializable {
+
+    private Integer custCode;//客户编号
+
+    private String mobile;//手机号
+
+    private String headImg;//头像
+
+    private String nickName;
+
+    private Integer sex;//性别
+
+    private String provinceName;//省份
+
+    private String provinceShort;//市
+
+    private String companyName;//公司名称
+
+    private String job;//职位名称
+
+    private Integer isMember;//是否会员
+
+    private Integer isForbid;//是否禁用
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date registerDate;//注册时间
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date loginDate;//登录时间
+
+    public Integer getCustCode() {
+        return custCode;
+    }
+
+    public void setCustCode(Integer custCode) {
+        this.custCode = custCode;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getHeadImg() {
+        return headImg;
+    }
+
+    public void setHeadImg(String headImg) {
+        this.headImg = headImg;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
+
+    public String getProvinceName() {
+        return provinceName;
+    }
+
+    public void setProvinceName(String provinceName) {
+        this.provinceName = provinceName;
+    }
+
+    public String getProvinceShort() {
+        return provinceShort;
+    }
+
+    public void setProvinceShort(String provinceShort) {
+        this.provinceShort = provinceShort;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+    public Integer getIsMember() {
+        return isMember;
+    }
+
+    public void setIsMember(Integer isMember) {
+        this.isMember = isMember;
+    }
+
+    public Integer getIsForbid() {
+        return isForbid;
+    }
+
+    public void setIsForbid(Integer isForbid) {
+        this.isForbid = isForbid;
+    }
+
+    public Date getRegisterDate() {
+        return registerDate;
+    }
+
+    public void setRegisterDate(Date registerDate) {
+        this.registerDate = registerDate;
+    }
+
+    public Date getLoginDate() {
+        return loginDate;
+    }
+
+    public void setLoginDate(Date loginDate) {
+        this.loginDate = loginDate;
+    }
+}

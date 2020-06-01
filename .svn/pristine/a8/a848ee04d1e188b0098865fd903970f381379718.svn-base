@@ -1,0 +1,184 @@
+package com.yuepeng.web.manage.datasource.controller;
+
+import com.yuepeng.platform.framework.base.BaseController;
+import com.yuepeng.platform.framework.constant.WebConstant;
+import com.yuepeng.platform.framework.exception.ServiceException;
+import com.yuepeng.platform.framework.mybatis.pagination.Pagination;
+import com.yuepeng.platform.framework.util.CurrentUtil;
+import com.yuepeng.platform.pm.bean.entity.TSysLog;
+import com.yuepeng.platform.pm.constant.PmStateConstant;
+import com.yuepeng.platform.pm.service.ILogService;
+import com.yuepeng.web.manage.datasource.bean.entity.TDatasourceType;
+import com.yuepeng.web.manage.datasource.bean.excel.DatasourceTypeExcel;
+import com.yuepeng.web.manage.datasource.bean.vo.DatasourceTypeVo;
+import com.yuepeng.web.manage.datasource.constants.DatasourceTypeExpCodeConstant;
+import com.yuepeng.web.manage.datasource.service.IDatasourceTypeService;
+import com.yuepeng.web.manage.finance.constants.MemberPriceExpCodeConstant;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 招标数据来源类型表
+
+0：省平台
+1：市平台
+1：央企业招投标
+2：...(DatasourceType)表控制层
+ *
+ * @author wzq
+ * @since 2020-05-19 08:59:01
+ */
+@Controller
+@RequestMapping("/manage/datasource/type")
+public class DatasourceTypeController extends BaseController{
+    /**
+     * 服务对象
+     */
+    @Resource
+    private IDatasourceTypeService datasourceTypeService;
+    
+    @Resource
+    private ILogService logService;
+
+    /**
+     * 数据类型管理分页
+     * @param paramBean
+     * @param datasourceTypeVo
+     * @author wzq
+     * @date 2020/5/19 9:04
+     * @return {@link String}
+     */
+    @RequestMapping("queryDatasourceTypeList" + WebConstant.PAGE_SUFFIX)
+    public String queryDatasourceTypePageList(Pagination<DatasourceTypeVo> paramBean, DatasourceTypeVo datasourceTypeVo) throws Exception{
+        paramBean.setSearch(datasourceTypeVo);
+        Pagination<DatasourceTypeVo> pageData = datasourceTypeService.queryDatasourceTypePageList(paramBean);
+        this.addAttr("pageData", pageData);
+        return "datasource/datasourceTypeManage";
+    }
+
+    /**
+     * 数据类型信息导出
+     * @param paramBean
+     * @param datasourceTypeVo
+     * @author wzq
+     * @date 2020/5/19 9:04
+     * @return {@link String}
+     */
+    @RequestMapping("/exportDatasourceTypeList" + WebConstant.BUSINESS_SUFFIX)
+    public String exportDatasourceTypeList(Pagination<TDatasourceType> paramBean, DatasourceTypeVo datasourceTypeVo) throws Exception {
+        paramBean.setSearch(datasourceTypeVo);
+        Pagination<DatasourceTypeExcel> list = datasourceTypeService.exportDatasourceTypePageList(paramBean);
+        logService.addLog(new TSysLog("来源类型-导出", "导出来源类型！", PmStateConstant.LOG_PLATFORM));
+        this.export(response, "来源类型信息" + String.format("%1$tY%1$tm%1$td", new Date()), DatasourceTypeExcel.class, list.getData());
+        return null;
+    }
+
+    /**
+     * 数据类型信息查看
+     * @param datasourceTypeId
+     * @author wzq
+     * @date 2020/5/19 9:04
+     * @return {@link Map< String, Object>}
+     */
+    @RequestMapping("viewDatasourceType" + WebConstant.BUSINESS_SUFFIX)
+    @ResponseBody
+    public Map<String, Object> viewDatasourceType(Integer datasourceTypeId) throws Exception {
+        DatasourceTypeVo datasourceTypeVo = datasourceTypeService.viewDatasourceType(datasourceTypeId);
+        return this.getResultMap(true, datasourceTypeVo);
+    }
+
+    @RequestMapping("addDatasourceType" + WebConstant.BUSINESS_SUFFIX)
+    @ResponseBody
+    public Map<String, Object> addDatasourceType(DatasourceTypeVo datasourceTypeVo) throws Exception{
+        Date date = new Date();
+        datasourceTypeVo.setCreateUserId(CurrentUtil.getCurrentUser().getUserId().intValue());
+        datasourceTypeVo.setUpdateUserId(CurrentUtil.getCurrentUser().getUserId().intValue());
+        datasourceTypeVo.setUpdateDate(date);
+        datasourceTypeVo.setCreateDate(date);
+        boolean result = datasourceTypeService.insertSelective(datasourceTypeVo);
+        if (result) {
+            logService.addLog(new TSysLog("来源类型管理-新增", "新增来源类型【" + datasourceTypeVo.getDatasourceTypeName() + "】成功 ！", PmStateConstant.LOG_PLATFORM));
+        } else {
+            logService.addLog(new TSysLog("来源类型管理-新增", "新增来源类型【" + datasourceTypeVo.getDatasourceTypeName() + "】失败！", PmStateConstant.LOG_PLATFORM));
+        }
+        if (!result) {
+            throw new ServiceException(MemberPriceExpCodeConstant.PRICE_EDIT_COLUMN_ERROR);
+        }
+        return this.getResultMap(true, result);
+    }
+
+    /**
+     * 删除
+     * @param datasourceTypeVo
+     * @author wzq
+     * @date 2020/5/19 9:21
+     * @return {@link Map< String, Object>}
+     */
+    @RequestMapping("delDatasourceType" + WebConstant.BUSINESS_SUFFIX)
+    @ResponseBody
+    public Map<String, Object> delDatasourceType(DatasourceTypeVo datasourceTypeVo) throws Exception {
+        //校验主键ID
+        if(datasourceTypeVo.getDatasourceTypeId() == null){
+            throw new ServiceException(DatasourceTypeExpCodeConstant.DATASOURCE_TYPE_EDIT_ID_ERROR);
+        }
+        //执行删除
+        boolean result = datasourceTypeService.deleteById(datasourceTypeVo.getDatasourceTypeId());
+        if (result) {
+            logService.addLog(new TSysLog("来源类型管理-删除", "删除来源类型【" + datasourceTypeVo.getDatasourceTypeName() + "】成功 ！", PmStateConstant.LOG_PLATFORM));
+        } else {
+            logService.addLog(new TSysLog("来源类型管理-删除", "删除来源类型【" + datasourceTypeVo.getDatasourceTypeName() + "】失败！", PmStateConstant.LOG_PLATFORM));
+        }
+        if (!result) {
+            throw new ServiceException(DatasourceTypeExpCodeConstant.DATASOURCE_TYPE_DEL_ERROR);
+        }
+        return this.getResultMap(true, result);
+    }
+
+    /**
+     * 更新来源类型信息
+     * @param datasourceTypeVo
+     * @author wzq
+     * @date 2020/5/19 9:23
+     * @return {@link Map< String, Object>}
+     */
+    @RequestMapping("updateDatasourceType" + WebConstant.BUSINESS_SUFFIX)
+    @ResponseBody
+    public Map<String, Object> updateDatasourceType(DatasourceTypeVo datasourceTypeVo) throws Exception{
+        //校验主键ID
+        if(datasourceTypeVo.getDatasourceTypeId() == null){
+            throw new ServiceException(DatasourceTypeExpCodeConstant.DATASOURCE_TYPE_EDIT_ID_ERROR);
+        }
+        datasourceTypeVo.setUpdateUserId(CurrentUtil.getCurrentUser().getUserId().intValue());
+        datasourceTypeVo.setUpdateDate(new Date());
+        boolean result = datasourceTypeService.updateSelectiveById(datasourceTypeVo);
+        if (result) {
+            logService.addLog(new TSysLog("来源类型管理-编辑", "编辑来源类型【" + datasourceTypeVo.getDatasourceTypeName() + "】成功 ！", PmStateConstant.LOG_PLATFORM));
+        } else {
+            logService.addLog(new TSysLog("来源类型管理-编辑", "编辑来源类型【" + datasourceTypeVo.getDatasourceTypeName() + "】失败！", PmStateConstant.LOG_PLATFORM));
+        }
+        if (!result) {
+            throw new ServiceException(MemberPriceExpCodeConstant.PRICE_EDIT_COLUMN_ERROR);
+        }
+        return this.getResultMap(true, result);
+    }
+
+    /**
+     * 获取类型列表
+     * @param
+     * @author wzq
+     * @date 2020/5/21 9:23
+     * @return {@link Map< String, Object>}
+     */
+    @RequestMapping("/getDatasourceTypes"+WebConstant.NO_AUTH_SUFFIX)
+    @ResponseBody
+    public Map<String, Object> getDatasourceTypes() throws Exception {
+        List<DatasourceTypeVo> datasourceTypes = datasourceTypeService.getDatasourceTypes();
+        return this.getResultMap(datasourceTypes);
+    }
+}
